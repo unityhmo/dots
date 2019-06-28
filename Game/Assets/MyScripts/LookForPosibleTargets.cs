@@ -4,15 +4,20 @@ using UnityEngine;
 using System;
 public class LookForPosibleTargets : MonoBehaviour
 {
+    Color color;
     void OnMouseDown()
     {
-        //Limpiar todas las fichas
-        LimpiarFichas();
-       //Lo que pasa cuando le dan click a un punto
-       BuscarVecinos();
+        color =  this.GetComponent<SpriteRenderer>().color;
+        
+        if(color!=Color.green){
+            //Limpiar fichas
+            LimpiarFichas();
+            //Lo que pasa cuando le dan click a un punto
+            BuscarVecinos();
+        }
     }
 
-    void LimpiarFichas(){
+    public void LimpiarFichas(){
         //Regresa todas las fichas a su color original.
         GameObject[] arrayFichas = GameObject.FindGameObjectsWithTag("Ficha");
 			if (arrayFichas != null) {
@@ -21,6 +26,8 @@ public class LookForPosibleTargets : MonoBehaviour
                 }
             }
     }
+
+
 
     void BuscarVecinos(){
         //Obtener las filas y columnas.
@@ -55,17 +62,26 @@ public class LookForPosibleTargets : MonoBehaviour
         GameObject fichaIzquierda = GameObject.Find("Ficha_"+izquierda+"(Clone)");
         GameObject fichaDerecha = GameObject.Find("Ficha_"+derecha+"(Clone)");
         if(fichaArriba!=null){
-            IluminaFicha(fichaArriba);
+            if(!fichaArriba.GetComponent<FichaController>().OcupadoAbajo){
+                IluminaFicha(fichaArriba);
+            }
         }
         if(fichaAbajo!=null){
-            IluminaFicha(fichaAbajo);
+            if(!fichaAbajo.GetComponent<FichaController>().OcupadoArriba){
+                IluminaFicha(fichaAbajo);
+            }
         }
         if(fichaIzquierda!=null){
-            IluminaFicha(fichaIzquierda);
+            if(!fichaIzquierda.GetComponent<FichaController>().OcupadoDerecha){
+                IluminaFicha(fichaIzquierda);
+            }
         }
         if(fichaDerecha!=null){
-            IluminaFicha(fichaDerecha);
+            if(!fichaDerecha.GetComponent<FichaController>().OcupadoIzquierda){
+                IluminaFicha(fichaDerecha);
+            }
         }
+        this.GetComponent<FichaController>().primerFicha=true;
     }
 
     void IluminaFicha(GameObject obj){
