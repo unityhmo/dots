@@ -25,8 +25,16 @@ public class FichaController : MonoBehaviour
             BuscarPrimerFicha();
             nombreSegundaFicha=this.name;
             DeterminarLadosOcupados();
+            EvaluarTablero();
             LimpiarFichas();
         }          
+    }
+
+    void EvaluarTablero(){
+        GameObject objGC = GameObject.Find("GameController");
+        if(objGC!=null){
+            objGC.GetComponent<GameController>().EvaluarTablero();
+        }
     }
 
     void DeterminarLadosOcupados(){
@@ -55,6 +63,7 @@ public class FichaController : MonoBehaviour
         //Agregar linea
         Vector3 posicionLinea = Vector3.Lerp(objPrimeraFicha.transform.position , objSegundaFicha.transform.position, 0.5f);
         GameObject lineObject = (GameObject)Resources.Load ("Line");
+        lineObject.name="Line_["+c1+","+f1+"]-["+c2+","+f2+"]";
         
 
         if(c1==c2){
