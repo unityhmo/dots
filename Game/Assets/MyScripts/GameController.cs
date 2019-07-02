@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class Cuadro{
     public GameObject primeraLinea{get;set;}
@@ -13,9 +14,22 @@ public class Cuadro{
 public class GameController : MonoBehaviour
 {   
     List<Cuadro> listaCuadros = new List<Cuadro>();
+    public GameObject txtPuntajeJugador1;
+    public GameObject txtPuntajeJugador2;
+    public GameObject txtTurnoJugador;
+
+    int puntosJugador1;
+    int puntosJugador2;
+    int JugadorActual=1;
     void Update()
     {
-        
+        txtPuntajeJugador1.GetComponent<Text>().text="Puntos: "+puntosJugador1;
+        txtPuntajeJugador2.GetComponent<Text>().text="Puntos: "+puntosJugador2;
+        txtTurnoJugador.GetComponent<Text>().text="Es el Turno del Jugador : "+JugadorActual;
+    }
+
+    public void RestartLevel(){
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     public void EvaluarTablero(){
@@ -43,6 +57,11 @@ public class GameController : MonoBehaviour
                 int col= Convert.ToInt32(columna);
                 EvaluarCuadro(fil,col);
             }
+        }
+        if(JugadorActual==1){
+            JugadorActual=2;
+        }else{
+            JugadorActual=1;
         }
     }
 
@@ -83,6 +102,11 @@ public class GameController : MonoBehaviour
                         {
                             Debug.Log("Hay un cuadro en "+col+","+fil);
                             listaCuadros.Add(cuadro);
+                            if(JugadorActual==1){
+                                puntosJugador1++;
+                            }else{
+                                puntosJugador2++;
+                            }
                         }
                         
 
