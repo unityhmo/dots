@@ -3,8 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+public class Cuadro{
+    public GameObject primeraLinea{get;set;}
+    public GameObject segundaLinea{get;set;}
+    public GameObject terceraLinea{get;set;}
+    public GameObject cuartaLinea{get;set;}
+}
+
 public class GameController : MonoBehaviour
 {   
+    List<Cuadro> listaCuadros = new List<Cuadro>();
     void Update()
     {
         
@@ -62,7 +70,23 @@ public class GameController : MonoBehaviour
                     GameObject cuartaLinea2 = GameObject.Find("Line_"+primeraCoordenada+"-"+cuartaCoordenada+"(Clone)");
                     if(cuartaLinea1!=null||cuartaLinea2!=null){
                         hayUnCuadro=true;
-                        Debug.Log("Hay cuadro con "+col+","+fil);
+                        
+                        Cuadro cuadro = new Cuadro();
+                        var algo = primeraLinea1==null ? cuadro.primeraLinea=primeraLinea1 : cuadro.primeraLinea=primeraLinea2;
+                        var a2= segundaLinea1==null ? cuadro.segundaLinea=segundaLinea1 : cuadro.segundaLinea=segundaLinea1;
+                        var a3= terceraLinea1==null ? cuadro.terceraLinea=terceraLinea1 : cuadro.terceraLinea=terceraLinea1;
+                        var a4= cuartaLinea1==null ? cuadro.cuartaLinea=cuartaLinea1 : cuadro.cuartaLinea=cuartaLinea1;
+                        if(listaCuadros.Find(n=> n.primeraLinea == cuadro.primeraLinea 
+                                                && n.segundaLinea==cuadro.segundaLinea 
+                                                && n.terceraLinea==cuadro.terceraLinea 
+                                                && n.cuartaLinea==cuadro.cuartaLinea)==null)
+                        {
+                            Debug.Log("Hay un cuadro en "+col+","+fil);
+                            listaCuadros.Add(cuadro);
+                        }
+                        
+
+
                     }
                 }
             }
