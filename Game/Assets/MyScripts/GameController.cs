@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
     int puntosJugador1;
     int puntosJugador2;
     int JugadorActual=1;
+
+    bool acabaDeHacerUnPunto=false;
     void Update()
     {
         txtPuntajeJugador1.GetComponent<Text>().text="Puntos: "+puntosJugador1;
@@ -30,6 +32,10 @@ public class GameController : MonoBehaviour
 
     public void RestartLevel(){
         Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public int GetJugadorActual(){
+        return JugadorActual;
     }
 
     public void EvaluarTablero(){
@@ -55,14 +61,17 @@ public class GameController : MonoBehaviour
 
                 int fil = Convert.ToInt32(fila);
                 int col= Convert.ToInt32(columna);
-                EvaluarCuadro(fil,col);
+                EvaluarCuadro(col,fil);
             }
         }
+        if(!acabaDeHacerUnPunto){
         if(JugadorActual==1){
             JugadorActual=2;
         }else{
             JugadorActual=1;
         }
+        }
+        acabaDeHacerUnPunto=false;
     }
 
     bool EvaluarCuadro(int col, int fil){
@@ -91,21 +100,29 @@ public class GameController : MonoBehaviour
                         hayUnCuadro=true;
                         
                         Cuadro cuadro = new Cuadro();
-                        var algo = primeraLinea1==null ? cuadro.primeraLinea=primeraLinea1 : cuadro.primeraLinea=primeraLinea2;
-                        var a2= segundaLinea1==null ? cuadro.segundaLinea=segundaLinea1 : cuadro.segundaLinea=segundaLinea1;
-                        var a3= terceraLinea1==null ? cuadro.terceraLinea=terceraLinea1 : cuadro.terceraLinea=terceraLinea1;
-                        var a4= cuartaLinea1==null ? cuadro.cuartaLinea=cuartaLinea1 : cuadro.cuartaLinea=cuartaLinea1;
-                        if(listaCuadros.Find(n=> n.primeraLinea == cuadro.primeraLinea 
-                                                && n.segundaLinea==cuadro.segundaLinea 
-                                                && n.terceraLinea==cuadro.terceraLinea 
-                                                && n.cuartaLinea==cuadro.cuartaLinea)==null)
+                        var algo = primeraLinea1!=null ? cuadro.primeraLinea=primeraLinea1 : cuadro.primeraLinea=primeraLinea2;
+                        var a2= segundaLinea1!=null ? cuadro.segundaLinea=segundaLinea1 : cuadro.segundaLinea=segundaLinea2;
+                        var a3= terceraLinea1!=null ? cuadro.terceraLinea=terceraLinea1 : cuadro.terceraLinea=terceraLinea2;
+                        var a4= cuartaLinea1!=null ? cuadro.cuartaLinea=cuartaLinea1 : cuadro.cuartaLinea=cuartaLinea2;
+                        if(listaCuadros.Find(n=>   n.primeraLinea.name == cuadro.primeraLinea.name
+                                                && n.segundaLinea.name==cuadro.segundaLinea.name
+                                                && n.terceraLinea.name==cuadro.terceraLinea.name
+                                                && n.cuartaLinea.name==cuadro.cuartaLinea.name)==null)
                         {
-                            Debug.Log("Hay un cuadro en "+col+","+fil);
+                            //Debug.Log("Hay un cuadro en "+col+","+fil);
                             listaCuadros.Add(cuadro);
+                            acabaDeHacerUnPunto=true;
                             if(JugadorActual==1){
                                 puntosJugador1++;
                             }else{
                                 puntosJugador2++;
+                            }
+                        }else{
+                            //Debug.Log("Cuadro ya existe es: "+cuadro.primeraLinea.name+ "/"+cuadro.segundaLinea.name+"/"+cuadro.terceraLinea.name+"/"+cuadro.cuartaLinea.name);
+                            int contador=0;
+                            foreach( Cuadro cuad in listaCuadros){
+                                //Debug.Log("Cuadro "+contador+" : "+cuad.primeraLinea.name+ "/"+cuad.segundaLinea.name+"/"+cuad.terceraLinea.name+"/"+cuad.cuartaLinea.name);
+                                contador++;
                             }
                         }
                         

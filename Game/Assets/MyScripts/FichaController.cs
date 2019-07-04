@@ -37,6 +37,14 @@ public class FichaController : MonoBehaviour
         }
     }
 
+    int GetJugador(){
+        GameObject objGC = GameObject.Find("GameController");
+        if(objGC!=null){
+            return objGC.GetComponent<GameController>().GetJugadorActual();
+        }
+        return -1;
+    }
+
     void DeterminarLadosOcupados(){
         //Columna y fila de primer ficha
         if(nombrePrimeraFicha!=null){
@@ -64,7 +72,13 @@ public class FichaController : MonoBehaviour
         Vector3 posicionLinea = Vector3.Lerp(objPrimeraFicha.transform.position , objSegundaFicha.transform.position, 0.5f);
         GameObject lineObject = (GameObject)Resources.Load ("Line");
         lineObject.name="Line_["+c1+","+f1+"]-["+c2+","+f2+"]";
-        
+        if(GetJugador()==1){
+            //raya azul
+            lineObject.GetComponent<SpriteRenderer>().color=Color.blue;
+        }else{
+            //raya roja
+            lineObject.GetComponent<SpriteRenderer>().color=Color.red;
+        }
 
         if(c1==c2){
             //arriba o abajo
