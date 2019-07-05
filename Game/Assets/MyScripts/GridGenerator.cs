@@ -15,6 +15,13 @@ public class GridGenerator : MonoBehaviour
         CrearGrid();
     }
 
+    public int GetTotalColumnas(){
+        return TotalColumnas;
+    }
+    public int GetTotalFilas(){
+        return TotalFilas;
+    }
+
     void CrearGrid(){
         for(int x=0;x<TotalColumnas;x++){
             for(int y=0;y<TotalFilas;y++){

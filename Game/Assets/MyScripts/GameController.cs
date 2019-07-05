@@ -17,17 +17,41 @@ public class GameController : MonoBehaviour
     public GameObject txtPuntajeJugador1;
     public GameObject txtPuntajeJugador2;
     public GameObject txtTurnoJugador;
+    public GameObject txtContadorLineas;
+    public GameObject txtMensajeFinal;
 
     int puntosJugador1;
     int puntosJugador2;
     int JugadorActual=1;
 
     bool acabaDeHacerUnPunto=false;
+
+    int TotalMaximoLineas;
+    int LineasActuales;
+    string TextoFinal = "Empate";
+
+    void Start(){
+        CalcularTotalMaximoDeLineas();
+        txtMensajeFinal.SetActive(false);
+    }
     void Update()
     {
         txtPuntajeJugador1.GetComponent<Text>().text="Puntos: "+puntosJugador1;
         txtPuntajeJugador2.GetComponent<Text>().text="Puntos: "+puntosJugador2;
         txtTurnoJugador.GetComponent<Text>().text="Es el Turno del Jugador : "+JugadorActual;
+        txtContadorLineas.GetComponent<Text>().text="El numero maximo de lineas es: "+TotalMaximoLineas+ " Lineas actuales: "+LineasActuales;
+        txtMensajeFinal.GetComponent<Text>().text=TextoFinal;
+    }
+
+    void CalcularTotalMaximoDeLineas(){
+        int maxLineas =0;
+        int columnas = this.GetComponent<GridGenerator>().GetTotalColumnas();
+        int filas = this.GetComponent<GridGenerator>().GetTotalFilas();
+
+        int colXFilas = columnas*filas;
+        colXFilas=colXFilas+((columnas-1)*(filas-1))-1;
+
+        TotalMaximoLineas=colXFilas;
     }
 
     public void RestartLevel(){
@@ -46,9 +70,12 @@ public class GameController : MonoBehaviour
 
         GameObject[] lineArray;
         lineArray = GameObject.FindGameObjectsWithTag("Line");
+        LineasActuales=lineArray.Length;
 
-        if (lineArray.Length > 0)
-        {
+
+
+            if (lineArray.Length > 0)
+            {
             foreach(GameObject line in lineArray){
                 string nombreLinea = line.name.Replace("(Clone)","");
                 string segundaCoordenada = nombreLinea.Substring(nombreLinea.LastIndexOf('-') + 1);
@@ -63,15 +90,27 @@ public class GameController : MonoBehaviour
                 int col= Convert.ToInt32(columna);
                 EvaluarCuadro(col,fil);
             }
+            }
+                if(!acabaDeHacerUnPunto){
+                    if(JugadorActual==1){
+                        JugadorActual=2;
+                }else{
+                    JugadorActual=1;
+                }
+                }
+            acabaDeHacerUnPunto=false;
+
+       if(LineasActuales>=TotalMaximoLineas){
+            //Todas las lineas posibles han sido llenadas determinar quien es el ganador/a
+            if(puntosJugador1>puntosJugador2){
+                TextoFinal="Gana el Jugador 1";
+            }
+            if(puntosJugador2>puntosJugador1){
+                TextoFinal="Gana el Jugador 2";
+            }
+            txtMensajeFinal.SetActive(true);            
         }
-        if(!acabaDeHacerUnPunto){
-        if(JugadorActual==1){
-            JugadorActual=2;
-        }else{
-            JugadorActual=1;
-        }
-        }
-        acabaDeHacerUnPunto=false;
+      
     }
 
     bool EvaluarCuadro(int col, int fil){
