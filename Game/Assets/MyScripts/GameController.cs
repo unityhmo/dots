@@ -150,6 +150,8 @@ public class GameController : MonoBehaviour
                         {
                             //Debug.Log("Hay un cuadro en "+col+","+fil);
                             listaCuadros.Add(cuadro);
+                            //Llenar area del cuadro.
+                            LlenarAreaDelCuadro(cuadro.primeraLinea,cuadro.terceraLinea);
                             acabaDeHacerUnPunto=true;
                             if(JugadorActual==1){
                                 puntosJugador1++;
@@ -174,5 +176,16 @@ public class GameController : MonoBehaviour
         }
 
         return hayUnCuadro;
+    }
+
+    void LlenarAreaDelCuadro(GameObject primeraLinea, GameObject segundaLinea){
+        Vector3 posicionArea = Vector3.Lerp(primeraLinea.transform.position , segundaLinea.transform.position, 0.5f);
+        GameObject areaObject = (GameObject)Resources.Load ("ConqueredArea");
+        if(JugadorActual==1){
+           areaObject.GetComponent<SpriteRenderer>().color=Color.blue;
+        }else{
+           areaObject.GetComponent<SpriteRenderer>().color=Color.red;
+        }
+        Instantiate(areaObject, posicionArea, Quaternion.identity);
     }
 }
