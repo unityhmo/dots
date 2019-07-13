@@ -69,16 +69,28 @@ public class FichaController : MonoBehaviour
         GameObject objSegundaFicha = GameObject.Find(nombreSegundaFicha);
         
         //Agregar linea
-        Vector3 posicionLinea = Vector3.Lerp(objPrimeraFicha.transform.position , objSegundaFicha.transform.position, 0.5f);
-        GameObject lineObject = (GameObject)Resources.Load ("Line");
-        lineObject.name="Line_["+c1+","+f1+"]-["+c2+","+f2+"]";
-        if(GetJugador()==1){
+        string nombreLinea = "Line_["+c1+","+f1+"]-["+c2+","+f2+"](Clone)";
+        GameObject lineObject = GameObject.Find(nombreLinea);
+        if(lineObject==null){
+             nombreLinea = "Line_["+c2+","+f2+"]-["+c1+","+f1+"](Clone)";
+             lineObject = GameObject.Find(nombreLinea);
+        }
+        if(lineObject!=null){
+            if(GetJugador()==1){
             //raya azul
             lineObject.GetComponent<SpriteRenderer>().color=Color.blue;
-        }else{
+            }else{
             //raya roja
             lineObject.GetComponent<SpriteRenderer>().color=Color.red;
+            }
+
+            //activar linea
+            lineObject.gameObject.tag="Line";
+            Color tmp = lineObject.GetComponent<SpriteRenderer>().color;
+            tmp.a = 255f;
+            lineObject.GetComponent<SpriteRenderer>().color = tmp;
         }
+        
 
         if(c1==c2){
             //arriba o abajo
@@ -90,8 +102,7 @@ public class FichaController : MonoBehaviour
                 //abajo
                 objPrimeraFicha.GetComponent<FichaController>().OcupadoAbajo=true;
                 objSegundaFicha.GetComponent<FichaController>().OcupadoArriba=true;
-            }
-            Instantiate(lineObject, posicionLinea, Quaternion.Euler(0,0,90));
+            }            
         }
         else{
             //izquierda o derecha
@@ -104,10 +115,7 @@ public class FichaController : MonoBehaviour
                 objPrimeraFicha.GetComponent<FichaController>().OcupadoDerecha=true;
                 objSegundaFicha.GetComponent<FichaController>().OcupadoIzquierda=true;
             }
-             Instantiate(lineObject, posicionLinea, Quaternion.identity);
-        }
-
-       
+        }       
         }
         
     }

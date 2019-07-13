@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridGenerator : MonoBehaviour
 {
     public GameObject FichaGameObject;
+    public GameObject LineaGameObject;
     public int TotalColumnas;
     public int TotalFilas;
     public float PosicionXInicial;
@@ -13,6 +14,7 @@ public class GridGenerator : MonoBehaviour
     void Start()
     {
         CrearGrid();
+        CrearLineasVacias();
     }
 
     public int GetTotalColumnas(){
@@ -31,5 +33,21 @@ public class GridGenerator : MonoBehaviour
                 Instantiate(FichaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial-y, 0), Quaternion.identity);
             }
         }
+    }
+
+    void CrearLineasVacias(){
+        for(int x=0;x<TotalColumnas;x++){
+            for(int y=0;y<TotalFilas;y++){
+                if(x<TotalColumnas-1){
+                    LineaGameObject.name="Line_["+x+","+y+"]-["+(x+1)+","+y+"]";
+                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y, 0), Quaternion.identity);
+                }
+                if(y<TotalFilas-1){
+                    LineaGameObject.name="Line_["+x+","+y+"]-["+x+","+(y+1)+"]";
+                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial-y-0.5f, 0), Quaternion.Euler(0,0,90));
+                }
+            }
+        }
+
     }
 }

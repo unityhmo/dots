@@ -1405,6 +1405,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FichaGameObject: {fileID: 5031618170681134215, guid: 135c04e1d3f140a4abe463ebd05595db,
     type: 3}
+  LineaGameObject: {fileID: 9057913947401601758, guid: 747577c6a66d6e54e9907bec1211d929,
+    type: 3}
   TotalColumnas: 6
   TotalFilas: 6
   PosicionXInicial: -2.5
@@ -4051,7 +4053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 331, y: 897}
+  m_AnchoredPosition: {x: 331, y: 702.99994}
   m_SizeDelta: {x: 334.3, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &598908560
@@ -8802,7 +8804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -338, y: 897}
+  m_AnchoredPosition: {x: -338, y: 703}
   m_SizeDelta: {x: 341.9, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241055587
@@ -10967,7 +10969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 897.0001}
+  m_AnchoredPosition: {x: 0, y: 703.00006}
   m_SizeDelta: {x: 245.9, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1698435376
@@ -12266,7 +12268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.8, y: -819.8}
+  m_AnchoredPosition: {x: 8.8, y: -679}
   m_SizeDelta: {x: 891.7, y: 241.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909759422
@@ -12616,7 +12618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.7999, y: -703.9}
+  m_AnchoredPosition: {x: 8.7999, y: -607}
   m_SizeDelta: {x: 891.7, y: 483}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982049427
