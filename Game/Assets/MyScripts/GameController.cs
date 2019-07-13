@@ -1,7 +1,7 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Cuadro{
@@ -44,7 +44,6 @@ public class GameController : MonoBehaviour
     }
 
     void CalcularTotalMaximoDeLineas(){
-        int maxLineas =0;
         int columnas = this.GetComponent<GridGenerator>().GetTotalColumnas();
         int filas = this.GetComponent<GridGenerator>().GetTotalFilas();
 
@@ -55,7 +54,7 @@ public class GameController : MonoBehaviour
     }
 
     public void RestartLevel(){
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public int GetJugadorActual(){
