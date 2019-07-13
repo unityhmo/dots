@@ -136,39 +136,46 @@ public class GameController : MonoBehaviour
                     GameObject cuartaLinea1 = GameObject.Find("Line_"+cuartaCoordenada+"-"+primeraCoordenada+"(Clone)");
                     GameObject cuartaLinea2 = GameObject.Find("Line_"+primeraCoordenada+"-"+cuartaCoordenada+"(Clone)");
                     if(cuartaLinea1!=null||cuartaLinea2!=null){
-                        hayUnCuadro=true;
+                        
                         
                         Cuadro cuadro = new Cuadro();
                         var algo = primeraLinea1!=null ? cuadro.primeraLinea=primeraLinea1 : cuadro.primeraLinea=primeraLinea2;
                         var a2= segundaLinea1!=null ? cuadro.segundaLinea=segundaLinea1 : cuadro.segundaLinea=segundaLinea2;
                         var a3= terceraLinea1!=null ? cuadro.terceraLinea=terceraLinea1 : cuadro.terceraLinea=terceraLinea2;
                         var a4= cuartaLinea1!=null ? cuadro.cuartaLinea=cuartaLinea1 : cuadro.cuartaLinea=cuartaLinea2;
-                        if(listaCuadros.Find(n=>   n.primeraLinea.name == cuadro.primeraLinea.name
+
+                        if(cuadro.primeraLinea.gameObject.tag=="Line"
+                            &&cuadro.segundaLinea.gameObject.tag=="Line"
+                            &&cuadro.terceraLinea.gameObject.tag=="Line"
+                            &&cuadro.cuartaLinea.gameObject.tag=="Line"){
+                                 hayUnCuadro=true;
+                        }
+                       
+                        if(hayUnCuadro){
+                            if(listaCuadros.Find(n=>   n.primeraLinea.name == cuadro.primeraLinea.name
                                                 && n.segundaLinea.name==cuadro.segundaLinea.name
                                                 && n.terceraLinea.name==cuadro.terceraLinea.name
                                                 && n.cuartaLinea.name==cuadro.cuartaLinea.name)==null)
-                        {
-                            //Debug.Log("Hay un cuadro en "+col+","+fil);
-                            listaCuadros.Add(cuadro);
-                            //Llenar area del cuadro.
-                            LlenarAreaDelCuadro(cuadro.primeraLinea,cuadro.terceraLinea);
-                            acabaDeHacerUnPunto=true;
-                            if(JugadorActual==1){
-                                puntosJugador1++;
+                            {
+                                //Debug.Log("Hay un cuadro en "+col+","+fil);
+                                listaCuadros.Add(cuadro);
+                                //Llenar area del cuadro.
+                                LlenarAreaDelCuadro(cuadro.primeraLinea,cuadro.terceraLinea);
+                                acabaDeHacerUnPunto=true;
+                                if(JugadorActual==1){
+                                    puntosJugador1++;
+                                }else{
+                                    puntosJugador2++;
+                                }
                             }else{
-                                puntosJugador2++;
+                                //Debug.Log("Cuadro ya existe es: "+cuadro.primeraLinea.name+ "/"+cuadro.segundaLinea.name+"/"+cuadro.terceraLinea.name+"/"+cuadro.cuartaLinea.name);
+                                int contador=0;
+                                foreach( Cuadro cuad in listaCuadros){
+                                    //Debug.Log("Cuadro "+contador+" : "+cuad.primeraLinea.name+ "/"+cuad.segundaLinea.name+"/"+cuad.terceraLinea.name+"/"+cuad.cuartaLinea.name);
+                                    contador++;
                             }
-                        }else{
-                            //Debug.Log("Cuadro ya existe es: "+cuadro.primeraLinea.name+ "/"+cuadro.segundaLinea.name+"/"+cuadro.terceraLinea.name+"/"+cuadro.cuartaLinea.name);
-                            int contador=0;
-                            foreach( Cuadro cuad in listaCuadros){
-                                //Debug.Log("Cuadro "+contador+" : "+cuad.primeraLinea.name+ "/"+cuad.segundaLinea.name+"/"+cuad.terceraLinea.name+"/"+cuad.cuartaLinea.name);
-                                contador++;
                             }
                         }
-                        
-
-
                     }
                 }
             }
