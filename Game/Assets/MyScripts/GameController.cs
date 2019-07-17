@@ -20,6 +20,15 @@ public class GameController : MonoBehaviour
     public GameObject txtContadorLineas;
     public GameObject txtMensajeFinal;
 
+    public Text txtRazaJugador1;
+    public Text txtRazaJugador2;
+
+    public Text txtEnergiaJugador1;
+    public Text txtEnergiaJugador2;
+
+    string RazaJugador1;
+    string RazaJugador2;
+
     int puntosJugador1;
     int puntosJugador2;
     int JugadorActual=1;
@@ -30,17 +39,26 @@ public class GameController : MonoBehaviour
     int LineasActuales;
     string TextoFinal = "Empate";
 
+    public int energiaMaxima;
+    int energiaActualJugador1;
+    int energiaActualJugador2;
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
     }
     void Update()
     {
-        txtPuntajeJugador1.GetComponent<Text>().text="Puntos: "+puntosJugador1;
-        txtPuntajeJugador2.GetComponent<Text>().text="Puntos: "+puntosJugador2;
+        txtPuntajeJugador1.GetComponent<Text>().text="P1 Puntos: "+puntosJugador1;
+        txtPuntajeJugador2.GetComponent<Text>().text="P2 Puntos: "+puntosJugador2;
         txtTurnoJugador.GetComponent<Text>().text="Es el Turno del Jugador : "+JugadorActual;
         txtContadorLineas.GetComponent<Text>().text="El numero maximo de lineas es: "+TotalMaximoLineas+ " Lineas actuales: "+LineasActuales;
         txtMensajeFinal.GetComponent<Text>().text=TextoFinal;
+        txtRazaJugador1.text = "Raza: "+RazaJugador1;
+        txtRazaJugador2.text = "Raza: "+RazaJugador2;
+
+        txtEnergiaJugador1.text = "P1 Energia: "+energiaActualJugador1+"/"+energiaMaxima;
+        txtEnergiaJugador2.text = "P2 Energia: "+energiaActualJugador2+"/"+energiaMaxima;
     }
 
     void CalcularTotalMaximoDeLineas(){
@@ -55,6 +73,34 @@ public class GameController : MonoBehaviour
 
     public void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ElegirHumano(){
+        string raza = "Humano";
+        setRaza(raza);
+    }
+
+    public void ElegirMago(){
+        string raza = "Mago";
+        setRaza(raza);
+    }
+
+    public void ElegirPiedra(){
+        string raza = "Piedra";
+        setRaza(raza);
+    }
+
+    void setRaza(string raza){
+        if(JugadorActual==1){
+            RazaJugador1=raza;
+        }else{
+            RazaJugador2=raza;
+        }
+        if(JugadorActual==1){
+            JugadorActual=2;
+        }else{
+            JugadorActual=1;
+        }
     }
 
     public int GetJugadorActual(){
