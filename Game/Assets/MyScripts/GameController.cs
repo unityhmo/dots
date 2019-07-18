@@ -26,6 +26,9 @@ public class GameController : MonoBehaviour
     public Text txtEnergiaJugador1;
     public Text txtEnergiaJugador2;
 
+    public Text txtEstadoJugador1;
+    public Text txtEstadoJugador2;
+
     string RazaJugador1;
     string RazaJugador2;
 
@@ -43,6 +46,9 @@ public class GameController : MonoBehaviour
     int energiaActualJugador1;
     int energiaActualJugador2;
 
+    bool bloqueadoJugador1;
+    bool bloqueadoJugador2;
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
@@ -59,6 +65,17 @@ public class GameController : MonoBehaviour
 
         txtEnergiaJugador1.text = "P1 Energia: "+energiaActualJugador1+"/"+energiaMaxima;
         txtEnergiaJugador2.text = "P2 Energia: "+energiaActualJugador2+"/"+energiaMaxima;
+
+        string estado1="Normal";
+        string estado2="Normal";
+        if(bloqueadoJugador1){
+            estado1="Bloqueado";
+        }
+        if(bloqueadoJugador2){
+            estado2="Bloqueado";
+        }
+        txtEstadoJugador1.text = "Estado: "+estado1;
+        txtEstadoJugador2.text = "Estado: "+estado2;
     }
 
     void CalcularTotalMaximoDeLineas(){
@@ -103,6 +120,32 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void SubirEnergiaJugador1(){
+        if(energiaActualJugador1<energiaMaxima){
+            energiaActualJugador1++;
+        }
+    }
+
+
+    public void SubirEnergiaJugador2(){
+        if(energiaActualJugador2<energiaMaxima){
+            energiaActualJugador2++;
+        }
+    }
+
+    public void BloquearAJugador1(){
+        if(energiaActualJugador2==energiaMaxima){
+            bloqueadoJugador1=true;
+            energiaActualJugador2=0;
+        }
+    }
+    public void BloquearAJugador2(){
+        if(energiaActualJugador1==energiaMaxima){
+            bloqueadoJugador2=true;
+            energiaActualJugador1=0;
+        }
+    }
+
     public int GetJugadorActual(){
         return JugadorActual;
     }
@@ -116,8 +159,6 @@ public class GameController : MonoBehaviour
         GameObject[] lineArray;
         lineArray = GameObject.FindGameObjectsWithTag("Line");
         LineasActuales=lineArray.Length;
-
-
 
             if (lineArray.Length > 0)
             {
@@ -142,8 +183,20 @@ public class GameController : MonoBehaviour
                 }else{
                     JugadorActual=1;
                 }
+                }else{
+                     //Cambiar turno si esta bloqueado
+                    if(bloqueadoJugador1){
+                        JugadorActual=2;
+                        bloqueadoJugador1=false;
+                    }
+                    if(bloqueadoJugador2){
+                        JugadorActual=1;
+                        bloqueadoJugador2=false;
+                    } 
                 }
             acabaDeHacerUnPunto=false;
+            
+               
 
        if(LineasActuales>=TotalMaximoLineas){
             //Todas las lineas posibles han sido llenadas determinar quien es el ganador/a
