@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ficha
   - Line
+  - CuadCapturado
   layers:
   - Default
   - TransparentFX

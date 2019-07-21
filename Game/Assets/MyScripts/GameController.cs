@@ -286,11 +286,141 @@ public class GameController : MonoBehaviour
     void LlenarAreaDelCuadro(GameObject primeraLinea, GameObject segundaLinea){
         Vector3 posicionArea = Vector3.Lerp(primeraLinea.transform.position , segundaLinea.transform.position, 0.5f);
         GameObject areaObject = (GameObject)Resources.Load ("ConqueredArea");
+        areaObject.name="Conquered_J"+JugadorActual;
         if(JugadorActual==1){
            areaObject.GetComponent<SpriteRenderer>().color=Color.blue;
         }else{
            areaObject.GetComponent<SpriteRenderer>().color=Color.red;
         }
         Instantiate(areaObject, posicionArea, Quaternion.identity);
+        TransformarCuadrosConsecutivos(posicionArea);
+    }
+
+    void TransformarCuadrosConsecutivos(Vector3 cuadroActual){
+        int cuadrosConsecutivos =0;
+        cuadrosConsecutivos=GetCuadrosConsecutivos(JugadorActual);
+        float xActual = cuadroActual.x;
+        float yActual = cuadroActual.y;
+        int contador=1;
+        //Buscar a la derecha
+        bool esConsecutivoDerecha=false;
+        for(int x=1;x<cuadrosConsecutivos;x++){
+            if(BuscarCuadroCapturado(xActual-x,yActual)){
+                esConsecutivoDerecha=true;
+            }else{
+                esConsecutivoDerecha=false;
+            }
+        }
+
+        //Buscar a la izquierda
+        bool esConsecutivoIzquierda=false;
+        for(int x=1;x<cuadrosConsecutivos;x++){
+            if(BuscarCuadroCapturado(xActual+x,yActual)){
+                esConsecutivoIzquierda=true;
+            }else{
+                esConsecutivoIzquierda=false;
+            }
+        }
+
+        //Buscar para arriba
+        bool esConsecutivoArriba=false;
+        for(int x=1;x<cuadrosConsecutivos;x++){
+            if(BuscarCuadroCapturado(xActual,yActual+x)){
+                esConsecutivoArriba=true;
+            }else{
+                esConsecutivoArriba=false;
+            }
+        }
+
+        //Buscar para abajo
+        bool esConsecutivoAbajo=false;
+        for(int x=1;x<cuadrosConsecutivos;x++){
+            if(BuscarCuadroCapturado(xActual,yActual-x)){
+                esConsecutivoAbajo=true;
+            }else{
+                esConsecutivoAbajo=false;
+            }
+        }
+
+        //Debug.Log("esConsecutivoDerecha: "+esConsecutivoDerecha);
+        //Debug.Log("esConsecutivoIzquierda: "+esConsecutivoIzquierda);
+        //Debug.Log("esConsecutivoArriba: "+esConsecutivoArriba);
+        //Debug.Log("esConsecutivoAbajo: "+esConsecutivoAbajo);
+        MarcarConsecutivos(cuadrosConsecutivos, esConsecutivoAbajo, esConsecutivoArriba, esConsecutivoDerecha, esConsecutivoIzquierda,xActual,yActual);
+    }
+
+    void MarcarConsecutivos(int cuadrosConsecutivos, bool esConsecutivoAbajo, bool esConsecutivoArriba, bool esConsecutivoDerecha, bool esConsecutivoIzquierda, float xActual, float yActual){
+        //Buscar a la derecha
+        if(esConsecutivoDerecha){
+            for(int x=0;x<cuadrosConsecutivos;x++){
+            CambiarColorConsecutivo(xActual-x,yActual);
+            }
+        } 
+        //Buscar a la izquierda
+        if(esConsecutivoIzquierda){
+            for(int x=0;x<cuadrosConsecutivos;x++){
+            CambiarColorConsecutivo(xActual+x,yActual);
+            }
+        }
+        //Buscar para arriba
+         if(esConsecutivoArriba){
+            for(int x=0;x<cuadrosConsecutivos;x++){
+            CambiarColorConsecutivo(xActual,yActual+x);
+            }
+        }
+        //Buscar para abajo
+         if(esConsecutivoAbajo){
+            for(int x=0;x<cuadrosConsecutivos;x++){
+            CambiarColorConsecutivo(xActual,yActual-x);
+            }
+        }
+    }
+
+    bool BuscarCuadroCapturado(float x,float y){
+        GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
+        bool encontrado=false;
+        foreach(GameObject cuadro in cuadrosCapturados){
+            if(cuadro.transform.position.x==x &&cuadro.transform.position.y==y){
+                if(cuadro.name.Contains("J"+JugadorActual)){
+                   encontrado= true;
+                }
+            }
+        }
+        return encontrado;
+    }
+
+    void CambiarColorConsecutivo(float x,float y){
+        GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
+        foreach(GameObject cuadro in cuadrosCapturados){
+            if(cuadro.transform.position.x==x &&cuadro.transform.position.y==y){
+                if(cuadro.name.Contains("J"+JugadorActual)){
+                    bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
+                    if(!esContinuo){
+                        cuadro.GetComponent<CuadCapturadoController>().SetEsContinuo(true);       
+                    } 
+                }
+            }
+        }
+    }
+
+    int GetCuadrosConsecutivos(int jugador){
+        string raza="";
+        int consecutivos=0;
+        if(jugador==1){
+            raza=RazaJugador1;
+        }else{
+            raza=RazaJugador2;
+        }
+        if(raza=="Humano"){
+            consecutivos=3;
+        }
+        if(raza=="Mago"){
+            consecutivos=2;
+        }
+        if(raza=="Piedra"){
+            consecutivos=4;
+        }
+        return consecutivos;
     }
 }
+
