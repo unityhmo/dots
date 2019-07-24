@@ -49,6 +49,9 @@ public class GameController : MonoBehaviour
     bool bloqueadoJugador1;
     bool bloqueadoJugador2;
 
+    int contadorContinuosJugador1;
+    int contadorContinuosJugador2;
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
@@ -208,8 +211,12 @@ public class GameController : MonoBehaviour
             }
             txtMensajeFinal.SetActive(true);            
         }
+
+        //Evaluar cuantos cuadros consecutivos tiene el jugador para darle sus energias
+        ContarSetsConsecutivos();
       
     }
+
 
     bool EvaluarCuadro(int col, int fil){
         bool hayUnCuadro=false;
@@ -293,7 +300,32 @@ public class GameController : MonoBehaviour
            areaObject.GetComponent<SpriteRenderer>().color=Color.red;
         }
         Instantiate(areaObject, posicionArea, Quaternion.identity);
-        TransformarCuadrosConsecutivos(posicionArea);
+        TransformarCuadrosConsecutivos(posicionArea);       
+    }
+
+    void ContarSetsConsecutivos(){
+        int cuadrosConsecutivosTotales =0;
+        cuadrosConsecutivosTotales=GetCuadrosConsecutivos(JugadorActual);
+        //traer cuadros consecutivos de ese jugador
+        int cuadrosConsecutivosActuales = 0;
+        GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
+        foreach(GameObject cuadro in cuadrosCapturados){
+            if(cuadro.name.Contains("J"+JugadorActual)){
+                bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
+                if(esContinuo){
+                    cuadrosConsecutivosActuales++;
+                }
+            }
+        }
+        int sumarEnergiaActual = cuadrosConsecutivosActuales/cuadrosConsecutivosTotales;
+        for(int x=0;x<sumarEnergiaActual;x++){
+            if(JugadorActual==1){
+                SubirEnergiaJugador1();
+            }else{
+                SubirEnergiaJugador2();
+            }
+        }
+        
     }
 
     void TransformarCuadrosConsecutivos(Vector3 cuadroActual){
@@ -309,6 +341,7 @@ public class GameController : MonoBehaviour
                 esConsecutivoDerecha=true;
             }else{
                 esConsecutivoDerecha=false;
+                break;
             }
         }
 
@@ -319,6 +352,7 @@ public class GameController : MonoBehaviour
                 esConsecutivoIzquierda=true;
             }else{
                 esConsecutivoIzquierda=false;
+                break;
             }
         }
 
@@ -329,6 +363,7 @@ public class GameController : MonoBehaviour
                 esConsecutivoArriba=true;
             }else{
                 esConsecutivoArriba=false;
+                break;
             }
         }
 
@@ -339,6 +374,7 @@ public class GameController : MonoBehaviour
                 esConsecutivoAbajo=true;
             }else{
                 esConsecutivoAbajo=false;
+                break;
             }
         }
 
@@ -382,7 +418,10 @@ public class GameController : MonoBehaviour
         foreach(GameObject cuadro in cuadrosCapturados){
             if(cuadro.transform.position.x==x &&cuadro.transform.position.y==y){
                 if(cuadro.name.Contains("J"+JugadorActual)){
-                   encontrado= true;
+                    bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
+                    if(!esContinuo){
+                    encontrado= true;
+                    }
                 }
             }
         }

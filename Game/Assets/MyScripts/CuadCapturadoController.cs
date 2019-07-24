@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CuadCapturadoController : MonoBehaviour
 {   
-    bool esContinuo;
+    public bool esContinuo;
 
     void CambiarColorContinuo(){
         GameObject objGC = GameObject.Find("GameController");
