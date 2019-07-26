@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6682242317824365270}
   - component: {fileID: 1239669395851245379}
   - component: {fileID: -1790121695908624059}
+  - component: {fileID: 5836973228221668978}
   m_Layer: 0
   m_Name: ConqueredArea
   m_TagString: CuadCapturado
@@ -92,3 +93,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f04630d6abd104ebfba93a7fd3b0e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esContinuo: 0
+  numeroJugador: 0
+--- !u!61 &5836973228221668978
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097738697693665362}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0

@@ -29,6 +29,9 @@ public class GameController : MonoBehaviour
     public Text txtEstadoJugador1;
     public Text txtEstadoJugador2;
 
+    public Text txtHabilidadJugador1;
+    public Text txtHabilidadJugador2;
+
     string RazaJugador1;
     string RazaJugador2;
 
@@ -52,10 +55,14 @@ public class GameController : MonoBehaviour
     int contadorContinuosJugador1;
     int contadorContinuosJugador2;
 
+    bool robandoJugador1;
+    bool robandoJugador2;
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
     }
+
     void Update()
     {
         txtPuntajeJugador1.GetComponent<Text>().text="P1 Puntos: "+puntosJugador1;
@@ -76,6 +83,13 @@ public class GameController : MonoBehaviour
         }
         if(bloqueadoJugador2){
             estado2="Bloqueado";
+        }
+
+        if(robandoJugador1){
+            estado1+=" Robando";
+        }
+        if(robandoJugador2){
+            estado2+=" Robando";
         }
         txtEstadoJugador1.text = "Estado: "+estado1;
         txtEstadoJugador2.text = "Estado: "+estado2;
@@ -110,7 +124,26 @@ public class GameController : MonoBehaviour
         setRaza(raza);
     }
 
+    void SetHabilidad(string raza){
+        string habilidad="Habilidad";
+        if(raza=="Humano"){
+            habilidad="Robar";
+        }
+        if(raza=="Mago"){
+            habilidad="Bloquear";
+        }
+        if(raza=="Piedra"){
+            habilidad="Blindar";
+        }
+        if(JugadorActual==1){
+            txtHabilidadJugador1.text=habilidad;
+        }else{
+            txtHabilidadJugador2.text=habilidad;
+        }
+    }
+
     void setRaza(string raza){
+        SetHabilidad(raza);
         if(JugadorActual==1){
             RazaJugador1=raza;
         }else{
@@ -120,7 +153,7 @@ public class GameController : MonoBehaviour
             JugadorActual=2;
         }else{
             JugadorActual=1;
-        }
+        }        
     }
 
     public void SubirEnergiaJugador1(){
@@ -142,6 +175,7 @@ public class GameController : MonoBehaviour
             energiaActualJugador2=0;
         }
     }
+
     public void BloquearAJugador2(){
         if(energiaActualJugador1==energiaMaxima){
             bloqueadoJugador2=true;
@@ -149,8 +183,67 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void UsarHabilidad(){
+        if(JugadorActual==1){
+            if(energiaActualJugador1==energiaMaxima){
+                //Si puede usar la habilidad
+                energiaActualJugador1=0;
+                string habilidad = txtHabilidadJugador1.text;
+                if(habilidad=="Robar"){
+                    SetPuedeRobarJugador1();
+                }
+            }
+        }else{
+             if(energiaActualJugador2==energiaMaxima){
+                //Si puede usar la habilidad
+                energiaActualJugador2=0;
+                string habilidad = txtHabilidadJugador2.text;
+                if(habilidad=="Robar"){
+                    SetPuedeRobarJugador2();
+                }
+            }
+        }
+    }
+
+    public void SetPuedeRobarJugador1(){
+        robandoJugador1=true;
+    }
+    public void SetPuedeRobarJugador2(){
+        robandoJugador2=true;
+    }
+
+    public void FinRoboJugador1(){
+        robandoJugador1=false;
+    }
+    public void FinRoboJugador2(){
+        robandoJugador2=false;
+    }
+
     public int GetJugadorActual(){
         return JugadorActual;
+    }
+
+    public bool PuedeRobar(int jugador){
+        bool respuesta=false;
+        if(jugador==1){
+            respuesta=robandoJugador1;
+        }else{
+            respuesta=robandoJugador2;
+        }
+        return respuesta;
+    }
+
+    public void SubirPuntajeJugador1(){
+        puntosJugador1++;
+    }
+    public void SubirPuntajeJugador2(){
+        puntosJugador2++;
+    }
+    public void BajarPuntajeJugador1(){
+        puntosJugador1--;
+    }
+    public void BajarPuntajeJugador2(){
+        puntosJugador2--;
     }
 
     public void EvaluarTablero(){
@@ -294,11 +387,13 @@ public class GameController : MonoBehaviour
         Vector3 posicionArea = Vector3.Lerp(primeraLinea.transform.position , segundaLinea.transform.position, 0.5f);
         GameObject areaObject = (GameObject)Resources.Load ("ConqueredArea");
         areaObject.name="Conquered_J"+JugadorActual;
+        areaObject.GetComponent<CuadCapturadoController>().SetNumeroJugador(JugadorActual);
         if(JugadorActual==1){
            areaObject.GetComponent<SpriteRenderer>().color=Color.blue;
         }else{
            areaObject.GetComponent<SpriteRenderer>().color=Color.red;
         }
+        
         Instantiate(areaObject, posicionArea, Quaternion.identity);
         TransformarCuadrosConsecutivos(posicionArea);       
     }
@@ -317,18 +412,19 @@ public class GameController : MonoBehaviour
                 }
             }
         }
-        int sumarEnergiaActual = cuadrosConsecutivosActuales/cuadrosConsecutivosTotales;
-        for(int x=0;x<sumarEnergiaActual;x++){
-            if(JugadorActual==1){
-                SubirEnergiaJugador1();
-            }else{
-                SubirEnergiaJugador2();
+        if(cuadrosConsecutivosTotales>0){
+            int sumarEnergiaActual = cuadrosConsecutivosActuales/cuadrosConsecutivosTotales;
+            for(int x=0;x<sumarEnergiaActual;x++){
+                if(JugadorActual==1){
+                    SubirEnergiaJugador1();
+                }else{
+                    SubirEnergiaJugador2();
+                }
             }
-        }
-        
+        } 
     }
 
-    void TransformarCuadrosConsecutivos(Vector3 cuadroActual){
+    public void TransformarCuadrosConsecutivos(Vector3 cuadroActual){
         int cuadrosConsecutivos =0;
         cuadrosConsecutivos=GetCuadrosConsecutivos(JugadorActual);
         float xActual = cuadroActual.x;
@@ -378,26 +474,45 @@ public class GameController : MonoBehaviour
             }
         }
 
+        //bool buscar uno arriba y uno abajo
+        bool esConsecutivoArribaAbajo=false;
+        if(BuscarCuadroCapturado(xActual,yActual-1)){
+            if(BuscarCuadroCapturado(xActual,yActual+1)){
+                if(BuscarCuadroCapturado(xActual,yActual)){
+                    esConsecutivoArribaAbajo=true;
+                }
+            }
+        }
+
         //Debug.Log("esConsecutivoDerecha: "+esConsecutivoDerecha);
         //Debug.Log("esConsecutivoIzquierda: "+esConsecutivoIzquierda);
         //Debug.Log("esConsecutivoArriba: "+esConsecutivoArriba);
         //Debug.Log("esConsecutivoAbajo: "+esConsecutivoAbajo);
-        MarcarConsecutivos(cuadrosConsecutivos, esConsecutivoAbajo, esConsecutivoArriba, esConsecutivoDerecha, esConsecutivoIzquierda,xActual,yActual);
+        
+        MarcarConsecutivos(cuadrosConsecutivos, esConsecutivoAbajo, esConsecutivoArriba, esConsecutivoDerecha, esConsecutivoIzquierda, esConsecutivoArribaAbajo,xActual,yActual);
     }
 
-    void MarcarConsecutivos(int cuadrosConsecutivos, bool esConsecutivoAbajo, bool esConsecutivoArriba, bool esConsecutivoDerecha, bool esConsecutivoIzquierda, float xActual, float yActual){
+    void LimpiarCapturados(){
+        GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
+        foreach(GameObject cuadro in cuadrosCapturados){
+            cuadro.GetComponent<CuadCapturadoController>().LimpiarColor();
+        }
+    }
+
+    void MarcarConsecutivos(int cuadrosConsecutivos, bool esConsecutivoAbajo, bool esConsecutivoArriba, bool esConsecutivoDerecha, bool esConsecutivoIzquierda, bool esConsecutivoArribaAbajo, float xActual, float yActual){
         //Buscar a la derecha
         if(esConsecutivoDerecha){
             for(int x=0;x<cuadrosConsecutivos;x++){
             CambiarColorConsecutivo(xActual-x,yActual);
             }
-        } 
+        }
         //Buscar a la izquierda
         if(esConsecutivoIzquierda){
             for(int x=0;x<cuadrosConsecutivos;x++){
             CambiarColorConsecutivo(xActual+x,yActual);
             }
         }
+      
         //Buscar para arriba
          if(esConsecutivoArriba){
             for(int x=0;x<cuadrosConsecutivos;x++){
@@ -410,6 +525,15 @@ public class GameController : MonoBehaviour
             CambiarColorConsecutivo(xActual,yActual-x);
             }
         }
+        //Buscar arriba abajo
+        if(esConsecutivoArribaAbajo){
+            if(JugadorActual==1&&RazaJugador1=="Humano"||JugadorActual==2&&RazaJugador2=="Humano"){
+                CambiarColorConsecutivo(xActual,yActual+1);
+                CambiarColorConsecutivo(xActual,yActual);
+                CambiarColorConsecutivo(xActual,yActual-1);
+            }
+        }
+        
     }
 
     bool BuscarCuadroCapturado(float x,float y){
@@ -422,6 +546,8 @@ public class GameController : MonoBehaviour
                     if(!esContinuo){
                     encontrado= true;
                     }
+                }else{
+                    cuadro.GetComponent<CuadCapturadoController>().SetEsContinuo(false);
                 }
             }
         }
@@ -432,12 +558,12 @@ public class GameController : MonoBehaviour
         GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
         foreach(GameObject cuadro in cuadrosCapturados){
             if(cuadro.transform.position.x==x &&cuadro.transform.position.y==y){
-                if(cuadro.name.Contains("J"+JugadorActual)){
-                    bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
-                    if(!esContinuo){
+                //if(cuadro.name.Contains("J"+JugadorActual)){
+                    //bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
+                    //if(!esContinuo){
                         cuadro.GetComponent<CuadCapturadoController>().SetEsContinuo(true);       
-                    } 
-                }
+                    //} 
+                //}
             }
         }
     }
