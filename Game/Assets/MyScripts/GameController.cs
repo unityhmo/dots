@@ -58,6 +58,12 @@ public class GameController : MonoBehaviour
     bool robandoJugador1;
     bool robandoJugador2;
 
+    bool bloqueandoJugador1;
+    bool bloqueandoJugador2;
+
+    bool blindandoJugador1;
+    bool blindandoJugador2;
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
@@ -90,6 +96,18 @@ public class GameController : MonoBehaviour
         }
         if(robandoJugador2){
             estado2+=" Robando";
+        }
+        if(bloqueandoJugador1){
+            estado1+=" Bloqueando";
+        }
+        if(bloqueandoJugador2){
+            estado2+= "Bloqueando";
+        }
+        if(blindandoJugador1){
+            estado1+=" Blindando";
+        }
+        if(blindandoJugador2){
+            estado2+= "Blindando";
         }
         txtEstadoJugador1.text = "Estado: "+estado1;
         txtEstadoJugador2.text = "Estado: "+estado2;
@@ -192,6 +210,12 @@ public class GameController : MonoBehaviour
                 if(habilidad=="Robar"){
                     SetPuedeRobarJugador1();
                 }
+                if(habilidad=="Bloquear"){
+                    SetPuedeBloquearJugador1();
+                }
+                if(habilidad=="Blindar"){
+                    SetPuedeBlindarJugador1();
+                }
             }
         }else{
              if(energiaActualJugador2==energiaMaxima){
@@ -200,6 +224,12 @@ public class GameController : MonoBehaviour
                 string habilidad = txtHabilidadJugador2.text;
                 if(habilidad=="Robar"){
                     SetPuedeRobarJugador2();
+                }
+                if(habilidad=="Bloquear"){
+                    SetPuedeBloquearJugador2();
+                }
+                if(habilidad=="Blindar"){
+                    SetPuedeBlindarJugador2();
                 }
             }
         }
@@ -219,6 +249,32 @@ public class GameController : MonoBehaviour
         robandoJugador2=false;
     }
 
+    public void SetPuedeBloquearJugador1(){
+        bloqueandoJugador1=true;
+    }
+    public void SetPuedeBloquearJugador2(){
+        bloqueandoJugador2=true;
+    }
+    public void FinBloquearJugador1(){
+        bloqueandoJugador1=false;
+    }
+    public void FinBloquearJugador2(){
+        bloqueandoJugador2=false;
+    }
+
+    public void SetPuedeBlindarJugador1(){
+        blindandoJugador1=true;
+    }
+    public void SetPuedeBlindarJugador2(){
+        blindandoJugador2=true;
+    }
+    public void FinBlindarJugador1(){
+        blindandoJugador1=false;
+    }
+    public void FinBlindarJugador2(){
+        blindandoJugador2=false;
+    }
+
     public int GetJugadorActual(){
         return JugadorActual;
     }
@@ -229,6 +285,26 @@ public class GameController : MonoBehaviour
             respuesta=robandoJugador1;
         }else{
             respuesta=robandoJugador2;
+        }
+        return respuesta;
+    }
+
+    public bool PuedeBloquear(int jugador){
+        bool respuesta=false;
+        if(jugador==1){
+            respuesta=bloqueandoJugador1;
+        }else{
+            respuesta=bloqueandoJugador2;
+        }
+        return respuesta;
+    }
+
+    public bool PuedeBlindar(int jugador){
+        bool respuesta=false;
+        if(jugador==1){
+            respuesta=blindandoJugador1;
+        }else{
+            respuesta=blindandoJugador2;
         }
         return respuesta;
     }
@@ -276,18 +352,22 @@ public class GameController : MonoBehaviour
                 if(!acabaDeHacerUnPunto){
                     if(JugadorActual==1){
                         JugadorActual=2;
+                        FinBlindarJugador1();
                 }else{
                     JugadorActual=1;
+                    FinBlindarJugador2();
                 }
                 }else{
                      //Cambiar turno si esta bloqueado
                     if(bloqueadoJugador1){
                         JugadorActual=2;
                         bloqueadoJugador1=false;
+                        FinBlindarJugador1();
                     }
                     if(bloqueadoJugador2){
                         JugadorActual=1;
                         bloqueadoJugador2=false;
+                        FinBlindarJugador2();
                     } 
                 }
             acabaDeHacerUnPunto=false;
@@ -388,14 +468,31 @@ public class GameController : MonoBehaviour
         GameObject areaObject = (GameObject)Resources.Load ("ConqueredArea");
         areaObject.name="Conquered_J"+JugadorActual;
         areaObject.GetComponent<CuadCapturadoController>().SetNumeroJugador(JugadorActual);
+        int numBlindaje=SetBlindaje();
+        areaObject.GetComponent<CuadCapturadoController>().SetContadorBlindaje(numBlindaje);
         if(JugadorActual==1){
            areaObject.GetComponent<SpriteRenderer>().color=Color.blue;
         }else{
            areaObject.GetComponent<SpriteRenderer>().color=Color.red;
         }
+        if(numBlindaje>0){
+            if(JugadorActual==1){
+                areaObject.GetComponent<SpriteRenderer>().color=new Color(21, 46, 94);
+            }else{
+                areaObject.GetComponent<SpriteRenderer>().color=new Color(94, 21, 21);
+            }
+        } 
         
         Instantiate(areaObject, posicionArea, Quaternion.identity);
         TransformarCuadrosConsecutivos(posicionArea);       
+    }
+
+    int SetBlindaje(){
+        int numBlindaje=0;
+        if(PuedeBlindar(JugadorActual)){
+            numBlindaje=1;
+        }
+        return numBlindaje;
     }
 
     void ContarSetsConsecutivos(){

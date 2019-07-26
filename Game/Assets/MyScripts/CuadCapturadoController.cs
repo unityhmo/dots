@@ -7,6 +7,7 @@ public class CuadCapturadoController : MonoBehaviour
     public bool esContinuo;
     public int numeroJugador;
     public bool esInrobable;
+    public int ContadorBlindaje;
 
     void OnMouseDown(){
        ChecarEventos();
@@ -18,26 +19,32 @@ public class CuadCapturadoController : MonoBehaviour
         if(objGC!=null){
             bool puedeRobar=objGC.GetComponent<GameController>().PuedeRobar(jugador); 
             if(puedeRobar&&!esInrobable&&jugador!=numeroJugador){
-                this.gameObject.name="Conquered_J"+jugador+"(Clone)";
-                if(jugador==1){
-                    this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;
-                }else{
-                    this.gameObject.GetComponent<SpriteRenderer>().color=Color.red;
-                }
+                //Checar el blindaje
+                if(ContadorBlindaje<1){
+                    this.gameObject.name="Conquered_J"+jugador+"(Clone)";
+                    if(jugador==1){
+                        this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;
+                    }else{
+                        this.gameObject.GetComponent<SpriteRenderer>().color=Color.red;
+                    }
 
-                if(jugador==1){
-                    objGC.GetComponent<GameController>().SubirPuntajeJugador1(); 
-                    objGC.GetComponent<GameController>().BajarPuntajeJugador2(); 
-                    objGC.GetComponent<GameController>().FinRoboJugador1();
+                    if(jugador==1){
+                        objGC.GetComponent<GameController>().SubirPuntajeJugador1(); 
+                        objGC.GetComponent<GameController>().BajarPuntajeJugador2(); 
+                        objGC.GetComponent<GameController>().FinRoboJugador1();
+                    }else{
+                        objGC.GetComponent<GameController>().BajarPuntajeJugador1(); 
+                        objGC.GetComponent<GameController>().SubirPuntajeJugador2(); 
+                        objGC.GetComponent<GameController>().FinRoboJugador2();
+                    }
+                    objGC.GetComponent<GameController>().TransformarCuadrosConsecutivos(this.gameObject.transform.position);
+                    esInrobable=true;
+                    //esContinuo=false;
+                    numeroJugador=jugador;
                 }else{
-                    objGC.GetComponent<GameController>().BajarPuntajeJugador1(); 
-                    objGC.GetComponent<GameController>().SubirPuntajeJugador2(); 
-                    objGC.GetComponent<GameController>().FinRoboJugador2();
+                    ContadorBlindaje--;
                 }
-                objGC.GetComponent<GameController>().TransformarCuadrosConsecutivos(this.gameObject.transform.position);
-                esInrobable=true;
-                //esContinuo=false;
-                numeroJugador=jugador;
+                
             }
         }
     }
@@ -86,6 +93,14 @@ public class CuadCapturadoController : MonoBehaviour
 
     public bool GetEsInrobable(){
         return esInrobable;
+    }
+
+    public int GetContadorBlindaje(){
+        return ContadorBlindaje;
+    }
+
+    public void SetContadorBlindaje(int num){
+        ContadorBlindaje=num;
     }
 
 

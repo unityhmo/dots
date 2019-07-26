@@ -4,8 +4,47 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour
 {
+    bool estaBloqueada;
+    int jugadorBloqueo;
+
     void OnMouseDown(){
-       ActivarLinea();
+        if(ChecarEventos()){
+            ActivarLinea();
+        }
+    }
+
+    bool  ChecarEventos(){
+        bool puedeActivarLinea=false;
+        int jugador=GetJugador();
+        
+        if(estaBloqueada){
+            puedeActivarLinea=false;
+            if(jugadorBloqueo==jugador){
+            puedeActivarLinea=true;
+            }    
+        }else{            
+            GameObject objGC = GameObject.Find("GameController");
+            if(objGC!=null){
+                bool PuedeBloquear=objGC.GetComponent<GameController>().PuedeBloquear(jugador);
+                if(PuedeBloquear){
+                    puedeActivarLinea=false;
+                    estaBloqueada=true;
+                    jugadorBloqueo=jugador;
+                    this.gameObject.GetComponent<SpriteRenderer>().color=Color.yellow;
+                    if(jugador==1){
+                        objGC.GetComponent<GameController>().FinBloquearJugador1();
+                        
+                    }else{
+                        objGC.GetComponent<GameController>().FinBloquearJugador2();
+                    }
+                }else{
+                    puedeActivarLinea=true;
+                } 
+            }
+        }
+
+      
+        return puedeActivarLinea;
     }
 
     void ActivarLinea(){
@@ -31,5 +70,9 @@ public class LineController : MonoBehaviour
             return objGC.GetComponent<GameController>().GetJugadorActual();
         }
         return -1;
+    }
+
+    public bool GetEstaBloqueada(){
+        return estaBloqueada;
     }
 }
