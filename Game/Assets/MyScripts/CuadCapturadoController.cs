@@ -13,6 +13,39 @@ public class CuadCapturadoController : MonoBehaviour
        ChecarEventos();
     }
 
+    void OnTriggerEnter (Collider col)
+    {
+        if(col.gameObject.tag == "Item")
+        {
+            string nameCol = col.gameObject.name;
+            GameObject objGC = GameObject.Find("GameController");
+            int jugador=GetJugadorActual();
+            if(nameCol.Contains("AgregarEnergia")){
+                
+                if(objGC!=null){
+                    
+                    if(jugador==1){
+                        objGC.GetComponent<GameController>().SubirEnergiaJugador1();
+                    }else{
+                        objGC.GetComponent<GameController>().SubirEnergiaJugador2();
+                    }
+                }
+                Destroy(col.gameObject);
+            }
+
+             if(nameCol.Contains("QuitarEnergia")){
+                if(objGC!=null){
+                    if(jugador==1){
+                        objGC.GetComponent<GameController>().BajarEnergiaJugador1();
+                    }else{
+                        objGC.GetComponent<GameController>().BajarEnergiaJugador2();
+                    }
+                }
+                Destroy(col.gameObject);
+            }
+        }
+    }
+
     void ChecarEventos(){
         int jugador=GetJugadorActual();
         GameObject objGC = GameObject.Find("GameController");

@@ -180,6 +180,18 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void BajarEnergiaJugador1(){
+        if(energiaActualJugador1>0){
+            energiaActualJugador1--;
+        }
+    }
+
+      public void BajarEnergiaJugador2(){
+        if(energiaActualJugador2>0){
+            energiaActualJugador2--;
+        }
+    }
+
 
     public void SubirEnergiaJugador2(){
         if(energiaActualJugador2<energiaMaxima){

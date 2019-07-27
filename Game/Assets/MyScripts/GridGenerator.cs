@@ -6,6 +6,11 @@ public class GridGenerator : MonoBehaviour
 {
     public GameObject FichaGameObject;
     public GameObject LineaGameObject;
+    public GameObject ItemAgregarEnergia;
+    public GameObject ItemQuitarEnergia;
+    public GameObject Cofre;
+    public GameObject ItemMultiplicador;
+
     public int TotalColumnas;
     public int TotalFilas;
     public float PosicionXInicial;
@@ -41,6 +46,24 @@ public class GridGenerator : MonoBehaviour
                 if(x<TotalColumnas-1){
                     LineaGameObject.name="Line_["+x+","+y+"]-["+(x+1)+","+y+"]";
                     Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y, 0), Quaternion.identity);
+
+                    int random = (int)Random.Range(1f, 10.0f);
+                    GameObject itemRandom = ItemAgregarEnergia;
+                    if(random>=5){
+                        itemRandom=ItemQuitarEnergia;
+                    }
+                    if(x%random==0&&y<TotalFilas-1){
+                         Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y-0.5f, 0),LineaGameObject.transform.position , 0f);
+                         if(x==0){
+                             int otroRandom = (int)Random.Range(1f, 10.0f);
+                             if(random==otroRandom)
+                             Instantiate(itemRandom, posicionItem, Quaternion.identity);
+                         }else{
+                             Instantiate(itemRandom, posicionItem, Quaternion.identity);
+                         }
+                         
+                    }
+                        
                 }
                 if(y<TotalFilas-1){
                     LineaGameObject.name="Line_["+x+","+y+"]-["+x+","+(y+1)+"]";
