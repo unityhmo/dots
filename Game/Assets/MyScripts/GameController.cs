@@ -32,11 +32,16 @@ public class GameController : MonoBehaviour
     public Text txtHabilidadJugador1;
     public Text txtHabilidadJugador2;
 
+    public Text txtPuntajeExtra1;
+    public Text txtPuntajeExtra2;
+
     string RazaJugador1;
     string RazaJugador2;
 
     int puntosJugador1;
     int puntosJugador2;
+    int puntosExtraJugador1;
+    int puntosExtraJugador2;
     int JugadorActual=1;
 
     bool acabaDeHacerUnPunto=false;
@@ -73,6 +78,9 @@ public class GameController : MonoBehaviour
     {
         txtPuntajeJugador1.GetComponent<Text>().text="P1 Puntos: "+puntosJugador1;
         txtPuntajeJugador2.GetComponent<Text>().text="P2 Puntos: "+puntosJugador2;
+        txtPuntajeExtra1.text="+"+puntosExtraJugador1;
+        txtPuntajeExtra2.text="+"+puntosExtraJugador2;
+
         txtTurnoJugador.GetComponent<Text>().text="Es el Turno del Jugador : "+JugadorActual;
         txtContadorLineas.GetComponent<Text>().text="El numero maximo de lineas es: "+TotalMaximoLineas+ " Lineas actuales: "+LineasActuales;
         txtMensajeFinal.GetComponent<Text>().text=TextoFinal;
@@ -334,6 +342,19 @@ public class GameController : MonoBehaviour
         puntosJugador2--;
     }
 
+    public void SubirPuntajeExtraJugador1(int val){
+        puntosExtraJugador1+=val;
+    }
+    public void SubirPuntajeExtraJugador2(int val){
+        puntosExtraJugador2+=val;
+    }
+    public void BajarPuntajeExtraJugador1(){
+        puntosExtraJugador1--;
+    }
+    public void BajarPuntajeExtraJugador2(){
+        puntosExtraJugador2--;
+    }
+
     public void EvaluarTablero(){
         //Traer todas las lineas
         //Traer primera coordenada de la linea
@@ -388,10 +409,10 @@ public class GameController : MonoBehaviour
 
        if(LineasActuales>=TotalMaximoLineas){
             //Todas las lineas posibles han sido llenadas determinar quien es el ganador/a
-            if(puntosJugador1>puntosJugador2){
+            if(puntosJugador1+puntosExtraJugador1>puntosJugador2+puntosExtraJugador2){
                 TextoFinal="Gana el Jugador 1";
             }
-            if(puntosJugador2>puntosJugador1){
+            if(puntosJugador2+puntosExtraJugador2>puntosJugador1+puntosExtraJugador1){
                 TextoFinal="Gana el Jugador 2";
             }
             txtMensajeFinal.SetActive(true);            

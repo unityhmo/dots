@@ -52,6 +52,9 @@ public class GridGenerator : MonoBehaviour
                     if(random>=5){
                         itemRandom=ItemQuitarEnergia;
                     }
+                    if(random>=8){
+                        itemRandom=ItemMultiplicador;
+                    }
                     if(x%random==0&&y<TotalFilas-1){
                          Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y-0.5f, 0),LineaGameObject.transform.position , 0f);
                          if(x==0){
