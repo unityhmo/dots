@@ -554,16 +554,24 @@ public class GameController : MonoBehaviour
         } 
     }
 
-    public void TransformarCuadrosConsecutivos(Vector3 cuadroActual){
+    public void TransformarCuadrosConsecutivos(Vector3 cuadroActual, bool cambiarJugador=false){
         int cuadrosConsecutivos =0;
-        cuadrosConsecutivos=GetCuadrosConsecutivos(JugadorActual);
+        int jugador=JugadorActual;
+        if(cambiarJugador){
+            if(jugador==1){
+                jugador=2;
+            }else{
+                jugador=1;
+            }
+        }
+        cuadrosConsecutivos=GetCuadrosConsecutivos(jugador);
         float xActual = cuadroActual.x;
         float yActual = cuadroActual.y;
         int contador=1;
         //Buscar a la derecha
         bool esConsecutivoDerecha=false;
         for(int x=1;x<cuadrosConsecutivos;x++){
-            if(BuscarCuadroCapturado(xActual-x,yActual)){
+            if(BuscarCuadroCapturado(xActual-x,yActual,cambiarJugador)){
                 esConsecutivoDerecha=true;
             }else{
                 esConsecutivoDerecha=false;
@@ -574,7 +582,7 @@ public class GameController : MonoBehaviour
         //Buscar a la izquierda
         bool esConsecutivoIzquierda=false;
         for(int x=1;x<cuadrosConsecutivos;x++){
-            if(BuscarCuadroCapturado(xActual+x,yActual)){
+            if(BuscarCuadroCapturado(xActual+x,yActual,cambiarJugador)){
                 esConsecutivoIzquierda=true;
             }else{
                 esConsecutivoIzquierda=false;
@@ -585,7 +593,7 @@ public class GameController : MonoBehaviour
         //Buscar para arriba
         bool esConsecutivoArriba=false;
         for(int x=1;x<cuadrosConsecutivos;x++){
-            if(BuscarCuadroCapturado(xActual,yActual+x)){
+            if(BuscarCuadroCapturado(xActual,yActual+x,cambiarJugador)){
                 esConsecutivoArriba=true;
             }else{
                 esConsecutivoArriba=false;
@@ -596,7 +604,7 @@ public class GameController : MonoBehaviour
         //Buscar para abajo
         bool esConsecutivoAbajo=false;
         for(int x=1;x<cuadrosConsecutivos;x++){
-            if(BuscarCuadroCapturado(xActual,yActual-x)){
+            if(BuscarCuadroCapturado(xActual,yActual-x,cambiarJugador)){
                 esConsecutivoAbajo=true;
             }else{
                 esConsecutivoAbajo=false;
@@ -606,9 +614,9 @@ public class GameController : MonoBehaviour
 
         //bool buscar uno arriba y uno abajo
         bool esConsecutivoArribaAbajo=false;
-        if(BuscarCuadroCapturado(xActual,yActual-1)){
-            if(BuscarCuadroCapturado(xActual,yActual+1)){
-                if(BuscarCuadroCapturado(xActual,yActual)){
+        if(BuscarCuadroCapturado(xActual,yActual-1,cambiarJugador)){
+            if(BuscarCuadroCapturado(xActual,yActual+1,cambiarJugador)){
+                if(BuscarCuadroCapturado(xActual,yActual,cambiarJugador)){
                     esConsecutivoArribaAbajo=true;
                 }
             }
@@ -622,11 +630,12 @@ public class GameController : MonoBehaviour
         MarcarConsecutivos(cuadrosConsecutivos, esConsecutivoAbajo, esConsecutivoArriba, esConsecutivoDerecha, esConsecutivoIzquierda, esConsecutivoArribaAbajo,xActual,yActual);
     }
 
-    void LimpiarCapturados(){
+    public void LimpiarCapturados(){
         GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
         foreach(GameObject cuadro in cuadrosCapturados){
-            cuadro.GetComponent<CuadCapturadoController>().LimpiarColor();
+            TransformarCuadrosConsecutivos(cuadro.transform.position,true);
         }
+        
     }
 
     void MarcarConsecutivos(int cuadrosConsecutivos, bool esConsecutivoAbajo, bool esConsecutivoArriba, bool esConsecutivoDerecha, bool esConsecutivoIzquierda, bool esConsecutivoArribaAbajo, float xActual, float yActual){
@@ -666,12 +675,20 @@ public class GameController : MonoBehaviour
         
     }
 
-    bool BuscarCuadroCapturado(float x,float y){
+    bool BuscarCuadroCapturado(float x,float y, bool cambiarJugador=false){
         GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
         bool encontrado=false;
         foreach(GameObject cuadro in cuadrosCapturados){
             if(cuadro.transform.position.x==x &&cuadro.transform.position.y==y){
-                if(cuadro.name.Contains("J"+JugadorActual)){
+                int jugador=JugadorActual;
+                if(cambiarJugador){
+                    if(jugador==1){
+                        jugador=2;
+                    }else{
+                        jugador=1;
+                    }
+                }
+                if(cuadro.name.Contains("J"+jugador)){
                     bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
                     if(!esContinuo){
                     encontrado= true;

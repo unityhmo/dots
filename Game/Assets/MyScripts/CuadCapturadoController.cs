@@ -83,10 +83,12 @@ public class CuadCapturadoController : MonoBehaviour
                         objGC.GetComponent<GameController>().SubirPuntajeJugador2(); 
                         objGC.GetComponent<GameController>().FinRoboJugador2();
                     }
-                    objGC.GetComponent<GameController>().TransformarCuadrosConsecutivos(this.gameObject.transform.position);
+                   
                     esInrobable=true;
                     //esContinuo=false;
                     numeroJugador=jugador;
+                    objGC.GetComponent<GameController>().TransformarCuadrosConsecutivos(this.gameObject.transform.position);
+                    objGC.GetComponent<GameController>().LimpiarCapturados();
                 }else{
                     ContadorBlindaje--;
                 }
@@ -113,14 +115,12 @@ public class CuadCapturadoController : MonoBehaviour
         }else{
             this.GetComponent<SpriteRenderer>().color=Color.green;
         }
-        }
-    }
-
-    public void LimpiarColor(){
-         if(numeroJugador==1){
-            this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;
-         }else{
-            this.gameObject.GetComponent<SpriteRenderer>().color=Color.red;
+        }else{
+            if(numeroJugador==1){
+                this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;
+            }else{
+                this.gameObject.GetComponent<SpriteRenderer>().color=Color.red;
+            }
         }
     }
 
