@@ -16,8 +16,11 @@ public class GridGenerator : MonoBehaviour
     public float PosicionXInicial;
     public float PosicionYInicial;
 
+  private Quaternion _initialRotation;
+
     void Start()
     {
+    _initialRotation = Quaternion.Euler(new Vector3(-90f, 0f, 0f));
         CrearGrid();
         CrearLineasVacias();
     }
@@ -35,7 +38,7 @@ public class GridGenerator : MonoBehaviour
                 //Instanciar una ficha, ponerle el nombre de su coordenada.
                 FichaGameObject.name="Ficha_"+x+","+y;
                 // "Y" es negativa para ordenar mejor las filas y columnas.
-                Instantiate(FichaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial-y, 0), Quaternion.identity);
+                Instantiate(FichaGameObject, new Vector3(PosicionXInicial+x, 0, PosicionYInicial - y), _initialRotation);
             }
         }
     }
@@ -45,7 +48,7 @@ public class GridGenerator : MonoBehaviour
             for(int y=0;y<TotalFilas;y++){
                 if(x<TotalColumnas-1){
                     LineaGameObject.name="Line_["+x+","+y+"]-["+(x+1)+","+y+"]";
-                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y, 0), Quaternion.identity);
+                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x+0.5f, 0, PosicionYInicial - y), _initialRotation);
 
                     int random = (int)Random.Range(1f, 10.0f);
                     GameObject itemRandom = ItemAgregarEnergia;
@@ -56,13 +59,13 @@ public class GridGenerator : MonoBehaviour
                         itemRandom=ItemMultiplicador;
                     }
                     if(x%random==0&&y<TotalFilas-1){
-                         Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y-0.5f, 0),LineaGameObject.transform.position , 0f);
+                         Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, 0, PosicionYInicial - y - 0.5f),LineaGameObject.transform.position , 0f);
                          if(x==0){
                              int otroRandom = (int)Random.Range(1f, 10.0f);
                              if(random==otroRandom)
-                             Instantiate(itemRandom, posicionItem, Quaternion.identity);
+                             Instantiate(itemRandom, posicionItem, _initialRotation);
                          }else{
-                             Instantiate(itemRandom, posicionItem, Quaternion.identity);
+                             Instantiate(itemRandom, posicionItem, _initialRotation);
                          }
                          
                     }
@@ -70,7 +73,7 @@ public class GridGenerator : MonoBehaviour
                 }
                 if(y<TotalFilas-1){
                     LineaGameObject.name="Line_["+x+","+y+"]-["+x+","+(y+1)+"]";
-                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial-y-0.5f, 0), Quaternion.Euler(0,0,90));
+                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x, 0, PosicionYInicial - y - 0.5f), Quaternion.Euler(-90,0,90));
                 }
             }
         }

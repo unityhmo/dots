@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5031618170681134264}
   - component: {fileID: -3072955969050821755}
   - component: {fileID: 1065166807504800973}
-  - component: {fileID: -3399308066907382115}
+  - component: {fileID: 1687519924511065929}
   m_Layer: 0
   m_Name: Ficha
   m_TagString: Ficha
@@ -111,19 +111,16 @@ MonoBehaviour:
   OcupadoDerecha: 0
   OcupadoIzquierda: 0
   primerFicha: 0
---- !u!58 &-3399308066907382115
-CircleCollider2D:
+--- !u!135 &1687519924511065929
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5031618170681134215}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.075
+  m_Center: {x: 0, y: 0, z: 0}
