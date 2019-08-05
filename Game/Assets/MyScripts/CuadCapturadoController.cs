@@ -88,7 +88,7 @@ public class CuadCapturadoController : MonoBehaviour
                     //esContinuo=false;
                     numeroJugador=jugador;
                     objGC.GetComponent<GameController>().TransformarCuadrosConsecutivos(this.gameObject.transform.position);
-                    objGC.GetComponent<GameController>().LimpiarCapturados();
+                    //objGC.GetComponent<GameController>().LimpiarCapturados();
                 }else{
                     ContadorBlindaje--;
                 }

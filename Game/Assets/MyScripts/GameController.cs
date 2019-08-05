@@ -392,16 +392,19 @@ public class GameController : MonoBehaviour
                 }
                 }else{
                      //Cambiar turno si esta bloqueado
-                    if(bloqueadoJugador1){
-                        JugadorActual=2;
+                     int siguienteJugador=JugadorActual;
+                    if(bloqueadoJugador1&&JugadorActual==1){
+                        siguienteJugador=2;
                         bloqueadoJugador1=false;
                         FinBlindarJugador1();
                     }
-                    if(bloqueadoJugador2){
-                        JugadorActual=1;
+                    if(bloqueadoJugador2&&JugadorActual==2){
+                        siguienteJugador=1;
                         bloqueadoJugador2=false;
                         FinBlindarJugador2();
-                    } 
+                    }
+                    JugadorActual=siguienteJugador;
+                   
                 }
             acabaDeHacerUnPunto=false;
             
@@ -675,7 +678,7 @@ public class GameController : MonoBehaviour
         
     }
 
-    bool BuscarCuadroCapturado(float x,float y, bool cambiarJugador=false){
+    public bool BuscarCuadroCapturado(float x,float y, bool cambiarJugador=false){
         GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
         bool encontrado=false;
         foreach(GameObject cuadro in cuadrosCapturados){
@@ -694,7 +697,7 @@ public class GameController : MonoBehaviour
                     encontrado= true;
                     }
                 }else{
-                    cuadro.GetComponent<CuadCapturadoController>().SetEsContinuo(false);
+                    //cuadro.GetComponent<CuadCapturadoController>().SetEsContinuo(false);
                 }
             }
         }
