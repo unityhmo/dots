@@ -69,6 +69,8 @@ public class GameController : MonoBehaviour
     bool blindandoJugador1;
     bool blindandoJugador2;
 
+    bool esMismoTurno;
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
@@ -184,7 +186,9 @@ public class GameController : MonoBehaviour
 
     public void SubirEnergiaJugador1(){
         if(energiaActualJugador1<energiaMaxima){
-            energiaActualJugador1++;
+            if(!esMismoTurno){
+                energiaActualJugador1++;
+            }
         }
     }
 
@@ -203,7 +207,9 @@ public class GameController : MonoBehaviour
 
     public void SubirEnergiaJugador2(){
         if(energiaActualJugador2<energiaMaxima){
-            energiaActualJugador2++;
+            if(!esMismoTurno){
+                energiaActualJugador2++;
+            }
         }
     }
 
@@ -360,7 +366,7 @@ public class GameController : MonoBehaviour
         //Traer primera coordenada de la linea
         //Revisar si existen las lineas con las coordenadas que corresponden a cerrar un cuadro, en el sentido del reloj y contra el sentido.
         //Si existen 4 lineas que correspondan con el set de coordenadas, marcar un cuadro.
-
+        esMismoTurno=false;
         GameObject[] lineArray;
         lineArray = GameObject.FindGameObjectsWithTag("Line");
         LineasActuales=lineArray.Length;
@@ -403,7 +409,11 @@ public class GameController : MonoBehaviour
                         bloqueadoJugador2=false;
                         FinBlindarJugador2();
                     }
+                    if(siguienteJugador==JugadorActual){
+                         esMismoTurno=true;
+                    }
                     JugadorActual=siguienteJugador;
+                   
                    
                 }
             acabaDeHacerUnPunto=false;
