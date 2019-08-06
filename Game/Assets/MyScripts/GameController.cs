@@ -529,7 +529,7 @@ public class GameController : MonoBehaviour
             }
         } 
         
-        Instantiate(areaObject, posicionArea, Quaternion.identity);
+        Instantiate(areaObject, posicionArea, Quaternion.Euler(-90,0,0));
         TransformarCuadrosConsecutivos(posicionArea);       
     }
 

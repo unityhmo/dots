@@ -35,7 +35,7 @@ public class GridGenerator : MonoBehaviour
                 //Instanciar una ficha, ponerle el nombre de su coordenada.
                 FichaGameObject.name="Ficha_"+x+","+y;
                 // "Y" es negativa para ordenar mejor las filas y columnas.
-                Instantiate(FichaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial-y, 0), Quaternion.identity);
+                Instantiate(FichaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial, -y),Quaternion.Euler(-90,0,0));
             }
         }
     }
@@ -45,7 +45,7 @@ public class GridGenerator : MonoBehaviour
             for(int y=0;y<TotalFilas;y++){
                 if(x<TotalColumnas-1){
                     LineaGameObject.name="Line_["+x+","+y+"]-["+(x+1)+","+y+"]";
-                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y, 0), Quaternion.identity);
+                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial, -y), Quaternion.Euler(-90,0,0));
 
                     int random = (int)Random.Range(1f, 10.0f);
                     GameObject itemRandom = ItemAgregarEnergia;
@@ -56,7 +56,7 @@ public class GridGenerator : MonoBehaviour
                         itemRandom=ItemMultiplicador;
                     }
                     if(x%random==0&&y<TotalFilas-1){
-                         Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial-y-0.5f, 0),LineaGameObject.transform.position , 0f);
+                         Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial, -y-0.5f),LineaGameObject.transform.position , 0f);
                          if(x==0){
                              int otroRandom = (int)Random.Range(1f, 10.0f);
                              if(random==otroRandom)
@@ -70,7 +70,7 @@ public class GridGenerator : MonoBehaviour
                 }
                 if(y<TotalFilas-1){
                     LineaGameObject.name="Line_["+x+","+y+"]-["+x+","+(y+1)+"]";
-                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial-y-0.5f, 0), Quaternion.Euler(0,0,90));
+                    Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x, PosicionYInicial, -y-0.5f), Quaternion.Euler(-90,0,90));
                 }
             }
         }
