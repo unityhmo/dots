@@ -579,7 +579,7 @@ public class GameController : MonoBehaviour
         }
         cuadrosConsecutivos=GetCuadrosConsecutivos(jugador);
         float xActual = cuadroActual.x;
-        float yActual = cuadroActual.y;
+        float yActual = cuadroActual.z;
         int contador=1;
         //Buscar a la derecha
         bool esConsecutivoDerecha=false;
@@ -688,11 +688,11 @@ public class GameController : MonoBehaviour
         
     }
 
-    public bool BuscarCuadroCapturado(float x,float y, bool cambiarJugador=false){
+    public bool BuscarCuadroCapturado(float x,float z, bool cambiarJugador=false){
         GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
         bool encontrado=false;
         foreach(GameObject cuadro in cuadrosCapturados){
-            if(cuadro.transform.position.x==x &&cuadro.transform.position.y==y){
+            if(cuadro.transform.position.x==x &&cuadro.transform.position.z==z){
                 int jugador=JugadorActual;
                 if(cambiarJugador){
                     if(jugador==1){
@@ -714,17 +714,18 @@ public class GameController : MonoBehaviour
         return encontrado;
     }
 
-    void CambiarColorConsecutivo(float x,float y){
+    void CambiarColorConsecutivo(float x,float z){
         GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
         foreach(GameObject cuadro in cuadrosCapturados){
-            if(cuadro.transform.position.x==x &&cuadro.transform.position.y==y){
+            if(cuadro.transform.position.x==x &&cuadro.transform.position.z==z){
                 //if(cuadro.name.Contains("J"+JugadorActual)){
                     //bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
                     //if(!esContinuo){
                         cuadro.GetComponent<CuadCapturadoController>().SetEsContinuo(true);       
                     //} 
                 //}
-            }
+            }           
+
         }
     }
 

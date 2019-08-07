@@ -711,7 +711,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   groundLevelOffset: 0
-  enableRotation: 0
+  enableRotation: 1
   enableTilt: 0
   tiltAngleMin: 45
   tiltAngleMax: 90
