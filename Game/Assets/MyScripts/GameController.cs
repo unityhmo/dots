@@ -690,26 +690,34 @@ public class GameController : MonoBehaviour
 
     public bool BuscarCuadroCapturado(float x,float z, bool cambiarJugador=false){
         GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
+        int cuadroActual=0;
+        int jugador=JugadorActual;
+            if(cambiarJugador){
+                if(jugador==1){
+                    jugador=2;
+                }else{
+                    jugador=1;
+                }
+            }
+        int cuadrosConsecutivos=GetCuadrosConsecutivos(jugador);
         bool encontrado=false;
         foreach(GameObject cuadro in cuadrosCapturados){
+            if(cuadroActual<=cuadrosConsecutivos){
             if(cuadro.transform.position.x==x &&cuadro.transform.position.z==z){
-                int jugador=JugadorActual;
-                if(cambiarJugador){
-                    if(jugador==1){
-                        jugador=2;
-                    }else{
-                        jugador=1;
-                    }
-                }
                 if(cuadro.name.Contains("J"+jugador)){
                     bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
                     if(!esContinuo){
                     encontrado= true;
                     }
+                    if(cuadro.GetComponent<CuadCapturadoController>().esInrobable){
+                        encontrado=true;
+                    }
                 }else{
                     //cuadro.GetComponent<CuadCapturadoController>().SetEsContinuo(false);
                 }
             }
+            }
+            cuadroActual++;
         }
         return encontrado;
     }

@@ -6,6 +6,7 @@ public class LineController : MonoBehaviour
 {
     bool estaBloqueada;
     int jugadorBloqueo;
+    int jugadorCapturo;
 
     void OnMouseDown(){
         if(ChecarEventos()){
@@ -26,7 +27,7 @@ public class LineController : MonoBehaviour
             GameObject objGC = GameObject.Find("GameController");
             if(objGC!=null){
                 bool PuedeBloquear=objGC.GetComponent<GameController>().PuedeBloquear(jugador);
-                if(PuedeBloquear){
+                if(PuedeBloquear&&jugadorCapturo==0){
                     puedeActivarLinea=false;
                     estaBloqueada=true;
                     jugadorBloqueo=jugador;
@@ -55,9 +56,11 @@ public class LineController : MonoBehaviour
                 if(GetJugador()==1){
                 //raya azul
                     this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;
+                    jugadorCapturo=1;
                 }else{
                 //raya roja
                     this.gameObject.GetComponent<SpriteRenderer>().color=Color.red;
+                    jugadorCapturo=2;
                 }
                 objGC.GetComponent<GameController>().EvaluarTablero();
             }
