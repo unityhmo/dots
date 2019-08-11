@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Globalization;
 
 public class Cuadro{
     public GameObject primeraLinea{get;set;}
@@ -56,7 +57,7 @@ public class GameController : MonoBehaviour
 
     bool bloqueadoJugador1;
     bool bloqueadoJugador2;
-    
+
     bool robandoJugador1;
     bool robandoJugador2;
 
@@ -434,7 +435,13 @@ public class GameController : MonoBehaviour
                 TextoFinal="Gana el Jugador 2";
             }
             txtMensajeFinal.SetActive(true);            
-        }      
+        }
+
+        ContarSetsConsecutivos();
+    }
+
+    void ContarSetsConsecutivos(){
+        GetComponent<ConsecutivosController>().ContarSetsConsecutivos();
     }
 
 
@@ -513,7 +520,7 @@ public class GameController : MonoBehaviour
     void LlenarAreaDelCuadro(GameObject primeraLinea, GameObject segundaLinea){
         Vector3 posicionArea = Vector3.Lerp(primeraLinea.transform.position , segundaLinea.transform.position, 0.5f);
         GameObject areaObject = (GameObject)Resources.Load ("ConqueredArea");
-        areaObject.name="Conquered_J"+JugadorActual;
+        areaObject.name="Conquered_J"+JugadorActual+"$x="+posicionArea.x.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)+"#z="+posicionArea.z.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)+"&";
         areaObject.GetComponent<CuadCapturadoController>().SetNumeroJugador(JugadorActual);
         int numBlindaje=SetBlindaje();
         areaObject.GetComponent<CuadCapturadoController>().SetContadorBlindaje(numBlindaje);
@@ -531,7 +538,7 @@ public class GameController : MonoBehaviour
         } 
         
         Instantiate(areaObject, posicionArea, Quaternion.Euler(-90,0,0));
-        TransformarCuadrosConsecutivos(posicionArea);       
+        TransformarCuadrosConsecutivos(areaObject);       
     }
 
     int SetBlindaje(){
@@ -542,8 +549,9 @@ public class GameController : MonoBehaviour
         return numBlindaje;
     }
 
-    void TransformarCuadrosConsecutivos(Vector3 posicionArea){
-        this.gameObject.GetComponent<ConsecutivosController>().TransformarCuadrosConsecutivos(posicionArea);
+    void TransformarCuadrosConsecutivos(GameObject areaObject){
+        //this.gameObject.GetComponent<ConsecutivosController>().TransformarCuadrosConsecutivos(posicionArea);
+        this.gameObject.GetComponent<ConsecutivosController>().ContarContinuos(areaObject);
     }
 
 }

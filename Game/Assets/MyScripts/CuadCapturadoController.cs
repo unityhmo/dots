@@ -67,7 +67,7 @@ public class CuadCapturadoController : MonoBehaviour
             if(puedeRobar&&!esInrobable&&jugador!=numeroJugador){
                 //Checar el blindaje
                 if(ContadorBlindaje<1){
-                    this.gameObject.name="Conquered_J"+jugador+"(Clone)";
+                    this.gameObject.name="Conquered_J"+jugador+"$x="+this.gameObject.transform.position.x.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)+"#z="+this.gameObject.transform.position.z.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)+"&(Clone)";                    
                     if(jugador==1){
                         this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;
                     }else{
@@ -87,7 +87,7 @@ public class CuadCapturadoController : MonoBehaviour
                     esInrobable=true;
                     //esContinuo=false;
                     numeroJugador=jugador;
-                    objGC.GetComponent<ConsecutivosController>().TransformarCuadrosConsecutivos(this.gameObject.transform.position);
+                    objGC.GetComponent<ConsecutivosController>().ContarContinuos(this.gameObject,true);
                 }else{
                     ContadorBlindaje--;
                 }
