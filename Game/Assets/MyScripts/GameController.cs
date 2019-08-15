@@ -69,6 +69,7 @@ public class GameController : MonoBehaviour
 
     bool esMismoTurno;
 
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
@@ -441,7 +442,7 @@ public class GameController : MonoBehaviour
     }
 
     void ContarSetsConsecutivos(){
-        GetComponent<ConsecutivosController>().ContarSetsConsecutivos();
+        //GetComponent<ConsecutivosController>().ContarSetsConsecutivos();
     }
 
 
@@ -538,6 +539,26 @@ public class GameController : MonoBehaviour
         } 
         
         Instantiate(areaObject, posicionArea, Quaternion.Euler(-90,0,0));
+        posicionArea.y=posicionArea.y+0.1f;
+
+        string raza="";
+        if(JugadorActual==1){
+            raza=GetRazaJugador1();
+        }
+        else{
+            raza=GetRazaJugador2();
+        }
+        if(raza=="Humano"){
+            this.gameObject.GetComponent<PropsManager>().InstantiateHumans(posicionArea);
+        }
+        if(raza=="Mago"){
+            this.gameObject.GetComponent<PropsManager>().InstantiateSages(posicionArea);
+        }
+        if(raza=="Piedra"){
+            this.gameObject.GetComponent<PropsManager>().InstantiateDemons(posicionArea);
+        }
+
+        this.gameObject.GetComponent<PropsManager>().InstantiateCapturedQuad(posicionArea);
         TransformarCuadrosConsecutivos(areaObject);       
     }
 
@@ -551,7 +572,7 @@ public class GameController : MonoBehaviour
 
     void TransformarCuadrosConsecutivos(GameObject areaObject){
         //this.gameObject.GetComponent<ConsecutivosController>().TransformarCuadrosConsecutivos(posicionArea);
-        this.gameObject.GetComponent<ConsecutivosController>().ContarContinuos(areaObject);
+        //this.gameObject.GetComponent<ConsecutivosController>().ContarContinuos(areaObject);
     }
 
 }

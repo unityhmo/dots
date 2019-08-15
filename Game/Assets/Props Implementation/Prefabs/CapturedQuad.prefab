@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682054589498555212}
   - component: {fileID: 1531393837488154500}
+  - component: {fileID: 1841497787770813610}
   m_Layer: 8
   m_Name: CapturedQuad
   m_TagString: Untagged
@@ -48,6 +49,22 @@ MonoBehaviour:
   animatedContentWrapper: {fileID: 7857774043791756901}
   _managerCallbackTimer: 0.21
   _autoDestroyTimer: 0.5
+--- !u!114 &1841497787770813610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587162328844877880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f04630d6abd104ebfba93a7fd3b0e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esContinuo: 0
+  numeroJugador: 0
+  esInrobable: 0
+  ContadorBlindaje: 0
 --- !u!1 &8646299672851497939
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +133,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -213,7 +229,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

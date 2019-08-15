@@ -11364,7 +11364,7 @@ GameObject:
   - component: {fileID: 1667236019}
   - component: {fileID: 1667236018}
   - component: {fileID: 1667236017}
-  - component: {fileID: 1667236020}
+  - component: {fileID: 1667236021}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -11441,7 +11441,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1667236020
+--- !u!114 &1667236021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11450,9 +11450,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1667236016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cabe7a8b2b842443be14e62072e7237, type: 3}
+  m_Script: {fileID: 11500000, guid: 544461c531766e94c8323be9539274f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1667236016}
+  humansProp: {fileID: 7062079835395445568, guid: ad830fa75005de646bbe731b4449b4ce,
+    type: 3}
+  sagesProp: {fileID: 7062079835395445568, guid: 7c2e303b5183387489161b99cf5c25b6,
+    type: 3}
+  demonsProp: {fileID: 7062079835395445568, guid: 3cc8a091274e188479697b50426badcd,
+    type: 3}
+  capturedQuad: {fileID: 5587162328844877880, guid: 9c149ef863a2de148bfbd683aad9ca72,
+    type: 3}
 --- !u!1 &1680098117
 GameObject:
   m_ObjectHideFlags: 0
