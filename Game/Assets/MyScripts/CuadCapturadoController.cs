@@ -27,7 +27,7 @@ public class CuadCapturadoController : MonoBehaviour
                     }else{
                         objGC.GetComponent<GameController>().SubirEnergiaJugador2();
                     }                
-                Destroy(col.gameObject);
+                Destroy(col.gameObject,1);
             }
 
              if(nameCol.Contains("QuitarEnergia")){
@@ -37,7 +37,7 @@ public class CuadCapturadoController : MonoBehaviour
                         objGC.GetComponent<GameController>().BajarEnergiaJugador2();
                     }
                 
-                Destroy(col.gameObject);
+                Destroy(col.gameObject,1);
              }
 
              if(nameCol.Contains("Multiplicador")){
@@ -51,9 +51,15 @@ public class CuadCapturadoController : MonoBehaviour
                 }else{
                     objGC.GetComponent<GameController>().SubirPuntajeExtraJugador2(multiplicador);
                 }
-                Destroy(col.gameObject);
+                Destroy(col.gameObject,1);
 
              }
+
+            if(nameCol.Contains("Chest")){
+                col.gameObject.GetComponent<ChestAnimation>().Open();
+                Destroy(col.gameObject,1);
+            }
+
             }
 
         }

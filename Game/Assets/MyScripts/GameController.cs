@@ -193,9 +193,8 @@ public class GameController : MonoBehaviour
 
     public void SubirEnergiaJugador1(){
         if(energiaActualJugador1<energiaMaxima){
-            if(!esMismoTurno){
                 energiaActualJugador1++;
-            }
+            
         }
     }
 
@@ -214,9 +213,8 @@ public class GameController : MonoBehaviour
 
     public void SubirEnergiaJugador2(){
         if(energiaActualJugador2<energiaMaxima){
-            if(!esMismoTurno){
                 energiaActualJugador2++;
-            }
+            
         }
     }
 
@@ -558,7 +556,7 @@ public class GameController : MonoBehaviour
             this.gameObject.GetComponent<PropsManager>().InstantiateDemons(posicionArea);
         }
 
-        this.gameObject.GetComponent<PropsManager>().InstantiateCapturedQuad(posicionArea);
+        //this.gameObject.GetComponent<PropsManager>().InstantiateCapturedQuad(posicionArea);
         TransformarCuadrosConsecutivos(areaObject);       
     }
 

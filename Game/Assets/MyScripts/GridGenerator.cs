@@ -46,7 +46,7 @@ public class GridGenerator : MonoBehaviour
                 if(x<TotalColumnas-1){
                     LineaGameObject.name="Line_["+x+","+y+"]-["+(x+1)+","+y+"]";
                     Instantiate(LineaGameObject, new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial, -y), Quaternion.Euler(-90,0,0));
-
+                    Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial, -y-0.5f),LineaGameObject.transform.position , 0f);
                     int random = (int)Random.Range(1f, 10.0f);
                     GameObject itemRandom = ItemAgregarEnergia;
                     if(random>=5){
@@ -55,14 +55,25 @@ public class GridGenerator : MonoBehaviour
                     if(random>=8){
                         itemRandom=ItemMultiplicador;
                     }
+                    if(random<=4){
+                        itemRandom=Cofre;
+                    }
                     if(x%random==0&&y<TotalFilas-1){
-                         Vector3 posicionItem = Vector3.Lerp(new Vector3(PosicionXInicial+x+0.5f, PosicionYInicial, -y-0.5f),LineaGameObject.transform.position , 0f);
+                         
                          if(x==0){
                              int otroRandom = (int)Random.Range(1f, 10.0f);
                              if(random==otroRandom)
+                             if(itemRandom!=Cofre){
                              Instantiate(itemRandom, posicionItem, Quaternion.identity);
+                             }else{
+                                 Instantiate(itemRandom, posicionItem, Quaternion.Euler(0,180,0));
+                             }
                          }else{
+                             if(itemRandom!=Cofre){
                              Instantiate(itemRandom, posicionItem, Quaternion.identity);
+                             }else{
+                                 Instantiate(itemRandom, posicionItem, Quaternion.Euler(0,180,0));
+                             }
                          }
                          
                     }
