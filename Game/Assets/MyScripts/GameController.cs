@@ -52,8 +52,8 @@ public class GameController : MonoBehaviour
     string TextoFinal = "Empate";
 
     public int energiaMaxima;
-    int energiaActualJugador1;
-    int energiaActualJugador2;
+    public int energiaActualJugador1;
+    public int energiaActualJugador2;
 
     bool bloqueadoJugador1;
     bool bloqueadoJugador2;
@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour
     bool blindandoJugador2;
 
     bool esMismoTurno;
+
 
 
     void Start(){

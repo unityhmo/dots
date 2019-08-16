@@ -93,7 +93,7 @@ public class CuadCapturadoController : MonoBehaviour
                     esInrobable=true;
                     //esContinuo=false;
                     numeroJugador=jugador;
-                    objGC.GetComponent<ConsecutivosController>().ContarContinuos(this.gameObject,true);
+                    //objGC.GetComponent<ConsecutivosController>().ContarContinuos(this.gameObject,true);
                 }else{
                     ContadorBlindaje--;
                 }
