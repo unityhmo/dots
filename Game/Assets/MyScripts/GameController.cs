@@ -17,21 +17,11 @@ public class GameController : MonoBehaviour
     List<Cuadro> listaCuadros = new List<Cuadro>();
     public GameObject txtPuntajeJugador1;
     public GameObject txtPuntajeJugador2;
-    public GameObject txtTurnoJugador;
     public GameObject txtContadorLineas;
     public GameObject txtMensajeFinal;
 
-    public Text txtRazaJugador1;
-    public Text txtRazaJugador2;
-
-    public Text txtEnergiaJugador1;
-    public Text txtEnergiaJugador2;
-
     public Text txtEstadoJugador1;
     public Text txtEstadoJugador2;
-
-    public Text txtHabilidadJugador1;
-    public Text txtHabilidadJugador2;
 
     public Text txtPuntajeExtra1;
     public Text txtPuntajeExtra2;
@@ -52,8 +42,8 @@ public class GameController : MonoBehaviour
     string TextoFinal = "Empate";
 
     public int energiaMaxima;
-    public int energiaActualJugador1;
-    public int energiaActualJugador2;
+    public float energiaActualJugador1;
+    public float energiaActualJugador2;
 
     bool bloqueadoJugador1;
     bool bloqueadoJugador2;
@@ -69,28 +59,39 @@ public class GameController : MonoBehaviour
 
     bool esMismoTurno;
 
+    public Sprite Humano_Portrait;
+    public Sprite Piedra_Portrait;
+    public Sprite Mago_Portrait;
+    
+    public GameObject BlackScreen_P1;
+    public GameObject BlackScreen_P2;
+
+    string habilidadJugador1;
+    string habilidadJugador2;
+
+    public GameObject barraEnergiaJugador1;
+    public GameObject barraEnergiaJugador2;
+
 
 
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
+        ElegirHumano();
+        ElegirHumano();
+        AclararJugador(BlackScreen_P1);
+        OscurecerJugador(BlackScreen_P2);
     }
 
     void Update()
     {
-        txtPuntajeJugador1.GetComponent<Text>().text="P1 Puntos: "+puntosJugador1;
-        txtPuntajeJugador2.GetComponent<Text>().text="P2 Puntos: "+puntosJugador2;
+        txtPuntajeJugador1.GetComponent<Text>().text=""+puntosJugador1;
+        txtPuntajeJugador2.GetComponent<Text>().text=""+puntosJugador2;
         txtPuntajeExtra1.text="+"+puntosExtraJugador1;
         txtPuntajeExtra2.text="+"+puntosExtraJugador2;
 
-        txtTurnoJugador.GetComponent<Text>().text="Es el Turno del Jugador : "+JugadorActual;
         txtContadorLineas.GetComponent<Text>().text="El numero maximo de lineas es: "+TotalMaximoLineas+ " Lineas actuales: "+LineasActuales;
         txtMensajeFinal.GetComponent<Text>().text=TextoFinal;
-        txtRazaJugador1.text = "Raza: "+RazaJugador1;
-        txtRazaJugador2.text = "Raza: "+RazaJugador2;
-
-        txtEnergiaJugador1.text = "P1 Energia: "+energiaActualJugador1+"/"+energiaMaxima;
-        txtEnergiaJugador2.text = "P2 Energia: "+energiaActualJugador2+"/"+energiaMaxima;
 
         string estado1="Normal";
         string estado2="Normal";
@@ -121,7 +122,20 @@ public class GameController : MonoBehaviour
         }
         txtEstadoJugador1.text = "Estado: "+estado1;
         txtEstadoJugador2.text = "Estado: "+estado2;
+        ChecarEnergia();
     }
+
+    void ChecarEnergia()
+	{
+		float energia =  energiaActualJugador1/ energiaMaxima;
+		ActualizarBarraEnergia (energia,barraEnergiaJugador1);
+        energia =  energiaActualJugador2/ energiaMaxima;
+		ActualizarBarraEnergia (energia,barraEnergiaJugador2);
+	}
+
+   	public void ActualizarBarraEnergia(float valorEnergia,GameObject barraEnergia){
+		barraEnergia.transform.localScale = new Vector3(Mathf.Clamp(valorEnergia,0f ,1f), barraEnergia.transform.localScale.y, barraEnergia.transform.localScale.z);
+	}
 
     void CalcularTotalMaximoDeLineas(){
         int columnas = this.GetComponent<GridGenerator>().GetTotalColumnas();
@@ -164,9 +178,9 @@ public class GameController : MonoBehaviour
             habilidad="Blindar";
         }
         if(JugadorActual==1){
-            txtHabilidadJugador1.text=habilidad;
+            habilidadJugador1=habilidad;
         }else{
-            txtHabilidadJugador2.text=habilidad;
+            habilidadJugador2=habilidad;
         }
     }
 
@@ -174,14 +188,26 @@ public class GameController : MonoBehaviour
         SetHabilidad(raza);
         if(JugadorActual==1){
             RazaJugador1=raza;
+            GameObject portrait = GameObject.Find("Portrait_P1");
+            SetPortrait(portrait,raza);
         }else{
             RazaJugador2=raza;
+            GameObject portrait = GameObject.Find("Portrait_P2");
+            SetPortrait(portrait,raza);
         }
-        if(JugadorActual==1){
-            JugadorActual=2;
-        }else{
-            JugadorActual=1;
-        }        
+        CambioDeTurno(JugadorActual);    
+    }
+
+    void SetPortrait(GameObject portrait,string raza){
+        if(raza=="Humano"){
+            portrait.GetComponent<Image>().sprite = Humano_Portrait;
+        }
+        if(raza=="Mago"){
+            portrait.GetComponent<Image>().sprite = Mago_Portrait;
+        }
+        if(raza=="Piedra"){
+           portrait.GetComponent<Image>().sprite = Piedra_Portrait;
+        }       
     }
 
     public string GetRazaJugador1(){
@@ -238,7 +264,7 @@ public class GameController : MonoBehaviour
             if(energiaActualJugador1==energiaMaxima){
                 //Si puede usar la habilidad
                 energiaActualJugador1=0;
-                string habilidad = txtHabilidadJugador1.text;
+                string habilidad = habilidadJugador1;
                 if(habilidad=="Robar"){
                     SetPuedeRobarJugador1();
                 }
@@ -253,7 +279,7 @@ public class GameController : MonoBehaviour
              if(energiaActualJugador2==energiaMaxima){
                 //Si puede usar la habilidad
                 energiaActualJugador2=0;
-                string habilidad = txtHabilidadJugador2.text;
+                string habilidad = habilidadJugador2;
                 if(habilidad=="Robar"){
                     SetPuedeRobarJugador2();
                 }
@@ -396,12 +422,11 @@ public class GameController : MonoBehaviour
             }
                 if(!acabaDeHacerUnPunto){
                     if(JugadorActual==1){
-                        JugadorActual=2;
                         FinBlindarJugador1();
-                }else{
-                    JugadorActual=1;
+                    } else{                    
                     FinBlindarJugador2();
-                }
+                    }
+                    CambioDeTurno(JugadorActual);
                 }else{
                      //Cambiar turno si esta bloqueado
                      int siguienteJugador=JugadorActual;
@@ -409,11 +434,15 @@ public class GameController : MonoBehaviour
                         siguienteJugador=2;
                         bloqueadoJugador1=false;
                         FinBlindarJugador1();
+                        AclararJugador(BlackScreen_P2);
+                        OscurecerJugador(BlackScreen_P1);
                     }
                     if(bloqueadoJugador2&&JugadorActual==2){
                         siguienteJugador=1;
                         bloqueadoJugador2=false;
                         FinBlindarJugador2();
+                        AclararJugador(BlackScreen_P1);
+                        OscurecerJugador(BlackScreen_P2);
                     }
                     if(siguienteJugador==JugadorActual){
                          esMismoTurno=true;
@@ -572,6 +601,30 @@ public class GameController : MonoBehaviour
     void TransformarCuadrosConsecutivos(GameObject areaObject){
         //this.gameObject.GetComponent<ConsecutivosController>().TransformarCuadrosConsecutivos(posicionArea);
         //this.gameObject.GetComponent<ConsecutivosController>().ContarContinuos(areaObject);
+    }
+
+    void CambioDeTurno(int _pJugadorActual){
+        if(_pJugadorActual==1){
+            JugadorActual=2;
+            AclararJugador(BlackScreen_P2);
+            OscurecerJugador(BlackScreen_P1);
+        }else{
+            JugadorActual=1;
+            AclararJugador(BlackScreen_P1);
+            OscurecerJugador(BlackScreen_P2);
+        }
+    }
+
+    void AclararJugador(GameObject BlackScreen_Jugador){
+        Color tmp = BlackScreen_Jugador.GetComponent<Image>().color;
+        tmp.a = 0f; //0 es transparente, 1 es opaco
+        BlackScreen_Jugador.GetComponent<Image>().color = tmp;
+    }
+
+     void OscurecerJugador(GameObject BlackScreen_Jugador){
+        Color tmp = BlackScreen_Jugador.GetComponent<Image>().color;
+        tmp.a = 0.7f;
+        BlackScreen_Jugador.GetComponent<Image>().color = tmp;
     }
 
 }
