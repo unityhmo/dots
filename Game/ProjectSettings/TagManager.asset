@@ -8,6 +8,8 @@ TagManager:
   - Line
   - CuadCapturado
   - Item
+  - Curtain
+  - GameManager
   layers:
   - Default
   - TransparentFX

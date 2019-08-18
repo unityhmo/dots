@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour {
     private static readonly int ToBase = Animator.StringToHash("ToBase");
@@ -7,9 +6,14 @@ public class MainMenuController : MonoBehaviour {
     private static readonly int ToHelp = Animator.StringToHash("ToHelp");
     private static readonly int ToPreGame = Animator.StringToHash("ToPreGame");
     private Animator animator;
+    private GameManager gameManager;
+    private static readonly int IsCredits = Animator.StringToHash("IsCredits");
 
     void Start() {
+        gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
+
+        gameManager.SceneLoaded();
     }
 
     public void GoToBase() {
@@ -24,6 +28,10 @@ public class MainMenuController : MonoBehaviour {
         animator.SetTrigger(ToHelp);
     }
 
+    public void GoToCredits(bool isCredits) {
+        animator.SetBool(IsCredits, isCredits);
+    }
+
     public void GoToPreGame() {
         animator.SetTrigger(ToPreGame);
     }
@@ -33,6 +41,6 @@ public class MainMenuController : MonoBehaviour {
     }
 
     private void ChangeToGameScene() {
-        SceneManager.LoadScene(sceneBuildIndex: 1, LoadSceneMode.Single);
+        gameManager.TransitionTo(GameManager.State.Game);
     }
 }
