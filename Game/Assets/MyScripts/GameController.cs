@@ -72,7 +72,11 @@ public class GameController : MonoBehaviour
     public GameObject barraEnergiaJugador1;
     public GameObject barraEnergiaJugador2;
 
+    public GameObject barraConquistaJugador1;
+    public GameObject barraConquistaJugador2;
 
+    int columnas;
+    int filas;
 
     void Start(){
         CalcularTotalMaximoDeLineas();
@@ -123,6 +127,19 @@ public class GameController : MonoBehaviour
         txtEstadoJugador1.text = "Estado: "+estado1;
         txtEstadoJugador2.text = "Estado: "+estado2;
         ChecarEnergia();
+        ChecarConquista();
+    }
+
+    void ChecarConquista(){
+        float CuadrosTotales = (columnas-1)*(filas-1);
+        float totalJ1= puntosJugador1+puntosExtraJugador1;
+        float totalJ2 = puntosJugador2+puntosExtraJugador2;
+        float cuadrosLibres= CuadrosTotales-totalJ1-totalJ2;
+        float j1 = (totalJ1*100/CuadrosTotales)+(cuadrosLibres*100/CuadrosTotales)/2;
+        float j2 = (totalJ2*100/CuadrosTotales)+(cuadrosLibres*100/CuadrosTotales)/2;
+        ActualizarBarraEnergia(j1/100,barraConquistaJugador1);
+        ActualizarBarraEnergia(j2/100,barraConquistaJugador2);
+
     }
 
     void ChecarEnergia()
@@ -138,8 +155,8 @@ public class GameController : MonoBehaviour
 	}
 
     void CalcularTotalMaximoDeLineas(){
-        int columnas = this.GetComponent<GridGenerator>().GetTotalColumnas();
-        int filas = this.GetComponent<GridGenerator>().GetTotalFilas();
+        columnas = this.GetComponent<GridGenerator>().GetTotalColumnas();
+        filas = this.GetComponent<GridGenerator>().GetTotalFilas();
 
         int colXFilas = columnas*filas;
         colXFilas=colXFilas+((columnas-1)*(filas-1))-1;
