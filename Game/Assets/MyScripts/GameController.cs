@@ -20,9 +20,6 @@ public class GameController : MonoBehaviour
     public GameObject txtContadorLineas;
     public GameObject txtMensajeFinal;
 
-    public Text txtEstadoJugador1;
-    public Text txtEstadoJugador2;
-
     public Text txtPuntajeExtra1;
     public Text txtPuntajeExtra2;
 
@@ -75,6 +72,16 @@ public class GameController : MonoBehaviour
     public GameObject barraConquistaJugador1;
     public GameObject barraConquistaJugador2;
 
+    public Sprite Robar_Icon;
+    public Sprite Bloquear_Icon;
+    public Sprite Blindar_icon;
+    public Sprite Bloqueado_Icon;
+
+    public GameObject P1_Estado_1;
+    public GameObject P1_Estado_2;
+    public GameObject P2_Estado_1;
+    public GameObject P2_Estado_2;
+
     int columnas;
     int filas;
 
@@ -97,37 +104,75 @@ public class GameController : MonoBehaviour
         txtContadorLineas.GetComponent<Text>().text="El numero maximo de lineas es: "+TotalMaximoLineas+ " Lineas actuales: "+LineasActuales;
         txtMensajeFinal.GetComponent<Text>().text=TextoFinal;
 
-        string estado1="Normal";
-        string estado2="Normal";
+        ChecarEstados();
+        ChecarEnergia();
+        ChecarConquista();
+        
+    }
+
+    void ChecarEstados(){
+        LimpiarEstados();
         if(bloqueadoJugador1){
-            estado1="Bloqueado";
+            //estado1="Bloqueado";
+            SetEstado(Bloqueado_Icon,1,false);
         }
         if(bloqueadoJugador2){
-            estado2="Bloqueado";
+            //estado2="Bloqueado";
+             SetEstado(Bloqueado_Icon,2,false);
         }
 
         if(robandoJugador1){
-            estado1+=" Robando";
+            //estado1+=" Robando";
+             SetEstado(Robar_Icon,1,true);
         }
         if(robandoJugador2){
-            estado2+=" Robando";
+            //estado2+=" Robando";
+             SetEstado(Robar_Icon,2,true);
         }
         if(bloqueandoJugador1){
-            estado1+=" Bloqueando";
+            //estado1+=" Bloqueando";
+             SetEstado(Bloquear_Icon,1,true);
         }
         if(bloqueandoJugador2){
-            estado2+= "Bloqueando";
+            //estado2+= "Bloqueando";
+            SetEstado(Bloquear_Icon,2,true);
         }
         if(blindandoJugador1){
-            estado1+=" Blindando";
+            //estado1+=" Blindando";
+            SetEstado(Blindar_icon,1,true);
         }
         if(blindandoJugador2){
-            estado2+= "Blindando";
+            //estado2+= "Blindando";
+            SetEstado(Blindar_icon,2,true);
         }
-        txtEstadoJugador1.text = "Estado: "+estado1;
-        txtEstadoJugador2.text = "Estado: "+estado2;
-        ChecarEnergia();
-        ChecarConquista();
+        
+    }
+
+    void LimpiarEstados(){
+        P1_Estado_1.SetActive(false);
+        P1_Estado_2.SetActive(false);
+        P2_Estado_1.SetActive(false);
+        P2_Estado_2.SetActive(false);
+    }
+
+    void SetEstado(Sprite icon,int jugador, bool estado2){
+        if(jugador==1){
+            if(estado2){
+                P1_Estado_2.SetActive(true);
+                P1_Estado_2.GetComponent<Image>().sprite = icon;
+            }else{
+                P1_Estado_1.SetActive(true);
+                P1_Estado_1.GetComponent<Image>().sprite = icon;
+            }
+        } else{
+            if(estado2){
+                P2_Estado_2.SetActive(true);
+                P2_Estado_2.GetComponent<Image>().sprite = icon;
+            }else{
+                P2_Estado_1.SetActive(true);
+                P2_Estado_1.GetComponent<Image>().sprite = icon;
+            }
+        }    
     }
 
     void ChecarConquista(){
