@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class I18n {
     public static Dictionary<string, string> Fields { get; private set; }
@@ -10,22 +11,27 @@ public class I18n {
     }
 
     private static void LoadLanguage() {
-        if (Fields == null) Fields = new Dictionary<string, string>();
+        if (Fields == null) {
+            Fields = new Dictionary<string, string>();
+        }
 
         Fields.Clear();
+
         string lang = Get2LetterISOCodeFromSystemLanguage().ToLower();
 
-        var textAsset = Resources.Load(@"i18n/" + lang); //no .txt needed
-        string allTexts = "";
+        Object textAsset = Resources.Load(@"i18n/" + lang);
 
-        if (textAsset == null) textAsset = Resources.Load(@"i18n/en") as TextAsset; //no .txt needed
+        if (textAsset == null) {
+            textAsset = Resources.Load(@"i18n/en") as TextAsset;
+        }
 
-        if (textAsset == null) Debug.LogError("File not found for I18n: Assets/Resources/i18n/" + lang + ".txt");
+        if (textAsset == null) {
+            Debug.LogError("File not found for I18n: Assets/Resources/i18n/" + lang + ".txt");
+        }
 
-        allTexts = (textAsset as TextAsset).text;
+        string allTexts = (textAsset as TextAsset).text;
 
-        string[] lines = allTexts.Split(new string[] {"\r\n", "\n"},
-            StringSplitOptions.None);
+        string[] lines = allTexts.Split(new string[] {"\r\n", "\n"}, StringSplitOptions.None);
 
         string key, value;
         for (int i = 0; i < lines.Length; i++) {

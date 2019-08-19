@@ -5,9 +5,10 @@ public class MainMenuController : MonoBehaviour {
     private static readonly int ToConfig = Animator.StringToHash("ToConfig");
     private static readonly int ToHelp = Animator.StringToHash("ToHelp");
     private static readonly int ToPreGame = Animator.StringToHash("ToPreGame");
+    private static readonly int IsCredits = Animator.StringToHash("IsCredits");
+
     private Animator animator;
     private GameManager gameManager;
-    private static readonly int IsCredits = Animator.StringToHash("IsCredits");
 
     void Start() {
         gameManager = GameManager.Instance;
