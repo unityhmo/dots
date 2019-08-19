@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Globalization;
+using System.Collections;
 
 public class Cuadro{
     public GameObject primeraLinea{get;set;}
@@ -59,6 +60,20 @@ public class GameController : MonoBehaviour
     public Sprite Humano_Portrait;
     public Sprite Piedra_Portrait;
     public Sprite Mago_Portrait;
+
+    public Sprite Humano_FullBody;
+    public Sprite Piedra_FullBody;
+    public Sprite Mago_FullBody;
+
+    public Sprite Humano_Background;
+    public Sprite Piedra_Background;
+    public Sprite Mago_Background;
+
+    public GameObject CanvasSkill;
+    public GameObject ContenedorSkill;
+    public GameObject SkillBaground;
+    public GameObject SkillCharacter;
+    public Text txtNombreHabilidad;
     
     public GameObject BlackScreen_P1;
     public GameObject BlackScreen_P2;
@@ -311,6 +326,7 @@ public class GameController : MonoBehaviour
         if(energiaActualJugador2==energiaMaxima){
             bloqueadoJugador1=true;
             energiaActualJugador2=0;
+            ActivarAnimacionHabilidad("Bloquear",2);
         }
     }
 
@@ -318,6 +334,7 @@ public class GameController : MonoBehaviour
         if(energiaActualJugador1==energiaMaxima){
             bloqueadoJugador2=true;
             energiaActualJugador1=0;
+            ActivarAnimacionHabilidad("Bloquear",1);
         }
     }
 
@@ -332,10 +349,12 @@ public class GameController : MonoBehaviour
                 }
                 if(habilidad=="Bloquear"){
                     SetPuedeBloquearJugador1();
+                    habilidad="Sellar";
                 }
                 if(habilidad=="Blindar"){
                     SetPuedeBlindarJugador1();
                 }
+                ActivarAnimacionHabilidad(habilidad,1);
             }
         }else{
              if(energiaActualJugador2==energiaMaxima){
@@ -347,12 +366,51 @@ public class GameController : MonoBehaviour
                 }
                 if(habilidad=="Bloquear"){
                     SetPuedeBloquearJugador2();
+                    habilidad="Sellar";
                 }
                 if(habilidad=="Blindar"){
                     SetPuedeBlindarJugador2();
                 }
+                ActivarAnimacionHabilidad(habilidad,2);
             }
         }
+    }
+
+    void ActivarAnimacionHabilidad(string textoHabilidad,int jugador){
+        txtNombreHabilidad.GetComponent<Text>().text=textoHabilidad;
+        CanvasSkill.SetActive(true);
+        string raza="";
+        if(jugador==1){
+            raza=GetRazaJugador1();
+        }
+        else{
+            raza=GetRazaJugador2();
+        }
+        if(raza=="Humano"){
+            SkillBaground.GetComponent<Image>().sprite=Humano_Background;
+            SkillCharacter.GetComponent<Image>().sprite=Humano_FullBody;
+        }
+        if(raza=="Mago"){
+            SkillBaground.GetComponent<Image>().sprite=Mago_Background;
+            SkillCharacter.GetComponent<Image>().sprite=Mago_FullBody;
+        }
+        if(raza=="Piedra"){
+            SkillBaground.GetComponent<Image>().sprite=Piedra_Background;
+            SkillCharacter.GetComponent<Image>().sprite=Piedra_FullBody;
+        }
+        if(jugador==2){
+            ContenedorSkill.gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            CanvasSkill.GetComponent<Animator>().Play("SkillAnimation_P2");
+        }else{
+            ContenedorSkill.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
+        StartCoroutine(DesactivarCanvasSkill());
+    }
+
+    IEnumerator DesactivarCanvasSkill()
+    {
+        yield return new WaitForSeconds(1);
+        CanvasSkill.SetActive(false);
     }
 
     public void SetPuedeRobarJugador1(){
