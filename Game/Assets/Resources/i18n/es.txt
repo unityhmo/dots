@@ -1,0 +1,11 @@
+game.title=Puntos
+game.subtitle=El Juego
+game.copyright=© 2019 Lunarlabs.
+
+system.fallback=Soy un boton!
+system.back=Atras
+
+menu.play=Jugar
+menu.configuration=Config
+menu.help=Ayuda
+menu.credits=Creditos
