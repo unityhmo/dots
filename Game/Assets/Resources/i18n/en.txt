@@ -9,3 +9,8 @@ menu.play=Play
 menu.configuration=Config
 menu.help=Help
 menu.credits=Credits
+
+settings.music=Music
+settings.sxf=SFX
+settings.save=Save
+settings.reset=Reset

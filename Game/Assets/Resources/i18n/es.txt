@@ -9,3 +9,8 @@ menu.play=Jugar
 menu.configuration=Config
 menu.help=Ayuda
 menu.credits=Creditos
+
+settings.music=Musica
+settings.sxf=Sonidos
+settings.save=Guardar
+settings.reset=Reiniciar
