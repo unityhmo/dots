@@ -387,15 +387,15 @@ public class GameController : MonoBehaviour
             raza=GetRazaJugador2();
         }
         if(raza=="Humano"){
-            SkillBaground.GetComponent<Image>().sprite=Humano_Background;
+            StartCoroutine(CambiarBackgroundDespuesDeTiempo(Humano_Background));
             SkillCharacter.GetComponent<Image>().sprite=Humano_FullBody;
         }
         if(raza=="Mago"){
-            SkillBaground.GetComponent<Image>().sprite=Mago_Background;
+            StartCoroutine(CambiarBackgroundDespuesDeTiempo(Mago_Background));
             SkillCharacter.GetComponent<Image>().sprite=Mago_FullBody;
         }
         if(raza=="Piedra"){
-            SkillBaground.GetComponent<Image>().sprite=Piedra_Background;
+            StartCoroutine(CambiarBackgroundDespuesDeTiempo(Piedra_Background));
             SkillCharacter.GetComponent<Image>().sprite=Piedra_FullBody;
         }
         if(jugador==2){
@@ -411,6 +411,13 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         CanvasSkill.SetActive(false);
+    }
+
+    IEnumerator CambiarBackgroundDespuesDeTiempo(Sprite _pSprite)
+    {
+        SkillBaground.GetComponent<Image>().sprite=null;
+        yield return new WaitForSeconds(0.2f);
+        SkillBaground.GetComponent<Image>().sprite=_pSprite;
     }
 
     public void SetPuedeRobarJugador1(){
