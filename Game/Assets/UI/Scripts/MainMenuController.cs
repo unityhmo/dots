@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour {
     private static readonly int ToBase = Animator.StringToHash("ToBase");
@@ -38,7 +39,8 @@ public class MainMenuController : MonoBehaviour {
     }
 
     public void GoToGame() {
-        Invoke(nameof(ChangeToGameScene), 0.1f);
+        //Invoke(nameof(ChangeToGameScene), 0.1f);
+        SceneManager.LoadScene("GamePlayIsometrico");
     }
 
     private void ChangeToGameScene() {

@@ -14,7 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02-main-menu.unity
     guid: 599481b036e13014786024b746a52864
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/03-game.unity
     guid: c984569a50d203d42bceb6c2f387d143
+  - enabled: 1
+    path: Assets/Scenes/GamePlayIsometrico.unity
+    guid: 9014d90c79d45884e90fc0ec8373882c
   m_configObjects: {}

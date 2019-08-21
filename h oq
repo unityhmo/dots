@@ -1,0 +1,349 @@
+[33mcommit fcf066852e1cb9ba38dcc62787579d0b2bccf8bc[m[33m ([m[1;36mHEAD -> [m[1;32mprops[m[33m)[m
+Merge: 329d255 cf09e28
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Tue Aug 20 22:59:11 2019 -0700
+
+    Merge branch 'props' of https://github.com/unityhmo/dots into props
+
+[33mcommit 329d255c7c902c0404f8fdba0d07fec128c11b06[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Tue Aug 20 22:58:49 2019 -0700
+
+    se cambio la animacion de utilizar la habilidad por una mas dinamica
+
+[33mcommit cf09e28d7f91462740343fe176d723baf1f8c8a1[m[33m ([m[1;31morigin/props[m[33m)[m
+Merge: 7dd395d e42eb24
+Author: Uriel Carrillo <Ucamo@users.noreply.github.com>
+Date:   Mon Aug 19 22:18:33 2019 -0700
+
+    Merge pull request #3 from unityhmo/ui-work
+    
+    UI Work merge
+
+[33mcommit e42eb24522d225284999a7cc9363ae7ef698c0be[m
+Author: tony <atony.mtz@gmail.com>
+Date:   Sun Aug 18 22:42:27 2019 -0700
+
+    UI Work
+    
+    - Adds config controls
+
+[33mcommit 61704b792f6abfcaf4a19129c0a9614acc43803d[m
+Author: tony <atony.mtz@gmail.com>
+Date:   Sun Aug 18 20:14:59 2019 -0700
+
+    UI Work
+    
+    - Adds config options
+
+[33mcommit f24d057f4c772c4dbb0558f424d1cab6a023dd14[m
+Author: tony <atony.mtz@gmail.com>
+Date:   Sun Aug 18 19:46:17 2019 -0700
+
+    UI Work
+    
+    - Adds i18n
+    - Adds font
+    - Adds new buttons prefabs for menus
+    - Fixes animation when transitioning from credits to help
+
+[33mcommit 7dd395d89505920ba12c7ff31c4385a324a53d44[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Aug 18 17:30:02 2019 -0700
+
+    se implemento la transicion cuando se utiliza una habilidad y se limpiaron algunos folders de assets sin usar
+
+[33mcommit 6bbf46fabaa7aa18a053c314b1e65fa89c8c4a1e[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Aug 18 15:31:39 2019 -0700
+
+    se cambio el texto de los estados por representaciones con iconos
+
+[33mcommit ed17ffa0b6e75f0b0cee0753580ea69062bb287e[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Aug 18 01:23:29 2019 -0700
+
+    se agrego la barra de conquista a la UI del gameplay
+
+[33mcommit d732402151139d484c66847d0191bffebbb8d19f[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Aug 18 00:38:45 2019 -0700
+
+    se reemplazaron los botones de pruebas placeholder por sus respectivas posiciones con arte placeholder
+
+[33mcommit e4edbbb270707296c12114b401da7d1e58837cb1[m
+Merge: 0483d43 5f3d769
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sat Aug 17 19:31:53 2019 -0700
+
+    Merge branch 'props' of https://github.com/unityhmo/dots into props
+
+[33mcommit 0483d4395b7209384245bde6ee92b932171d56f1[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sat Aug 17 19:31:45 2019 -0700
+
+    WIP de UI on gameplay
+
+[33mcommit 5f3d769dbd10669726bee0dfcaab8a0a425b63cf[m
+Merge: c45b23f 49ef769
+Author: Uriel Carrillo <Ucamo@users.noreply.github.com>
+Date:   Sat Aug 17 19:30:16 2019 -0700
+
+    Merge pull request #2 from unityhmo/ui-work
+    
+    UI Work merge
+
+[33mcommit 49ef76903d0d31504e55c96a1b036c33bdc394e5[m
+Author: tony <atony.mtz@gmail.com>
+Date:   Sat Aug 17 16:46:47 2019 -0700
+
+    Main navigation
+
+[33mcommit 2fc30203bd5a2760510162d8e0f5cc48769eb361[m[33m ([m[1;31morigin/ui-work[m[33m)[m
+Author: tony <atony.mtz@gmail.com>
+Date:   Sat Aug 17 08:37:33 2019 -0700
+
+    adding main menu
+
+[33mcommit c45b23f19065cee8525c3cd2795a16580166e6f0[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Aug 15 23:28:57 2019 -0700
+
+    tweak a la camara principal para que aparezca isometrica y centrada
+
+[33mcommit 1350f329a9d29a5964733a1c7784224352a42b5e[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Aug 15 00:44:50 2019 -0700
+
+    se implementaron los cofres en el gameplay normal
+
+[33mcommit 2cb0cf4cb79a579a7d516eef7cbd32351e31beb2[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Wed Aug 14 23:46:17 2019 -0700
+
+    implementados props en gameplay normal
+
+[33mcommit 481c06869d83bc9df2d21be54656196a7dfc0fbd[m
+Author: Smireles <mireles001@gmail.com>
+Date:   Sun Aug 11 19:00:36 2019 -0700
+
+    Props Implementation
+    - Upgrading project to 2019.2
+    - Adding props assets and creating a Demostration scene.
+
+[33mcommit 565e79f58d7941fbe52bbecd44ea165c68a4ee2c[m[33m ([m[1;31morigin/PrototipoFeatures[m[33m, [m[1;32mPrototipoFeatures[m[33m)[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Aug 11 02:47:42 2019 -0700
+
+    WIP rework al sistema de consecutivos
+
+[33mcommit 5e864b360a03041af86e0d90cf5386b849dbe566[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Fri Aug 9 20:34:33 2019 -0700
+
+    se saco la logica de consecutivos del GameController a ConsecutivosController
+
+[33mcommit 10a5add0e8894e4775059a51306d1f94d4ad86a3[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Aug 8 00:18:06 2019 -0700
+
+    se arreglaron bugs con los consecutivos y la habilidad de bloquear del mago fue mejorada
+
+[33mcommit c535532264c906fa87a57af439e0053cf9dea981[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Tue Aug 6 23:05:15 2019 -0700
+
+    fix de bugs que no se marcaban los consecutivos porque se estaba evaluando sobre las y en vez de las z con la nueva camara
+
+[33mcommit ae8c0cd37a2bf225571e7861eb8578189b041a95[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Tue Aug 6 05:45:22 2019 -0700
+
+    WIP vista isometrica gameplay ahora si
+
+[33mcommit b7071db45588c1641bf330fed20174cc465890a1[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Tue Aug 6 04:55:55 2019 -0700
+
+    se corrigio el bug que le daba energia al jugador por cada linea en vez de por cada turno
+
+[33mcommit 07b15e8fa2bd1b29b8da581f0bb71b21e55fc9da[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Aug 4 22:36:56 2019 -0700
+
+    se agrego el paquete de la nueva camara
+
+[33mcommit 8bb39a75d56fc43f6ed11eafc3991860cf5edc41[m[33m ([m[1;31morigin/PrototipoIsometricoCameraTouch[m[33m, [m[1;32mPrototipoIsometricoCameraTouch[m[33m)[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sat Jul 27 23:57:47 2019 -0700
+
+    WIP para remover el combo pintado cuando se roba un consecutivo
+
+[33mcommit cb0e800da772c5121c9356f896f0cf9de1f9d2cf[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sat Jul 27 23:04:57 2019 -0700
+
+    se agrego el item que suma 1 o 2 puntos cuando se captura
+
+[33mcommit 94d7ac7e92ad1ba708d3c79fddcedb174a38ca34[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sat Jul 27 00:32:33 2019 -0700
+
+    se agregaron los items que suben y bajan energia al jugador que gana la casilla
+
+[33mcommit 4338d8498eb0ad2d41bda22e5c5a3f4ad38e6659[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Fri Jul 26 02:19:22 2019 -0700
+
+    se agrego la habilidad de los magos de bloquear lineas y la habilidad de la gente piedra de blindar casillas
+
+[33mcommit e4f5710dbb88882e8502dba8acd6fd67d6834efa[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Fri Jul 26 01:05:11 2019 -0700
+
+    se implemento la habilidad de los humanos para robar cuads
+
+[33mcommit 5cb9eb98371fdb2f1f036a07ae1dfc8e53e64030[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Wed Jul 24 07:16:22 2019 -0700
+
+    se implemento que los cuadros consecutivos te de energia dependiendo de que raza tenga el jugador al inicio de su turno
+
+[33mcommit cd636679e54346b3b2dc2a85c785960df6cd8350[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Jul 21 11:48:17 2019 -0700
+
+    WIP detecta cuadros consecutivos en horizontal y vertical
+
+[33mcommit a96ef7c019ccd45089823fc21930506547868854[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Jul 18 00:55:38 2019 -0700
+
+    se agrego la habilidad general de bloquear el segundo turno del contrincante cuando gana un cuadro
+
+[33mcommit 15aaf7d3bab52ec834798c7f2da2e0a0d25cdfb1[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Wed Jul 17 00:51:29 2019 -0700
+
+    se agrego poder elegir razas y el wip de la barra de energia
+
+[33mcommit 632ccbd91ba4899db640975e2e7d0531438a6cdd[m[33m ([m[1;32misometric[m[33m)[m
+Merge: 637845e 0e3151d
+Author: Smireles <mireles001@gmail.com>
+Date:   Sat Jul 13 14:17:46 2019 -0700
+
+    Merge remote-tracking branch 'origin/PrototipoIsometrico' into isometric
+
+[33mcommit 637845ef429bad987518d6180aa9d25b78ab4e59[m
+Author: Smireles <mireles001@gmail.com>
+Date:   Sat Jul 13 14:16:28 2019 -0700
+
+    Isometric Camera Demo
+    - New Script component with Camere & Touch input integration.
+    - Material and Prefabs added for futher 3D dev.
+    
+    NOTE: Please refer to demo scene to check implementation values and setup. No keyboard/mouse support.
+
+[33mcommit 0e3151d035f2549ca9a33b942157d9c670a78808[m[33m ([m[1;31morigin/PrototipoIsometrico[m[33m, [m[1;32mPrototipoIsometrico[m[33m)[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sat Jul 13 10:40:29 2019 -0700
+
+    se pueden dibujar las lineas tocando el espacio entre dos fichas
+
+[33mcommit 4c46f1b4816b632a250627ad8f0c82cf3c1bd474[m
+Author: Smireles <mireles001@gmail.com>
+Date:   Mon Jul 8 20:44:56 2019 -0700
+
+    Adding some free assets from unity asset store just to play with
+    perpective.
+
+[33mcommit 3dc2f5ab0cd810b57425ef74744ea3d52f141033[m[33m ([m[1;31morigin/Prototipo[m[33m, [m[1;32mPrototipo[m[33m)[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Jul 4 19:45:41 2019 -0700
+
+    se agregaron las areas de conquista a los cuadros que cada jugador gana
+
+[33mcommit f49663f4bea510adb00c650b79a3340bcb7b302e[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Jul 4 19:21:22 2019 -0700
+
+    se puede determinar que jugador es el ganador o si hay un empate al termino de que se llenan todas las lineas del grid
+
+[33mcommit 1b4f02303bbb64532669e7b50b952b3017bb787e[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Jul 4 11:51:15 2019 -0700
+
+    se marcan las lineas por turno del jugador, si un jugador hace un cuadro, tiene un turno extra
+
+[33mcommit addba8f3e4b627efbff603dcf29c39c49e4e2f88[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Tue Jul 2 00:27:40 2019 -0700
+
+    se agrego el manejo de puntos por turnos
+
+[33mcommit 7b1ad1b013da7178069baf0b1eb0379c771f5728[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Tue Jul 2 00:00:42 2019 -0700
+
+    un cuadro solo es contado una vez cuando se evalua
+
+[33mcommit 48e269d69f7d093177651cdea81aa45a2845b7b3[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Sun Jun 30 10:21:26 2019 -0700
+
+    WIP el tablero reconoce cuando se hizo un cuadro, pero ahorita los esta contando cada vez que se registra un movimiento, se debe de corregir para que solo lo detecte la primera vez
+
+[33mcommit c97a1e5689bfe80d96ea120291bb82c0d015a280[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Fri Jun 28 01:24:54 2019 -0700
+
+    los puntos pueden ser unidos por lineas
+
+[33mcommit 281fb0e768b2d03f4b7d0413f1f46acdee5127b9[m
+Author: Uriel Carrillo <carrillouriel@gmail.com>
+Date:   Thu Jun 27 22:59:31 2019 -0700
+
+    se muestran los posibles vecinos a con los que se pueden interactuar despues de seleccionar una ficha
+
+[33mcommit d2dc15f382c81795f496dc24e57aa57f38dd4aa4[m
+Author: Uriel Carrillo <carrillouriel@outlook.com>
+Date:   Wed Jun 26 06:45:24 2019 -0700
+
+    se creo una clase para hacer tableros
+
+[33mcommit 826737ea77f74d3459b49ea929c16bcdbf1a61f6[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 977aa3e c996d6e
+Author: Arturo Nereu <hdgam3r@gmail.com>
+Date:   Mon Jun 24 22:16:23 2019 -0500
+
+    Merge branch 'master' of https://github.com/unityhmo/dots
+
+[33mcommit 977aa3e12663ec94daaf78f44ef384b57513127d[m
+Author: Arturo Nereu <hdgam3r@gmail.com>
+Date:   Mon Jun 24 22:15:48 2019 -0500
+
+    Unity Project Created
+
+[33mcommit c996d6e0d4dbc221c1e2e1489a72b2bddbd42dcf[m
+Author: Arturo Nereu <hdgam3r@gmail.com>
+Date:   Mon Jun 24 22:09:32 2019 -0500
+
+    Update README.md
+
+[33mcommit ff4e46762ba336a46ebe224aab42ce600dcc9be9[m
+Author: Arturo Nereu <hdgam3r@gmail.com>
+Date:   Mon Jun 24 22:08:25 2019 -0500
+
+    Update README.md
+
+[33mcommit f9ee1172c437a09e72daad2d27da1547c4170dd1[m
+Author: Arturo Nereu <hdgam3r@gmail.com>
+Date:   Mon Jun 24 22:08:12 2019 -0500
+
+    Update README.md
+
+[33mcommit 2083cb92c7c3114a46d4d106ba1ea8be72af0c6d[m
+Author: tonymtz <atony.mtz@gmail.com>
+Date:   Mon Jun 24 19:59:45 2019 -0700
+
+    Initial commit
