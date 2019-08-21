@@ -1,0 +1,16 @@
+game.title=Dots
+game.subtitle=The Game
+game.copyright=© 2019 Lunarlabs.
+
+system.fallback=I'm a button!
+system.back=Back
+
+menu.play=Play
+menu.configuration=Config
+menu.help=Help
+menu.credits=Credits
+
+settings.music=Music
+settings.sxf=SFX
+settings.save=Save
+settings.reset=Reset
