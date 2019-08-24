@@ -12754,9 +12754,9 @@ MonoBehaviour:
     type: 3}
   LineaGameObject: {fileID: 9057913947401601758, guid: 747577c6a66d6e54e9907bec1211d929,
     type: 3}
-  ItemAgregarEnergia: {fileID: 9186423187952374955, guid: b7bc319dc072dd446b1643a2de0a8aa9,
+  ItemAgregarEnergia: {fileID: 1223831850276042010, guid: 817ba4c043f48a8458078f8aecabb8ab,
     type: 3}
-  ItemQuitarEnergia: {fileID: 2739867215071731071, guid: 7775bc139ecb2f6448fbe8a369a7d784,
+  ItemQuitarEnergia: {fileID: 1223831850276042010, guid: 0ff83c0b448830f4f89142583050c707,
     type: 3}
   Cofre: {fileID: 3479398484001626066, guid: d2b5907f5fbde0242bab0a7252dc37b3, type: 3}
   ItemMultiplicador: {fileID: 1661301632543956228, guid: 8bfcc2db37a6886439194e41cce6c963,

@@ -15,6 +15,13 @@ public class CuadCapturadoController : MonoBehaviour
 
     void OnTriggerEnter (Collider col)
     {
+        if(col.gameObject.tag == "Particles_Potion")
+        {
+          ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
+          var emission = ps.emission;
+          emission.enabled = true;
+        }
+
         if(col.gameObject.tag == "Item")
         {
             string nameCol = col.gameObject.name;
@@ -26,7 +33,8 @@ public class CuadCapturadoController : MonoBehaviour
                         objGC.GetComponent<GameController>().SubirEnergiaJugador1();
                     }else{
                         objGC.GetComponent<GameController>().SubirEnergiaJugador2();
-                    }                
+                    }
+                                    
                 Destroy(col.gameObject,1);
             }
 

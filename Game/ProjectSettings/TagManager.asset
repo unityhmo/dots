@@ -10,6 +10,7 @@ TagManager:
   - Item
   - Curtain
   - GameManager
+  - Particles_Potion
   layers:
   - Default
   - TransparentFX
