@@ -103,10 +103,38 @@ public class GameController : MonoBehaviour
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
-        ElegirHumano();
-        ElegirHumano();
+        RazaJugador1=ValoresEntreEscenas.RazaJugador1;
+        RazaJugador2=ValoresEntreEscenas.RazaJugador2;
+        ElegirRazaConValores();
         AclararJugador(BlackScreen_P1);
         OscurecerJugador(BlackScreen_P2);
+    }
+
+    void ElegirRazaConValores(){
+        if(RazaJugador1=="Humano"){
+            ElegirHumano();
+        }
+        if(RazaJugador1=="Mago"){
+            ElegirMago();
+        }
+        if(RazaJugador1=="Piedra"){
+            ElegirPiedra();
+        }
+        if(RazaJugador2=="Humano"){
+            ElegirHumano();
+        }
+        if(RazaJugador2=="Mago"){
+            ElegirMago();
+        }
+        if(RazaJugador2=="Piedra"){
+            ElegirPiedra();
+        }
+        if(RazaJugador1==""||RazaJugador1==null){
+            ElegirHumano();
+        }
+        if(RazaJugador2==""||RazaJugador2==null){
+            ElegirHumano();
+        }
     }
 
     void Update()
@@ -518,6 +546,10 @@ public class GameController : MonoBehaviour
     }
     public void BajarPuntajeExtraJugador2(){
         puntosExtraJugador2--;
+    }
+
+    public void VolverAlMenu(){
+       SceneManager.LoadScene("02-main-menu");
     }
 
     public void EvaluarTablero(){
