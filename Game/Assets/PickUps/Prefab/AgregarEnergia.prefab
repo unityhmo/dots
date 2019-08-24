@@ -4777,7 +4777,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 10}
+  m_Size: {x: 10, y: 20, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &339566213
 PrefabInstance:
@@ -4786,6 +4786,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8280132218819078184}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
+        type: 3}
+      propertyPath: m_Name
+      value: PartycleSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
+        type: 3}
+      propertyPath: m_TagString
+      value: Particles_Potion
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59c45a35383f5f04a900b2ea85172d91,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4856,21 +4871,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.036229998
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
-        type: 3}
-      propertyPath: m_Name
-      value: PartycleSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
-        type: 3}
-      propertyPath: m_TagString
-      value: Particles_Potion
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 59c45a35383f5f04a900b2ea85172d91,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -4899,6 +4899,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8280132218819078184}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
+        type: 3}
+      propertyPath: m_Name
+      value: pocion
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59c45a35383f5f04a900b2ea85172d91,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4953,11 +4958,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 59c45a35383f5f04a900b2ea85172d91,
-        type: 3}
-      propertyPath: m_Name
-      value: pocion
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 59c45a35383f5f04a900b2ea85172d91,
         type: 3}

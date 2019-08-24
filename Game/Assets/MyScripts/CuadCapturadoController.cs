@@ -20,6 +20,7 @@ public class CuadCapturadoController : MonoBehaviour
           ParticleSystem ps = col.gameObject.GetComponent<ParticleSystem>();
           var emission = ps.emission;
           emission.enabled = true;
+          Debug.Log("particlespotion");
         }
 
         if(col.gameObject.tag == "Item")
