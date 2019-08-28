@@ -26,7 +26,6 @@ public class FichaController : MonoBehaviour
             nombreSegundaFicha=this.name;
             DeterminarLadosOcupados();
             EvaluarTablero();
-            LimpiarFichas();
         }          
     }
 
@@ -132,10 +131,6 @@ public class FichaController : MonoBehaviour
                     };
                 }
             }
-    }
-
-    void LimpiarFichas(){
-        this.GetComponent<LookForPosibleTargets>().LimpiarFichas();
     }
 
 }
