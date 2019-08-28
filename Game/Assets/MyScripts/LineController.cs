@@ -8,7 +8,7 @@ public class LineController : MonoBehaviour
     int jugadorBloqueo;
     int jugadorCapturo;
 
-    void OnMouseDown(){
+    void OnMouseUpAsButton(){
         if(ChecarEventos()){
             ActivarLinea();
         }
