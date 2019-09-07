@@ -760,6 +760,7 @@ public class GameController : MonoBehaviour
     void TransformarCuadrosConsecutivos(GameObject areaObject){
         //this.gameObject.GetComponent<ConsecutivosController>().TransformarCuadrosConsecutivos(posicionArea);
         //this.gameObject.GetComponent<ConsecutivosController>().ContarContinuos(areaObject);
+        this.gameObject.GetComponent<SimpleConsecutivoController>().ActualizarConsecutivos();
     }
 
     void CambioDeTurno(int _pJugadorActual){
