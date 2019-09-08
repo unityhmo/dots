@@ -14,7 +14,7 @@ public class LineController : MonoBehaviour
         }
     }
 
-    bool  ChecarEventos(){
+    public bool  ChecarEventos(){
         bool puedeActivarLinea=false;
         int jugador=GetJugador();
         
@@ -48,7 +48,7 @@ public class LineController : MonoBehaviour
         return puedeActivarLinea;
     }
 
-    void ActivarLinea(){
+    public void ActivarLinea(){
         if(this.gameObject.tag!="Line"){
             this.gameObject.tag="Line";
             GameObject objGC = GameObject.Find("GameController");

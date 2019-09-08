@@ -12,6 +12,7 @@ TagManager:
   - GameManager
   - Particles_Potion
   - Player_Select
+  - LineaEnEspera
   layers:
   - Default
   - TransparentFX

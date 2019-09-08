@@ -100,6 +100,8 @@ public class GameController : MonoBehaviour
     int columnas;
     int filas;
 
+    bool GameOver;
+
     void Start(){
         CalcularTotalMaximoDeLineas();
         txtMensajeFinal.SetActive(false);
@@ -622,10 +624,15 @@ public class GameController : MonoBehaviour
             if(puntosJugador2+puntosExtraJugador2>puntosJugador1+puntosExtraJugador1){
                 TextoFinal="Gana el Jugador 2";
             }
-            txtMensajeFinal.SetActive(true);            
+            txtMensajeFinal.SetActive(true);
+            GameOver=true;            
         }
 
         ContarSetsConsecutivos();
+    }
+
+    public bool GetGameOver(){
+        return GameOver;
     }
 
     void ContarSetsConsecutivos(){
@@ -767,8 +774,7 @@ public class GameController : MonoBehaviour
         if(_pJugadorActual==1){
             JugadorActual=2;
             AclararJugador(BlackScreen_P2);
-            OscurecerJugador(BlackScreen_P1);
-            
+            OscurecerJugador(BlackScreen_P1);            
         }else{
             JugadorActual=1;
             AclararJugador(BlackScreen_P1);
