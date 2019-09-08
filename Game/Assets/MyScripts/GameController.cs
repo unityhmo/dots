@@ -629,7 +629,7 @@ public class GameController : MonoBehaviour
     }
 
     void ContarSetsConsecutivos(){
-        //GetComponent<ConsecutivosController>().ContarSetsConsecutivos();
+        this.GetComponent<SimpleConsecutivoController>().ContarSetsConsecutivos();
     }
 
 
@@ -768,13 +768,11 @@ public class GameController : MonoBehaviour
             JugadorActual=2;
             AclararJugador(BlackScreen_P2);
             OscurecerJugador(BlackScreen_P1);
-            SubirEnergiaJugador1();
             
         }else{
             JugadorActual=1;
             AclararJugador(BlackScreen_P1);
             OscurecerJugador(BlackScreen_P2);
-            SubirEnergiaJugador2();
         }
     }
 

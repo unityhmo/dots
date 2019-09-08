@@ -41,8 +41,6 @@ public class SimpleConsecutivoController : MonoBehaviour
 		columnas-=1;
 		filas-=1;
         cuadro = new CuadCapturadoController[filas,columnas];
-		Debug.Log("Filas: "+filas+" Columnas: "+columnas);
-
 		foreach(GameObject objCuad in cuadrosCapturados){
 			MeterCuadroAMatriz(objCuad);
 		}
@@ -102,6 +100,53 @@ public class SimpleConsecutivoController : MonoBehaviour
 		cuadro[pColumna,pFila]=_cuadro.GetComponent<CuadCapturadoController>();		
 	}
 
+	public void ContarSetsConsecutivos(){
+        int cuadrosConsecutivosTotales =0;
+        int JugadorActual=this.GetComponent<GameController>().GetJugadorActual();
+        cuadrosConsecutivosTotales=GetCuadrosConsecutivos(JugadorActual);
+        //traer cuadros consecutivos de ese jugador
+        int cuadrosConsecutivosActuales = 0;
+        GameObject[] cuadrosCapturados = GameObject.FindGameObjectsWithTag("CuadCapturado");
+        foreach(GameObject cuadro in cuadrosCapturados){
+            if(cuadro.name.Contains("J"+JugadorActual)){
+                bool esContinuo = cuadro.GetComponent<CuadCapturadoController>().GetEsContinuo();
+                if(esContinuo){
+                    cuadrosConsecutivosActuales++;
+                }
+            }
+        }
+        if(cuadrosConsecutivosTotales>0){
+            int sumarEnergiaActual = cuadrosConsecutivosActuales/cuadrosConsecutivosTotales;
+            for(int x=0;x<sumarEnergiaActual;x++){
+                if(JugadorActual==1){
+                    this.GetComponent<GameController>().SubirEnergiaJugador1();
+                }else{
+                    this.GetComponent<GameController>().SubirEnergiaJugador2();
+                }
+            }
+        } 
+    }
+
+	int GetCuadrosConsecutivos(int jugador){
+        string raza="";
+        int consecutivos=0;
+        if(jugador==1){
+            raza=this.GetComponent<GameController>().GetRazaJugador1();
+        }else{
+            raza=this.GetComponent<GameController>().GetRazaJugador2();
+        }
+        if(raza=="Humano"){
+            consecutivos=3;
+        }
+        if(raza=="Mago"){
+            consecutivos=2;
+        }
+        if(raza=="Piedra"){
+            consecutivos=4;
+        }
+        return consecutivos;
+    }
+
     void PintarConsecutivos()
 	{
 //--------- AQUI ES DONDE SE EMPIEZAN A PINTAR YA LOS CAUDRITOS CUANDO SON CONSECUTIVOS-----------------
@@ -116,6 +161,7 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 		//MAGOS
 		if (raza == "Mago")
 		{
+			if(x-1>=0){
 			if(cuadro[x,y]!=null&&cuadro[x-1,y]!=null){
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x-1,y].GetEsContinuo() == false && x-1 <= filas)
 			 	// Si no es ya consecutivo y hay espacios (2) hacia el final... entra a la condición
@@ -127,12 +173,13 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 					cuadro[x-1,y].SetEsContinuo(true);
             	}
 			}
-
+			}
 		}			
 		
 		//HUMANOS
 		if (raza == "Humano")
 		{
+			if(x-2>=0){
 			if(cuadro[x,y]!=null&&cuadro[x-1,y]!=null&&cuadro[x-2,y]!=null){
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x-1,y].GetEsContinuo() == false && cuadro[x-2,y].GetEsContinuo() == false && x-2 <= filas) 
 				// Si no es ya consecutivo y hay espacios (3) hacia el final... entra a la condición
@@ -145,11 +192,12 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 					cuadro[x-2,y].SetEsContinuo(true);
 				}
 			}
-
+			}
 		}		
 		//PIEDRA
 		if (raza == "Piedra")
 		{
+			if(x-3>=0){
 			if(cuadro[x,y]!=null&&cuadro[x-1,y]!=null&&cuadro[x-2,y]!=null&&cuadro[x-3,y]!=null){
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x-1,y].GetEsContinuo() == false && cuadro[x-2,y].GetEsContinuo() == false && cuadro[x-3,y].GetEsContinuo() == false && x-3 <= filas)
 			 	// Si no es ya consecutivo y hay espacios (4) hacia el final... entra a la condición
@@ -163,7 +211,7 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 					cuadro[x-3,y].SetEsContinuo(true);
 				}
 			}
-
+			}
 		}
 		
 	}
@@ -178,6 +226,7 @@ for(int x=0;x< filas;x++)//recorrer las X
 		//MAGOS
 		if (raza == "Mago")
 		{
+			if(y-1>=0){
 			if(cuadro[x,y]!=null&&cuadro[x,y-1]!=null){
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x,y-1].GetEsContinuo() == false && y-1 <= columnas)
 			 	// Si no es ya consecutivo y hay espacios (2) hacia el final... entra a la condición
@@ -190,12 +239,12 @@ for(int x=0;x< filas;x++)//recorrer las X
 				
 				}
 			}
-
+			}
 		}
 		//HUMANOS
 		if (raza == "Humano")
 		{
-			Debug.Log("x: "+x+" y: "+y);
+			if(y-2>=0){
 			if(cuadro[x,y]!=null&&cuadro[x,y-1]!=null&&cuadro[x,y-2]!=null){
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x,y-1].GetEsContinuo() == false && cuadro[x,y-2].GetEsContinuo() == false && y-2 <= columnas) 
 				// Si no es ya consecutivo y hay espacios (3) hacia el final... entra a la condición
@@ -209,11 +258,14 @@ for(int x=0;x< filas;x++)//recorrer las X
 				
 				}
 			}
+			}
+
 
 		}
 		//PIEDRA
 		if (raza == "Piedra")
 		{
+			if(y-3>=0){
 			if(cuadro[x,y]!=null&&cuadro[x,y-1]!=null&&cuadro[x,y-2]!=null&&cuadro[x,y-3]!=null){
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x,y-1].GetEsContinuo() == false && cuadro[x,y-2].GetEsContinuo() == false && cuadro[x,y-3].GetEsContinuo() == false && y-3 <= columnas)
 			 	// Si no es ya consecutivo y hay espacios (4) hacia el final... entra a la condición
@@ -227,6 +279,7 @@ for(int x=0;x< filas;x++)//recorrer las X
 					cuadro[x,y-3].SetEsContinuo(true);
 					}
 				}
+			}
 			}
 		}
 	}

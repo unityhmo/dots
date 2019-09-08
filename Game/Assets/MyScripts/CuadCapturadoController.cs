@@ -129,14 +129,9 @@ public class CuadCapturadoController : MonoBehaviour
         }else{
             this.GetComponent<SpriteRenderer>().color=Color.green;
         }
-        }else{
-            if(numeroJugador==1){
-                this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;
-            }else{
-                this.gameObject.GetComponent<SpriteRenderer>().color=Color.red;
-            }
-        }
     }
+    }
+    
 
     public void SetEsContinuo(bool continuo){
         esContinuo=continuo;
