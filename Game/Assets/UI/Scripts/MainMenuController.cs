@@ -50,6 +50,13 @@ public class MainMenuController : MonoBehaviour {
         SceneManager.LoadScene("GamePlayIsometrico");
     }
 
+    public void GoToGameVSCPU(){
+        ValoresEntreEscenas.RazaJugador1 = RazaJugador1;
+        ValoresEntreEscenas.RazaJugador2 = RazaJugador2;
+        ValoresEntreEscenas.JugarVSCPU=true;
+        SceneManager.LoadScene("GamePlayIsometrico");
+    }
+
     public void ElegirHumano(){
         AsignarRaza("Humano");
         CambiarJugador();
