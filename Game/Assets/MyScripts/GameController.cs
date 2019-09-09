@@ -628,6 +628,7 @@ public class GameController : MonoBehaviour
             GameOver=true;            
         }
 
+        TransformarCuadrosConsecutivos();
         ContarSetsConsecutivos();
     }
 
@@ -753,7 +754,7 @@ public class GameController : MonoBehaviour
         }
 
         //this.gameObject.GetComponent<PropsManager>().InstantiateCapturedQuad(posicionArea);
-        TransformarCuadrosConsecutivos(areaObject);       
+        TransformarCuadrosConsecutivos();       
     }
 
     int SetBlindaje(){
@@ -764,7 +765,7 @@ public class GameController : MonoBehaviour
         return numBlindaje;
     }
 
-    void TransformarCuadrosConsecutivos(GameObject areaObject){
+    void TransformarCuadrosConsecutivos(){
         //this.gameObject.GetComponent<ConsecutivosController>().TransformarCuadrosConsecutivos(posicionArea);
         //this.gameObject.GetComponent<ConsecutivosController>().ContarContinuos(areaObject);
         this.gameObject.GetComponent<SimpleConsecutivoController>().ActualizarConsecutivos();

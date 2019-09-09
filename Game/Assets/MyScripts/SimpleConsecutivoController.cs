@@ -41,10 +41,17 @@ public class SimpleConsecutivoController : MonoBehaviour
 		columnas-=1;
 		filas-=1;
         cuadro = new CuadCapturadoController[filas,columnas];
+		BorrarConsecutivos(cuadrosCapturados);
 		foreach(GameObject objCuad in cuadrosCapturados){
 			MeterCuadroAMatriz(objCuad);
 		}
 		PintarConsecutivos();
+	}
+
+	void BorrarConsecutivos(GameObject[] cuadrosCapturados){
+		foreach(GameObject objCuad in cuadrosCapturados){
+			objCuad.GetComponent<CuadCapturadoController>().SetEsContinuo(false);
+		}
 	}
 
 	void MeterCuadroAMatriz(GameObject _cuadro){
@@ -184,12 +191,17 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x-1,y].GetEsContinuo() == false && cuadro[x-2,y].GetEsContinuo() == false && x-2 <= filas) 
 				// Si no es ya consecutivo y hay espacios (3) hacia el final... entra a la condición
 				{
-					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador && cuadro[x-2,y].numeroJugador==cuadro[x,y].numeroJugador)
-					//Si los cuadros son del mismo jugador
-				
+					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador && cuadro[x-2,y].numeroJugador==cuadro[x,y].numeroJugador){
+					//Si los cuadros son del mismo jugador				
 					cuadro[x,y].SetEsContinuo(true);
 					cuadro[x-1,y].SetEsContinuo(true);
 					cuadro[x-2,y].SetEsContinuo(true);
+					}else{
+						cuadro[x,y].SetEsContinuo(false);
+						cuadro[x-1,y].SetEsContinuo(false);
+						cuadro[x-2,y].SetEsContinuo(false);
+					}
+
 				}
 			}
 			}

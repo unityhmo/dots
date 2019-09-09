@@ -43,7 +43,7 @@ public class CPUVersus : MonoBehaviour
 
      bool CerrarCuadro(){
         GameObject[] lineArray;
-        lineArray = GameObject.FindGameObjectsWithTag("LineaEnEspera");
+        lineArray = GameObject.FindGameObjectsWithTag("Line");
         bool cerroCuadro=false;
             if (lineArray.Length > 0)
             {

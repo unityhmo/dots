@@ -100,9 +100,9 @@ public class CuadCapturadoController : MonoBehaviour
                     }
                    
                     esInrobable=true;
-                    //esContinuo=false;
+                    esContinuo=false;
                     numeroJugador=jugador;
-                    //objGC.GetComponent<ConsecutivosController>().ContarContinuos(this.gameObject,true);
+                    objGC.GetComponent<SimpleConsecutivoController>().ActualizarConsecutivos();
                 }else{
                     ContadorBlindaje--;
                 }
@@ -121,15 +121,19 @@ public class CuadCapturadoController : MonoBehaviour
     }
 
     void CambiarColorContinuo(){
-        int jugador=0;
-        jugador=GetJugadorActual();
         if(esContinuo){
-        if(jugador==1){
+        if(numeroJugador==1){
             this.GetComponent<SpriteRenderer>().color=Color.yellow;
         }else{
             this.GetComponent<SpriteRenderer>().color=Color.green;
         }
-    }
+        }else{
+            if(numeroJugador==1){
+                this.GetComponent<SpriteRenderer>().color=Color.blue;
+            }else{
+                this.GetComponent<SpriteRenderer>().color=Color.red;
+            }
+        }
     }
     
 
