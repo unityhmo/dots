@@ -10717,7 +10717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.699997, y: -2.5999756}
+  m_AnchoredPosition: {x: -2.5, y: -5.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1229115077
@@ -10796,7 +10796,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 29d6d2676ffc18141834cdfcadb8e816, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2249adb0e025e8c4b83102be0efa472e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15385,12 +15385,12 @@ MonoBehaviour:
   energiaMaxima: 3
   energiaActualJugador1: 0
   energiaActualJugador2: 0
-  Humano_Portrait: {fileID: 21300000, guid: 29d6d2676ffc18141834cdfcadb8e816, type: 3}
-  Piedra_Portrait: {fileID: 21300000, guid: 638e0204c1f4b8b49ad8ca1c35ff72be, type: 3}
-  Mago_Portrait: {fileID: 21300000, guid: f0099e3744fa8174e8525cfb695c8e11, type: 3}
-  Humano_FullBody: {fileID: 21300000, guid: a4a1b41f2de7ab043a91fbeb672d09b4, type: 3}
-  Piedra_FullBody: {fileID: 21300000, guid: 14fa1164577eeef45b99a386e95c777f, type: 3}
-  Mago_FullBody: {fileID: 21300000, guid: 0a10ed5ab93add94196f794120fe2cca, type: 3}
+  Humano_Portrait: {fileID: 21300000, guid: 2249adb0e025e8c4b83102be0efa472e, type: 3}
+  Piedra_Portrait: {fileID: 21300000, guid: dd4a5367fc1eaa44281a01686b8457e3, type: 3}
+  Mago_Portrait: {fileID: 21300000, guid: 07eed9c633b14324d89588d70d0e9608, type: 3}
+  Humano_FullBody: {fileID: 21300000, guid: 374d50b116c8d914f98265452aef3fce, type: 3}
+  Piedra_FullBody: {fileID: 21300000, guid: e406ced7c9f57304aa9ebab3570133c1, type: 3}
+  Mago_FullBody: {fileID: 21300000, guid: 32df0383f784c7e46a639c1ce368589e, type: 3}
   Humano_Background: {fileID: 21300000, guid: 9fdd81d3290908046ba517d4e9f0d3a4, type: 3}
   Piedra_Background: {fileID: 21300000, guid: ccdb7383a9fd1804b9863f9f270c7928, type: 3}
   Mago_Background: {fileID: 21300000, guid: 5b7f36bda9f50f741983e4f543534134, type: 3}
@@ -17110,14 +17110,14 @@ RectTransform:
   m_GameObject: {fileID: 1879878580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2587932, y: 0.2587932, z: 0.2587932}
+  m_LocalScale: {x: 0.17178677, y: 0.22025113, z: 0.22025113}
   m_Children: []
   m_Father: {fileID: 1746559740}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -119.941284, y: -42.95349}
+  m_AnchoredPosition: {x: -119.94, y: -42.95349}
   m_SizeDelta: {x: 2228.2913, y: 2916.0002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1879878582
@@ -17140,7 +17140,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: a4a1b41f2de7ab043a91fbeb672d09b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 374d50b116c8d914f98265452aef3fce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17192,7 +17192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.699997, y: -2.5999756}
+  m_AnchoredPosition: {x: 0.3, y: -6.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894354087
@@ -17271,7 +17271,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 29d6d2676ffc18141834cdfcadb8e816, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2249adb0e025e8c4b83102be0efa472e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
