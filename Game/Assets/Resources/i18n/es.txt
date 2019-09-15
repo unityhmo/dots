@@ -1,6 +1,6 @@
-game.title=Puntos
+﻿game.title=Dots of War
 game.subtitle=El Juego
-game.copyright=© 2019 Lunarlabs.
+game.copyright=© 2019 LunarCrown.
 
 system.fallback=Soy un boton!
 system.back=Atras
