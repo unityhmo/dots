@@ -9,9 +9,31 @@ public class LineController : MonoBehaviour
     int jugadorCapturo;
 
     void OnMouseUpAsButton(){
-        if(ChecarEventos()){
-            ActivarLinea();
+        if(ChecarVsCPU()){
+            if(ChecarEventos()){            
+                ActivarLinea();
+            }
         }
+    }
+
+    bool ChecarVsCPU(){
+        bool puedeContinuar=false;
+        bool vsCPU=true;//ValoresEntreEscenas.JugarVSCPU;
+        if(vsCPU){
+             int jugador=GetJugador();
+             if(jugador==1){
+                 //No es turno de la maquina, puede continuar.
+                 puedeContinuar=true;
+             }
+        }else{
+            //No es contra la maquina, puede continuar.
+            puedeContinuar=true;
+        }
+        return puedeContinuar;
+    }
+
+    void AnimarLinea(){
+        this.GetComponent<Animator>().Play("Line_Animation");
     }
 
     public bool  ChecarEventos(){
@@ -53,6 +75,7 @@ public class LineController : MonoBehaviour
             this.gameObject.tag="Line";
             GameObject objGC = GameObject.Find("GameController");
             if(objGC!=null){
+                AnimarLinea();
                 if(GetJugador()==1){
                 //raya azul
                     this.gameObject.GetComponent<SpriteRenderer>().color=Color.blue;

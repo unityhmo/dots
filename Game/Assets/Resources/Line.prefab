@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5908647762720880646}
   - component: {fileID: 1601322857563864480}
   - component: {fileID: 1977335624}
+  - component: {fileID: 1257880121}
   m_Layer: 0
   m_Name: Line
   m_TagString: LineaEnEspera
@@ -106,3 +107,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.130657, y: 0.419197, z: 0.20000005}
   m_Center: {x: -0.0048905313, y: -0.007335782, z: 6.774543e-18}
+--- !u!95 &1257880121
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057913947401601758}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0ab4d812271d4748a36b908888975cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
