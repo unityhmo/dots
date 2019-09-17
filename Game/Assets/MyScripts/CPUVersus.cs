@@ -14,9 +14,11 @@ public class CPUVersus : MonoBehaviour
     bool vsCPU;
     string raza;
     bool GameOver;
+    bool esperar;
+    bool yaEstaEsperando;
 
     void Start(){
-        vsCPU=ValoresEntreEscenas.JugarVSCPU;
+        vsCPU=true;//ValoresEntreEscenas.JugarVSCPU;
         raza=ValoresEntreEscenas.RazaJugador2;
     }
      void Update(){
@@ -26,20 +28,34 @@ public class CPUVersus : MonoBehaviour
              //Comenzar a evaluar sus jugadas
              int jugador = this.GetComponent<GameController>().GetJugadorActual();
              if(jugador==2){
+                 esperar=true;
                  //Es el turno de la maquina.
-                bool hizoLinea=false;
-                 //busca cerrar un cuadro
-                hizoLinea=CerrarCuadro();
-               
-                 
-                 //Poner una linea disponible como suya.
-                if(!hizoLinea){
-                    MarcarLineaRandom();
+                 //Esperar un momento.
+                if(esperar&&!yaEstaEsperando){
+                     StartCoroutine(EsperarUnSegundo());
+                     yaEstaEsperando=true;
                 }
              }
              }
          }
      }
+
+    IEnumerator EsperarUnSegundo()
+    {
+        yield return new WaitForSeconds(0.7f);
+        esperar=false;
+        yaEstaEsperando=false;
+
+        //Continuar con el turno
+        bool hizoLinea=false;
+         //busca cerrar un cuadro
+        hizoLinea=CerrarCuadro();
+                 
+        //Poner una linea disponible como suya.
+        if(!hizoLinea){
+            MarcarLineaRandom();
+        }        
+    }
 
      bool CerrarCuadro(){
         GameObject[] lineArray;
