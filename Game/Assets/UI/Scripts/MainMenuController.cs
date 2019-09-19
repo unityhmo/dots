@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class MainMenuController : MonoBehaviour {
     private static readonly int ToBase = Animator.StringToHash("ToBase");
@@ -47,14 +48,15 @@ public class MainMenuController : MonoBehaviour {
         //Invoke(nameof(ChangeToGameScene), 0.1f);
         ValoresEntreEscenas.RazaJugador1 = RazaJugador1;
         ValoresEntreEscenas.RazaJugador2 = RazaJugador2;
-        SceneManager.LoadScene("GamePlayIsometrico");
+        SceneLoader.LoadScene(3);
+
     }
 
     public void GoToGameVSCPU(){
         ValoresEntreEscenas.RazaJugador1 = RazaJugador1;
         ValoresEntreEscenas.RazaJugador2 = RazaJugador2;
         ValoresEntreEscenas.JugarVSCPU=true;
-        SceneManager.LoadScene("GamePlayIsometrico");
+        SceneLoader.LoadScene(3);
     }
 
     public void ElegirHumano(){
