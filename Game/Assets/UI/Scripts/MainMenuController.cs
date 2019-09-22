@@ -48,15 +48,16 @@ public class MainMenuController : MonoBehaviour {
         //Invoke(nameof(ChangeToGameScene), 0.1f);
         ValoresEntreEscenas.RazaJugador1 = RazaJugador1;
         ValoresEntreEscenas.RazaJugador2 = RazaJugador2;
-        SceneLoader.LoadScene(3);
-
-    }
+	ValoresEntreEscenas.NumeroEscenaACargar=3;
+	SceneManager.LoadScene(4);
+    }	
 
     public void GoToGameVSCPU(){
         ValoresEntreEscenas.RazaJugador1 = RazaJugador1;
         ValoresEntreEscenas.RazaJugador2 = RazaJugador2;
         ValoresEntreEscenas.JugarVSCPU=true;
-        SceneLoader.LoadScene(3);
+        ValoresEntreEscenas.NumeroEscenaACargar=3;	
+	SceneManager.LoadScene(4);
     }
 
     public void ElegirHumano(){
