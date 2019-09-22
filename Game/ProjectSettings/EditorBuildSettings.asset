@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/02-main-menu.unity
     guid: 599481b036e13014786024b746a52864
   - enabled: 1
-    path: Assets/Scenes/GamePlayIsometrico.unity
+    path: Assets/Scenes/03-game.unity
     guid: 9014d90c79d45884e90fc0ec8373882c
   - enabled: 1
     path: Assets/Scenes/LoadingScreen.unity
