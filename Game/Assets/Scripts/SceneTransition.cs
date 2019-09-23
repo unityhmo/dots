@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -76,7 +77,9 @@ public class SceneTransition : MonoBehaviour
     Out
   }
 
+  public float Progress { get; private set; } = 0f;
   public bool UseResourceImage = false;
+
   private bool _initialized = false;
   private int _sceneIndex;
   private float _durationFadeIn;
@@ -87,6 +90,7 @@ public class SceneTransition : MonoBehaviour
   private Color _fadeColor = Color.black;
   private Image _fader;
   private CanvasGroup _canvas;
+  private AsyncOperation _async;
 
   public void Begin(int sceneIndex, float durationFadeIn, float durationFadeOut)
   {
@@ -133,7 +137,7 @@ public class SceneTransition : MonoBehaviour
       {
         _fadeColor.a = 1;
         ChangeState(TransitionState.Hold);
-        SceneManager.LoadScene(_sceneIndex);
+        StartCoroutine(LoadScene());
       }
     }
     else if (_state == TransitionState.Out)
@@ -189,6 +193,7 @@ public class SceneTransition : MonoBehaviour
     if (UseResourceImage)
     {
       fader = Instantiate(SceneLoader.GetLoadingScreen());
+      fader.SendMessage("StartUp", this, SendMessageOptions.DontRequireReceiver);
       _canvas = fader.GetComponent<CanvasGroup>();
       _canvas.alpha = 0f;
     }
@@ -205,5 +210,23 @@ public class SceneTransition : MonoBehaviour
     RectTransform faderRect = fader.GetComponent<RectTransform>();
     faderRect.localPosition = Vector3.zero;
     faderRect.sizeDelta = _screenSize;
+  }
+
+  private IEnumerator LoadScene()
+  {
+    _async = SceneManager.LoadSceneAsync(_sceneIndex);
+    _async.allowSceneActivation = false;
+
+    while (_async.isDone == false)
+    {
+      Progress = _async.progress;
+
+      if (_async.progress >= 0.9f)
+      {
+        Progress = 1f;
+        _async.allowSceneActivation = true;
+      }
+      yield return null;
+    }
   }
 }

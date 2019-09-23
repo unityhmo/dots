@@ -30,7 +30,7 @@ public class ConsecutivosController : MonoBehaviour
         cuadrosConsecutivos=GetCuadrosConsecutivos(jugador);
         float xActual = cuadroActual.x;
         float yActual = cuadroActual.z;
-        int contador=1;
+
         //Buscar a la derecha
         bool esConsecutivoDerecha=false;
         for(int x=1;x<cuadrosConsecutivos;x++){
@@ -137,7 +137,7 @@ public class ConsecutivosController : MonoBehaviour
         
         //buscar izquierda
         List<GameObject> listaIzquierda = new List<GameObject>();
-        bool izquierda=false;
+
         for(int contador=0;contador<cuadrosConsecutivos;contador++){
             string vecino ="Conquered_J"+jugador+"$x="+(x-contador).ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)+"#z="+z.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)+"&(Clone)";
             GameObject vecinoObject = GameObject.Find(vecino);
