@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textId: 
+  textId: menu.credits
 --- !u!114 &432410852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textId: 
+  textId: menu.configuration
 --- !u!114 &537753551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,7 +2077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textId: 
+  textId: settings.sxf
 --- !u!114 &558202826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4385,7 +4385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textId: 
+  textId: menu.help
 --- !u!114 &1102359856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4897,7 +4897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textId: ISOCode
+  textId: game.copyright
 --- !u!1 &1153974955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6794,7 +6794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textId: 
+  textId: settings.music
 --- !u!114 &1584657660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8999,7 +8999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textId: 
+  textId: game.title
 --- !u!1 &2000051656
 GameObject:
   m_ObjectHideFlags: 0
