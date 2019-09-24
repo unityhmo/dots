@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 620609755171146995}
   - component: {fileID: 620609755171146992}
   - component: {fileID: 620609755171146993}
+  - component: {fileID: 1035681326960577248}
   m_Layer: 5
   m_Name: BackCTA
   m_TagString: Untagged
@@ -223,5 +224,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1035681326960577248}
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1035681326960577248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620609755171146999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c0e7a141080d842b8978cab2f43934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playWhen: 2
+  volume: 1
+  audioClip: {fileID: 8300000, guid: 8d0306c3e0cd6b343959f6a14a108eb4, type: 3}
