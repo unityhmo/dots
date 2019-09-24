@@ -1,6 +1,6 @@
-game.title=Dots
+﻿game.title=Dots of War
 game.subtitle=The Game
-game.copyright=© 2019 Lunarlabs.
+game.copyright=© 2019 LunarCrown.
 
 system.fallback=I'm a button!
 system.back=Back

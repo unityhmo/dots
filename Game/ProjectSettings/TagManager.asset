@@ -13,6 +13,8 @@ TagManager:
   - Particles_Potion
   - Player_Select
   - SoundManager
+  - LineaEnEspera
+  - AudioManager
   layers:
   - Default
   - TransparentFX
@@ -22,8 +24,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Static
+  - Props
   - 
   - 
   - 
