@@ -18,7 +18,7 @@ public class CPUVersus : MonoBehaviour
     bool yaEstaEsperando;
 
     void Start(){
-        vsCPU=true;//ValoresEntreEscenas.JugarVSCPU;
+        vsCPU=ValoresEntreEscenas.JugarVSCPU;
         raza=ValoresEntreEscenas.RazaJugador2;
     }
      void Update(){
