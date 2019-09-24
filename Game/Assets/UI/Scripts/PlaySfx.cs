@@ -2,41 +2,41 @@
 using UnityEngine;
 
 public class PlaySfx : MonoBehaviour {
-    [SerializeField] protected SoundManagerController.EventType playWhen = SoundManagerController.EventType.Other;
+    [SerializeField] protected AudioManagerController.EventType playWhen = AudioManagerController.EventType.Other;
     [SerializeField] [Range(0, 1)] protected float volume = 1f;
     [SerializeField] protected AudioClip audioClip;
 
-    protected SoundManagerController soundManagerController;
+    protected AudioManagerController audioManagerController;
 
     void Start() {
-        GameObject soundManager = GameObject.FindWithTag("SoundManager");
+        GameObject soundManager = GameObject.FindWithTag("AudioManager");
 
         if (audioClip == null) {
             throw new ArgumentException("No `AudioClip` added to script");
         }
 
         if (soundManager == null) {
-            throw new ArgumentException("No `SoundManager` object found");
+            throw new ArgumentException("No `AudioManager` object found");
         }
 
-        soundManagerController = soundManager.GetComponent<SoundManagerController>();
+        audioManagerController = soundManager.GetComponent<AudioManagerController>();
 
-        if (soundManagerController == null) {
-            throw new ArgumentException("No `SoundManager` object found");
+        if (audioManagerController == null) {
+            throw new ArgumentException("No `AudioManager` object found");
         }
 
-        if (playWhen == SoundManagerController.EventType.StartScript) {
+        if (playWhen == AudioManagerController.EventType.StartScript) {
             Play();
         }
     }
 
     void OnDestroy() {
-        if (playWhen == SoundManagerController.EventType.BeforeDestroy) {
+        if (playWhen == AudioManagerController.EventType.BeforeDestroy) {
             Play();
         }
     }
 
     public virtual void Play() {
-        soundManagerController.PlayMusic(audioClip, volume);
+        audioManagerController.PlayMusic(audioClip, volume);
     }
 }

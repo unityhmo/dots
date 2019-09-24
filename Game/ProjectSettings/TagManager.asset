@@ -12,7 +12,6 @@ TagManager:
   - GameManager
   - Particles_Potion
   - Player_Select
-  - SoundManager
   - LineaEnEspera
   - AudioManager
   layers:
