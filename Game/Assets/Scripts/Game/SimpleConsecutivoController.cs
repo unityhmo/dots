@@ -23,7 +23,7 @@ public class SimpleConsecutivoController : MonoBehaviour
     //Obtener todos los cuadros de la matriz
 
 	string GetRazaActual(){
-		int jugadorActual= this.GetComponent<GameController>().GetJugadorActual();
+		int jugadorActual= GetJugadorActual();
 		string raza="";
 		if(jugadorActual==1){
 			raza=this.GetComponent<GameController>().GetRazaJugador1();
@@ -31,6 +31,10 @@ public class SimpleConsecutivoController : MonoBehaviour
 			raza=this.GetComponent<GameController>().GetRazaJugador2();
 		}
 		return raza;
+	}
+
+	int GetJugadorActual(){
+		return this.GetComponent<GameController>().GetJugadorActual();
 	}
 
 	public void ActualizarConsecutivos(){
@@ -161,6 +165,7 @@ public class SimpleConsecutivoController : MonoBehaviour
 
 //SE INICIA RECORRIENDO LAS X PARA SACAR LOS CONSECUTIVOS HORIZONTALES (SIEMPRE DE DERECHA A IZQ) 
 string raza=GetRazaActual();
+int jugadorActual =GetJugadorActual();
 for(int y=0;y< filas;y++) // recorer las Y (Z)
 {
 	for(int x=0;x< columnas;x++)//recorrer las X
@@ -173,7 +178,7 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x-1,y].GetEsContinuo() == false && x-1 <= filas)
 			 	// Si no es ya consecutivo y hay espacios (2) hacia el final... entra a la condición
 				{
-					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador){
+					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador&&jugadorActual==cuadro[x,y].numeroJugador){
 					//Si los cuadros son del mismo jugador				
 					cuadro[x,y].SetEsContinuo(true);
 					cuadro[x-1,y].SetEsContinuo(true);
@@ -195,7 +200,7 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x-1,y].GetEsContinuo() == false && cuadro[x-2,y].GetEsContinuo() == false && x-2 <= filas) 
 				// Si no es ya consecutivo y hay espacios (3) hacia el final... entra a la condición
 				{
-					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador && cuadro[x-2,y].numeroJugador==cuadro[x,y].numeroJugador){
+					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador && cuadro[x-2,y].numeroJugador==cuadro[x,y].numeroJugador&&jugadorActual==cuadro[x,y].numeroJugador){
 					//Si los cuadros son del mismo jugador				
 					cuadro[x,y].SetEsContinuo(true);
 					cuadro[x-1,y].SetEsContinuo(true);
@@ -218,7 +223,7 @@ for(int y=0;y< filas;y++) // recorer las Y (Z)
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x-1,y].GetEsContinuo() == false && cuadro[x-2,y].GetEsContinuo() == false && cuadro[x-3,y].GetEsContinuo() == false && x-3 <= filas)
 			 	// Si no es ya consecutivo y hay espacios (4) hacia el final... entra a la condición
 				{
-					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador && cuadro[x-2,y].numeroJugador == cuadro[x-3,y].numeroJugador && cuadro[x,y].numeroJugador==cuadro[x-2,y].numeroJugador){
+					if(cuadro[x,y].numeroJugador == cuadro[x-1,y].numeroJugador && cuadro[x-2,y].numeroJugador == cuadro[x-3,y].numeroJugador && cuadro[x,y].numeroJugador==cuadro[x-2,y].numeroJugador&&jugadorActual==cuadro[x,y].numeroJugador){
 					//Si los cuadros son del mismo jugador				
 					cuadro[x,y].SetEsContinuo(true);
 					cuadro[x-1,y].SetEsContinuo(true);
@@ -253,7 +258,7 @@ for(int x=0;x< filas;x++)//recorrer las X
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x,y-1].GetEsContinuo() == false && y-1 <= columnas)
 			 	// Si no es ya consecutivo y hay espacios (2) hacia el final... entra a la condición
 				{
-					if(cuadro[x,y].numeroJugador == cuadro[x,y-1].numeroJugador){
+					if(cuadro[x,y].numeroJugador == cuadro[x,y-1].numeroJugador&&jugadorActual==cuadro[x,y].numeroJugador){
 					//Si los cuadros son del mismo jugador				
 					cuadro[x,y].SetEsContinuo(true);
 					cuadro[x,y-1].SetEsContinuo(true);
@@ -275,7 +280,7 @@ for(int x=0;x< filas;x++)//recorrer las X
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x,y-1].GetEsContinuo() == false && cuadro[x,y-2].GetEsContinuo() == false && y-2 <= columnas) 
 				// Si no es ya consecutivo y hay espacios (3) hacia el final... entra a la condición
 				{
-					if(cuadro[x,y].numeroJugador == cuadro[x,y-1].numeroJugador && cuadro[x,y-2].numeroJugador==cuadro[x,y].numeroJugador){
+					if(cuadro[x,y].numeroJugador == cuadro[x,y-1].numeroJugador && cuadro[x,y-2].numeroJugador==cuadro[x,y].numeroJugador&&jugadorActual==cuadro[x,y].numeroJugador){
 					//Si los cuadros son del mismo jugador				
 					cuadro[x,y].SetEsContinuo(true);
 					cuadro[x,y-1].SetEsContinuo(true);
@@ -301,7 +306,7 @@ for(int x=0;x< filas;x++)//recorrer las X
 				if(cuadro[x,y].GetEsContinuo() == false && cuadro[x,y-1].GetEsContinuo() == false && cuadro[x,y-2].GetEsContinuo() == false && cuadro[x,y-3].GetEsContinuo() == false && y-3 <= columnas)
 			 	// Si no es ya consecutivo y hay espacios (4) hacia el final... entra a la condición
 				{
-					if(cuadro[x,y].numeroJugador == cuadro[x,y-1].numeroJugador && cuadro[x,y-2].numeroJugador == cuadro[x,y-3].numeroJugador && cuadro[x,y].numeroJugador==cuadro[x,y-2].numeroJugador)
+					if(cuadro[x,y].numeroJugador == cuadro[x,y-1].numeroJugador && cuadro[x,y-2].numeroJugador == cuadro[x,y-3].numeroJugador && cuadro[x,y].numeroJugador==cuadro[x,y-2].numeroJugador&&jugadorActual==cuadro[x,y].numeroJugador)
 					//Si los cuadros son del mismo jugador
 					{
 					cuadro[x,y].SetEsContinuo(true);

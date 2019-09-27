@@ -18,7 +18,7 @@ public class LineController : MonoBehaviour
 
     bool ChecarVsCPU(){
         bool puedeContinuar=false;
-        bool vsCPU=true;//ValoresEntreEscenas.JugarVSCPU;
+        bool vsCPU=ValoresEntreEscenas.JugarVSCPU;
         if(vsCPU){
              int jugador=GetJugador();
              if(jugador==1){

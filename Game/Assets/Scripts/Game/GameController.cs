@@ -81,8 +81,8 @@ public class GameController : MonoBehaviour
   string habilidadJugador1;
   string habilidadJugador2;
 
-  public GameObject barraEnergiaJugador1;
-  public GameObject barraEnergiaJugador2;
+  public GameObject HolderEnergiaJugador1;
+  public GameObject HolderEnergiaJugador2;
 
   public GameObject barraConquistaJugador1;
   public GameObject barraConquistaJugador2;
@@ -92,10 +92,18 @@ public class GameController : MonoBehaviour
   public Sprite Blindar_icon;
   public Sprite Bloqueado_Icon;
 
+  public Sprite Energia_0;
+  public Sprite Energia_1;
+  public Sprite Energia_2;
+  public Sprite Energia_3;
+
   public GameObject P1_Estado_1;
   public GameObject P1_Estado_2;
   public GameObject P2_Estado_1;
   public GameObject P2_Estado_2;
+
+  public GameObject btnHabilidadJugador1;
+  public GameObject btnHabilidadJugador2;
 
   int columnas;
   int filas;
@@ -258,20 +266,35 @@ public class GameController : MonoBehaviour
     float cuadrosLibres = CuadrosTotales - totalJ1 - totalJ2;
     float j1 = (totalJ1 * 100 / CuadrosTotales) + (cuadrosLibres * 100 / CuadrosTotales) / 2;
     float j2 = (totalJ2 * 100 / CuadrosTotales) + (cuadrosLibres * 100 / CuadrosTotales) / 2;
-    ActualizarBarraEnergia(j1 / 100, barraConquistaJugador1);
-    ActualizarBarraEnergia(j2 / 100, barraConquistaJugador2);
+    ActualizarBarraConquista(j1 / 100, barraConquistaJugador1);
+    ActualizarBarraConquista(j2 / 100, barraConquistaJugador2);
 
   }
 
   void ChecarEnergia()
   {
-    float energia = energiaActualJugador1 / energiaMaxima;
-    ActualizarBarraEnergia(energia, barraEnergiaJugador1);
-    energia = energiaActualJugador2 / energiaMaxima;
-    ActualizarBarraEnergia(energia, barraEnergiaJugador2);
+    float energia = energiaActualJugador1;
+    ActualizarBarraEnergia(energia, HolderEnergiaJugador1);
+    energia = energiaActualJugador2;
+    ActualizarBarraEnergia(energia, HolderEnergiaJugador2);
   }
 
   public void ActualizarBarraEnergia(float valorEnergia, GameObject barraEnergia)
+  {
+    Sprite energiaActual= Energia_0;
+    if(valorEnergia==1){
+      energiaActual=Energia_1;
+    }
+    if(valorEnergia==2){
+      energiaActual=Energia_2;
+    }
+    if(valorEnergia==3){
+      energiaActual=Energia_3;
+    }
+    barraEnergia.GetComponent<Image>().sprite = energiaActual;
+  }
+
+    public void ActualizarBarraConquista(float valorEnergia, GameObject barraEnergia)
   {
     barraEnergia.transform.localScale = new Vector3(Mathf.Clamp(valorEnergia, 0f, 1f), barraEnergia.transform.localScale.y, barraEnergia.transform.localScale.z);
   }
@@ -332,6 +355,22 @@ public class GameController : MonoBehaviour
     else
     {
       habilidadJugador2 = habilidad;
+    }
+    SetBotonesHabilidad(JugadorActual,habilidad);
+  }
+
+  void SetBotonesHabilidad(int jugadorActual,string habilidad){
+    Sprite iconHabilidad=Robar_Icon;
+    if(habilidad=="Bloquear"){
+      iconHabilidad=Bloquear_Icon;
+    }
+    if(habilidad=="Blindar"){
+      iconHabilidad=Blindar_icon;
+    }
+    if(jugadorActual==1){
+     btnHabilidadJugador1.GetComponent<Image>().sprite = iconHabilidad;
+    }else{
+      btnHabilidadJugador2.GetComponent<Image>().sprite = iconHabilidad;
     }
   }
 
