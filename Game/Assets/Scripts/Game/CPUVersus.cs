@@ -47,6 +47,7 @@ public class CPUVersus : MonoBehaviour
         yaEstaEsperando=false;
 
         //Continuar con el turno
+        UsarHabilidad();
         bool hizoLinea=false;
          //busca cerrar un cuadro
         hizoLinea=CerrarCuadro();
@@ -55,6 +56,15 @@ public class CPUVersus : MonoBehaviour
         if(!hizoLinea){
             MarcarLineaRandom();
         }        
+    }
+
+    void UsarHabilidad(){
+        int rand = UnityEngine.Random.Range(0, 2);
+        if(rand==1){
+            this.GetComponent<GameController>().UsarHabilidad();
+        }else{
+            this.GetComponent<GameController>().BloquearAJugador1();
+        }
     }
 
      bool CerrarCuadro(){
