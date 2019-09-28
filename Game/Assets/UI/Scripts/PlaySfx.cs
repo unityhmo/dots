@@ -37,6 +37,6 @@ public class PlaySfx : MonoBehaviour {
     }
 
     public virtual void Play() {
-        audioManagerController.PlayMusic(audioClip, volume);
+        audioManagerController.PlaySfx(audioClip, volume);
     }
 }
