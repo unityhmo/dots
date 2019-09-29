@@ -4,7 +4,7 @@ public class PlayMusic : PlaySfx {
     [SerializeField] private bool repeat;
 
     public override void Play() {
-        audioManagerController.PlaySfx(audioClip, volume);
+        audioManagerController.PlayMusic(audioClip, volume);
     }
 
     void OnDestroy() {
