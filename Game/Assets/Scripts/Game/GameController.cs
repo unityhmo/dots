@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
   public GameObject txtPuntajeJugador2;
   public GameObject txtContadorLineas;
   public GameObject txtMensajeFinal;
+  public GameObject ventan_MensajeFinal;
 
   public Text txtPuntajeExtra1;
   public Text txtPuntajeExtra2;
@@ -114,6 +115,7 @@ public class GameController : MonoBehaviour
   {
     CalcularTotalMaximoDeLineas();
     txtMensajeFinal.SetActive(false);
+    ventan_MensajeFinal.SetActive(false);
     RazaJugador1 = ValoresEntreEscenas.RazaJugador1;
     RazaJugador2 = ValoresEntreEscenas.RazaJugador2;
     ElegirRazaConValores();
@@ -799,6 +801,7 @@ public class GameController : MonoBehaviour
         TextoFinal = "Gana el Jugador 2";
       }
       txtMensajeFinal.SetActive(true);
+      ventan_MensajeFinal.SetActive(true);
       GameOver = true;
     }
 
