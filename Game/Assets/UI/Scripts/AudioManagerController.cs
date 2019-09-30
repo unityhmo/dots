@@ -54,10 +54,11 @@ public class AudioManagerController : MonoBehaviour {
         effectSource.PlayOneShot(clip, volume);
     }
 
-    public void PlayMusic(AudioClip clip, float volume) {
+    public void PlayMusic(AudioClip clip, float volume, bool repeat) {
         // TODO multiply by global volume
         musicSource.clip = clip;
         musicSource.volume = volume;
+        musicSource.loop = repeat;
         musicSource.Play();
     }
 
