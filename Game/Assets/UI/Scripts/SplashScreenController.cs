@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class SplashScreenController : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class SplashScreenController : MonoBehaviour
 
   private void TransitionToNextStep()
   {
-    SceneLoader.LoadScene(2);
+    Dictionary<string, object> optionalParameters = new Dictionary<string, object>();
+    optionalParameters["useLoadingScreen"] = true;
+    SceneLoader.LoadScene(2, optionalParameters);
   }
 }

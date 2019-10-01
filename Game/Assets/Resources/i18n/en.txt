@@ -14,3 +14,6 @@ settings.music=Music
 settings.sxf=SFX
 settings.save=Save
 settings.reset=Reset
+
+gameplay.retry=Retry
+gameplay.exit=Exit

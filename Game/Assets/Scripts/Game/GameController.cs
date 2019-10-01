@@ -713,7 +713,10 @@ public class GameController : MonoBehaviour
 
   public void VolverAlMenu()
   {
-    SceneLoader.LoadScene(2);
+    Dictionary<string, object> optionalParameters = new Dictionary<string, object>();
+    optionalParameters["useLoadingScreen"] = true;
+
+    SceneLoader.LoadScene(2, optionalParameters);
   }
 
   public void EvaluarTablero()
