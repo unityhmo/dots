@@ -177,32 +177,35 @@ public class SceneTransition : MonoBehaviour
   // Add canvas component and create new Image object.
   private void CreateCanvas()
   {
-    // Canvas constructor & setup
-    Canvas canvas = gameObject.AddComponent<Canvas>();
-    canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-    canvas.sortingOrder = SceneLoader.TRANSITIONER_SORTING_ORDER;
-
-    CanvasScaler scaler = gameObject.AddComponent<CanvasScaler>();
-    scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-    scaler.referenceResolution = _screenSize;
-    gameObject.AddComponent<GraphicRaycaster>();
-
-    // Image child object constructor & setup
-
     GameObject fader;
+    Canvas canvas;
+    CanvasScaler scaler;
+
     if (UseResourceImage)
     {
       fader = Instantiate(SceneLoader.GetLoadingScreen());
       fader.SendMessage("StartUp", this, SendMessageOptions.DontRequireReceiver);
+
+      canvas = fader.GetComponent<Canvas>();
+
       _canvas = fader.GetComponent<CanvasGroup>();
       _canvas.alpha = 0f;
     }
     else
     {
+      canvas = gameObject.AddComponent<Canvas>();
+      scaler = gameObject.AddComponent<CanvasScaler>();
+
+      canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+      scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+      scaler.referenceResolution = _screenSize;
+
       fader = new GameObject();
       _fader = fader.AddComponent<Image>();
       _fader.color = _fadeColor;
     }
+
+    canvas.sortingOrder = SceneLoader.TRANSITIONER_SORTING_ORDER;
 
     fader.name = "Screen Blocker";
     fader.transform.SetParent(transform);
