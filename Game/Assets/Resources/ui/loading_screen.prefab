@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5131490459527691836}
   - component: {fileID: 5797211902641114889}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ClanSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,15 +27,15 @@ RectTransform:
   m_GameObject: {fileID: 2522803504410274868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.375, z: 1}
   m_Children: []
   m_Father: {fileID: 9064385880975621288}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -341.7, y: -936.4}
-  m_SizeDelta: {x: 865.19, y: 865.2}
+  m_AnchoredPosition: {x: -228, y: -774}
+  m_SizeDelta: {x: 413, y: 1056}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5131490459527691836
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: d12f9b5cd6f384f4cb4d17545d559f0f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3467552ebf559024d825158baf2b7421, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -644,6 +644,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 9064385879236803706}
+  holderClanSprites: {fileID: 2522803504410274868}
+  clanSprites:
+  - {fileID: 21300000, guid: 3467552ebf559024d825158baf2b7421, type: 3}
+  - {fileID: 21300000, guid: d12f9b5cd6f384f4cb4d17545d559f0f, type: 3}
+  - {fileID: 21300000, guid: 662de4e5524e8c54db118b8511745373, type: 3}
 --- !u!1 &9064385880991591083
 GameObject:
   m_ObjectHideFlags: 0
