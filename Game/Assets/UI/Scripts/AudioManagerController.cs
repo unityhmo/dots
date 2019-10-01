@@ -25,8 +25,7 @@ public class AudioManagerController : MonoBehaviour {
 
             if (existingAudioListener == null) {
                 audioListener = gameObject.AddComponent<AudioListener>();
-            }
-            else {
+            } Else {
                 audioListener = existingAudioListener;
             }
         }
