@@ -105,6 +105,11 @@ public class CuadCapturadoController : MonoBehaviour
                     objGC.GetComponent<SimpleConsecutivoController>().ActualizarConsecutivos();
                 }else{
                     ContadorBlindaje--;
+                    if(jugador==1){
+                        objGC.GetComponent<GameController>().FinRoboJugador1();
+                    }else{
+                        objGC.GetComponent<GameController>().FinRoboJugador2();
+                    }
                 }
                 
             }
@@ -133,6 +138,9 @@ public class CuadCapturadoController : MonoBehaviour
             }else{
                 this.GetComponent<SpriteRenderer>().color=Color.red;
             }
+        }
+        if(ContadorBlindaje>0){
+             this.GetComponent<SpriteRenderer>().color=Color.gray;
         }
     }
     
