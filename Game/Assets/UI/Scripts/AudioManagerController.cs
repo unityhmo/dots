@@ -35,8 +35,7 @@ public class AudioManagerController : MonoBehaviour {
     private void Awake() {
         if (Instance == null) {
             instance = this;
-        }
-        else if (Instance != this) {
+        } else if (Instance != this) {
             Destroy(gameObject);
         }
 
@@ -70,8 +69,7 @@ public class AudioManagerController : MonoBehaviour {
             AudioListener.pause = true;
             savedVolume = musicSource.volume;
             musicSource.volume /= 2;
-        }
-        else {
+        } else {
             AudioListener.pause = false;
             musicSource.volume = savedVolume;
         }
