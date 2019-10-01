@@ -14,6 +14,8 @@ public class AudioManagerController : MonoBehaviour {
     private AudioSource musicSource;
     private float savedVolume = 0f;
     private AudioListener audioListener;
+    private float musicLevel;
+    private float sfxLevel;
 
     public static AudioManagerController Instance => instance;
 
@@ -23,15 +25,13 @@ public class AudioManagerController : MonoBehaviour {
 
             if (existingAudioListener == null) {
                 audioListener = gameObject.AddComponent<AudioListener>();
-            } else {
+            } Else {
                 audioListener = existingAudioListener;
             }
         }
     }
 
     private void Awake() {
-        Debug.Log("on awake");
-
         if (Instance == null) {
             instance = this;
         } else if (Instance != this) {
@@ -47,17 +47,18 @@ public class AudioManagerController : MonoBehaviour {
             musicSource = gameObject.AddComponent<AudioSource>();
             musicSource.ignoreListenerPause = true;
         }
+
+        LoadAudioLevelFromProps();
     }
 
     public void PlaySfx(AudioClip clip, float volume) {
-        // TODO multiply by global volume
+        effectSource.volume = volume * sfxLevel;
         effectSource.PlayOneShot(clip, volume);
     }
 
     public void PlayMusic(AudioClip clip, float volume, bool repeat) {
-        // TODO multiply by global volume
         musicSource.clip = clip;
-        musicSource.volume = volume;
+        musicSource.volume = volume * musicLevel;
         musicSource.loop = repeat;
         musicSource.Play();
     }
@@ -71,5 +72,14 @@ public class AudioManagerController : MonoBehaviour {
             AudioListener.pause = false;
             musicSource.volume = savedVolume;
         }
+    }
+
+    public void LoadAudioLevelFromProps() {
+        musicLevel = PlayerSettingsController.GetFloat(PlayerSettingsController.Setting.Music,
+            PlayerSettingsController.defaultValues[PlayerSettingsController.Setting.Music]);
+        sfxLevel = PlayerSettingsController.GetFloat(PlayerSettingsController.Setting.Music,
+            PlayerSettingsController.defaultValues[PlayerSettingsController.Setting.Music]);
+        effectSource.volume = sfxLevel;
+        musicSource.volume = musicLevel;
     }
 }
