@@ -4,28 +4,32 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerSettingsController : MonoBehaviour {
-    private enum Setting {
+    public enum Setting {
         Music,
         Sfx
     }
 
-    private Dictionary<Setting, int> defaultValues = new Dictionary<Setting, int>() {
-        {Setting.Music, 10},
-        {Setting.Sfx, 10},
+    public static readonly Dictionary<Setting, float> defaultValues = new Dictionary<Setting, float>() {
+        {Setting.Music, 1f},
+        {Setting.Sfx, 1f},
     };
 
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
 
-    private int musicLevel;
-    private int sfxLevel;
+    private float musicLevel;
+    private float sfxLevel;
     private bool isDirty;
 
-    private readonly Action<string, float> updateSetting = (key, value) => PlayerPrefs.SetInt(key, (int) value);
+    private readonly Action<string, float> updateSetting = (key, value) => {
+        PlayerPrefs.SetFloat(key, value);
+        // h4ck5
+        AudioManagerController.Instance.LoadAudioLevelFromProps();
+    };
 
     void Start() {
-        musicLevel = GetInt(Setting.Music, 10);
-        sfxLevel = GetInt(Setting.Sfx, 10);
+        musicLevel = GetFloat(Setting.Music, defaultValues[Setting.Music]);
+        sfxLevel = GetFloat(Setting.Sfx, defaultValues[Setting.Sfx]);
         musicSlider.value = musicLevel;
         sfxSlider.value = sfxLevel;
 
@@ -37,18 +41,18 @@ public class PlayerSettingsController : MonoBehaviour {
         musicLevel = defaultValues[Setting.Music];
         sfxLevel = defaultValues[Setting.Sfx];
 
-        SetInt(Setting.Music, musicLevel);
-        SetInt(Setting.Sfx, sfxLevel);
+        SetFloat(Setting.Music, musicLevel);
+        SetFloat(Setting.Sfx, sfxLevel);
 
         musicSlider.value = musicLevel;
         sfxSlider.value = sfxLevel;
     }
 
-    private int GetInt(Setting setting, int value) {
-        return PlayerPrefs.GetInt(setting.ToString(), value);
+    private void SetFloat(Setting setting, float value) {
+        PlayerPrefs.SetFloat(setting.ToString(), value);
     }
 
-    private void SetInt(Setting setting, int value) {
-        PlayerPrefs.SetInt(setting.ToString(), value);
+    public static float GetFloat(Setting setting, float value) {
+        return PlayerPrefs.GetFloat(setting.ToString(), value);
     }
 }
