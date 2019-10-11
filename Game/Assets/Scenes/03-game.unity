@@ -1967,7 +1967,7 @@ PrefabInstance:
     - target: {fileID: 4754754890314717671, guid: d9cfd5a608c002746bfc1e690f6e0ab5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4754754890314717671, guid: d9cfd5a608c002746bfc1e690f6e0ab5,
         type: 3}
@@ -8538,7 +8538,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1002154367
 PrefabInstance:
@@ -14593,6 +14593,12 @@ MonoBehaviour:
     type: 3}
   capturedQuad: {fileID: 5587162328844877880, guid: 9c149ef863a2de148bfbd683aad9ca72,
     type: 3}
+  humansStructures:
+  - {fileID: 3852233248189304620, guid: 05603141d1e950a4e8629f7ebc9caebb, type: 3}
+  sagesStructures:
+  - {fileID: 4972305629821731064, guid: b5e630d9f2cf3cd49846502b2885131c, type: 3}
+  demonsStructures:
+  - {fileID: 2960333401977127515, guid: 4a9df3ce6498b4b4eab72acb00b11d50, type: 3}
 --- !u!114 &1667236022
 MonoBehaviour:
   m_ObjectHideFlags: 0
