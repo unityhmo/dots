@@ -65,7 +65,7 @@ public class PropsManager : MonoBehaviour
   IEnumerator EsperarUnSegundo(Vector3 coords, GameObject structure)
   {
       yield return new WaitForSeconds(0.8f);
-      Instantiate(structure, coords, Quaternion.Euler(0, 0, 0));     
+      Instantiate(structure, coords, Quaternion.Euler(0, 90, 0));     
   }
   
 }
