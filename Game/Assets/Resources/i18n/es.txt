@@ -9,6 +9,9 @@ menu.play=Jugar
 menu.configuration=Config
 menu.help=Ayuda
 menu.credits=Creditos
+menu.clanhuman=Humanos
+menu.clanmages=Magos
+menu.clanstone=Piedras
 
 settings.music=Musica
 settings.sxf=Sonidos

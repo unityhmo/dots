@@ -9,6 +9,9 @@ menu.play=Play
 menu.configuration=Config
 menu.help=Help
 menu.credits=Credits
+menu.clanhuman=Humans
+menu.clanmages=Mages
+menu.clanstone=Stones
 
 settings.music=Music
 settings.sxf=SFX

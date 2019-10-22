@@ -3804,7 +3804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textId: menu.help
+  textId: menu.clanmages
 --- !u!114 &882511979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4785,7 +4785,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62cd89dc9cfb43c47b46b4bf48f463cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4969,7 +4969,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a1f03c1e3083c1409868cf6ef706a19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5043,7 +5043,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62cd89dc9cfb43c47b46b4bf48f463cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5191,6 +5191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: textId
       value: menu.help
+      objectReference: {fileID: 0}
+    - target: {fileID: 476919849203240929, guid: 74acd0d6735bf724398b2ccf22cf94b4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74acd0d6735bf724398b2ccf22cf94b4, type: 3}
@@ -5737,7 +5742,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62cd89dc9cfb43c47b46b4bf48f463cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6072,7 +6077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textId: menu.help
+  textId: menu.clanstone
 --- !u!114 &1356403418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6515,6 +6520,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 722029134138491887, guid: 5609f22ec525e1e4086516e4da8266bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 13.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5609f22ec525e1e4086516e4da8266bf, type: 3}
 --- !u!224 &1388195172 stripped
@@ -6866,7 +6876,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c83bf52e930d172418685568a21f8464, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7275,7 +7285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textId: menu.help
+  textId: menu.clanhuman
 --- !u!114 &1545081017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8349,7 +8359,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a1f03c1e3083c1409868cf6ef706a19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9779,7 +9789,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c83bf52e930d172418685568a21f8464, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9881,6 +9891,7 @@ GameObject:
   - component: {fileID: 2123186494}
   - component: {fileID: 2123186497}
   - component: {fileID: 2123186496}
+  - component: {fileID: 2123186495}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -9907,6 +9918,19 @@ RectTransform:
   m_AnchoredPosition: {x: -2, y: -4.000183}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2123186495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123186493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e98b915e7884cb48b9c13604968589a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textId: 
 --- !u!114 &2123186496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10085,7 +10109,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 794f93c893852904c90097ee0b48e6c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a1f03c1e3083c1409868cf6ef706a19, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10555,6 +10579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 476919849203240929, guid: 74acd0d6735bf724398b2ccf22cf94b4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74acd0d6735bf724398b2ccf22cf94b4, type: 3}
