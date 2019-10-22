@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TextTranslator : MonoBehaviour
 {
@@ -9,19 +10,31 @@ public class TextTranslator : MonoBehaviour
   void Start()
   {
     Text text = GetComponent<Text>();
+    TextMeshProUGUI textMesh = GetComponent<TextMeshProUGUI>();
 
-    if (text == null)
+    if (text == null && textMesh == null)
     {
       return;
     }
 
+    string textValue;
+
     if (textId == "ISOCode")
     {
-      text.text = I18n.GetLanguage();
+      textValue = I18n.GetLanguage();
     }
     else
     {
-      text.text = I18n.Fields[textId];
+      textValue = I18n.Fields[textId];
+    }
+
+    if (textMesh != null)
+    {
+      textMesh.text = textValue;
+    }
+    else if (text != null)
+    {
+      text.text = textValue;
     }
   }
 }
