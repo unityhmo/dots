@@ -169,15 +169,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUMANOS
       objectReference: {fileID: 0}
-    - target: {fileID: -5099316320974062202, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
+    - target: {fileID: -1899591890189783879, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -5099316320974062202, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
+      propertyPath: m_Name
+      value: humanos
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
         type: 3}
@@ -249,10 +244,15 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -1899591890189783879, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
+    - target: {fileID: -5099316320974062202, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
         type: 3}
-      propertyPath: m_Name
-      value: humanos
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5099316320974062202, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212092682449184001, guid: 59f9be6f403cddc4e88eeb3414ce7c84,
         type: 3}
