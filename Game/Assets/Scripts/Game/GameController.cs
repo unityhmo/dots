@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class Cuadro
 {
@@ -16,14 +17,14 @@ public class Cuadro
 public class GameController : MonoBehaviour
 {
   List<Cuadro> listaCuadros = new List<Cuadro>();
-  public GameObject txtPuntajeJugador1;
-  public GameObject txtPuntajeJugador2;
+  public TextMeshProUGUI txtPuntajeJugador1;
+  public TextMeshProUGUI txtPuntajeJugador2;
   public GameObject txtContadorLineas;
   public GameObject txtMensajeFinal;
   public GameObject ventan_MensajeFinal;
 
-  public Text txtPuntajeExtra1;
-  public Text txtPuntajeExtra2;
+  public TextMeshProUGUI txtPuntajeExtra1;
+  public TextMeshProUGUI txtPuntajeExtra2;
 
   string RazaJugador1;
   string RazaJugador2;
@@ -74,7 +75,7 @@ public class GameController : MonoBehaviour
   public GameObject ContenedorSkill;
   public GameObject SkillBaground;
   public GameObject SkillCharacter;
-  public Text txtNombreHabilidad;
+  public TextMeshProUGUI txtNombreHabilidad;
 
   public GameObject BlackScreen_P1;
   public GameObject BlackScreen_P2;
@@ -161,13 +162,13 @@ public class GameController : MonoBehaviour
 
   void Update()
   {
-    txtPuntajeJugador1.GetComponent<Text>().text = "" + puntosJugador1;
-    txtPuntajeJugador2.GetComponent<Text>().text = "" + puntosJugador2;
+    txtPuntajeJugador1.text = "" + puntosJugador1;
+    txtPuntajeJugador2.text = "" + puntosJugador2;
     txtPuntajeExtra1.text = "+" + puntosExtraJugador1;
     txtPuntajeExtra2.text = "+" + puntosExtraJugador2;
 
     txtContadorLineas.GetComponent<Text>().text = "El numero maximo de lineas es: " + TotalMaximoLineas + " Lineas actuales: " + LineasActuales;
-    txtMensajeFinal.GetComponent<Text>().text = TextoFinal;
+    txtMensajeFinal.GetComponent<TextMeshProUGUI>().text = TextoFinal;
 
     ChecarEstados();
     ChecarEnergia();
@@ -527,7 +528,7 @@ public class GameController : MonoBehaviour
 
   void ActivarAnimacionHabilidad(string textoHabilidad, int jugador)
   {
-    txtNombreHabilidad.GetComponent<Text>().text = textoHabilidad;
+    txtNombreHabilidad.text = textoHabilidad;
     CanvasSkill.SetActive(true);
     string raza = "";
     if (jugador == 1)
